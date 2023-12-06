@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+   <title>Mushroom v2</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- favicon -->
+   <link rel="icon" href="image/icon(1000).png" sizes="1000x1000" type="image/png" />
+   <link rel="icon" href="image/icon(500).png" sizes="500x500" type="image/png" />
+   <link rel="icon" href="image/icon(250).png" sizes="250x250" type="image/png" />
+   <link rel="icon" href="image/icon(100).png" sizes="100x100" type="image/png" />
+   <!-- OG -->
+   <meta property="og:title" content="Mushroom.js">
+   <meta property="og:url" content="https://leafweb.github.io/mushroom/">
+   <meta property="og:image" content="image/caver.png">
+   <meta property="og:image:width" content="500" />
+   <meta property="og:image:height" content="500" />
+   <meta property="og:type" content="website">
+   <meta property="og:locale" content="fa_IR">
+   <meta property="og:description" content="اسکریپت ساخت سبک رنگ">
+   <!-- style -->
+   <link rel="stylesheet" href="style/style.css">
+   <link rel="stylesheet" href="style/font-awesome/css/all.css">
+   <!-- script -->
+   <script src="script/Mushroom.min.js"></script>
+</head>
+<body>
+   <!-- header -->
+   <header>
+      <div class="ripple ic" onclick="Darkmode()">
+         <i class="mds">brightness_4</i>
+      </div>
+      <div id="title">Mushroom.js<sup class="p">v2</sup></div>
+      <div class="ripple ic" onclick="Menu()">
+         <i class="mds">menu</i>
+      </div>
+   </header>
+   <!-- navbar -->
+   <navbar>
+      <div>
+         <div class="ripple ic" onclick="Menu()">
+            <i class="mds">menu</i>
+         </div>
+         <hr>
+         <div class="ripple tab on" for="Home" name="Mushroom.js<sup class='p'>v2</sup>">
+            <i class="mds">home</i>
+         </div>
+         <div class="ripple tab" for="Brush" name="Br<span class='p'>u</span>sh">
+            <i class="mds">brush</i>
+         </div>
+         <div class="ripple tab" for="Docs" name="Do<span class='p'>c</span>s">
+            <i class="mds">menu_book</i>
+         </div>
+         <div class="ripple tab" for="Palette" name="Pale<span class='p'>tt</span>e">
+            <i class="mds">palette</i>
+         </div>
+         <div class="ripple tab" for="Code" name="Co<span class='p'>d</span>e">
+            <i class="mds">code</i>
+         </div>
+      </div>
+      <div>
+         <div class="ripple ic" onclick="Darkmode()">
+            <i class="mds">brightness_4</i>
+         </div>
+      </div>
+   </navbar>
+   <!-- menu -->
+   <menu-backdrop></menu-backdrop>
+   <menu>
+      <menu-header>
+         <span class="p">Mushroom.js</span>
+      </menu-header>
+      <menu-body>
+         <hr>
+         <div class="list">
+            <div class="ripple" onclick="window.open('https://t.me/leafweb_io','_blank')">
+               <span> تلگرام </span>
+               <span><i class="fab fa-telegram"></i></span>
+            </div>
+            <div class="ripple" onclick="window.open('https://instagram.com/leafweb.io','_blank')">
+               <span> اینستاگرام </span>
+               <span><i class="fab fa-instagram"></i></span>
+            </div>
+            <div class="ripple" onclick="window.open('https://github.com/leafweb','_blank')">
+               <span> گیت هاب </span>
+               <span><i class="fab fa-github"></i></span>
+            </div>
+            <div class="ripple" onclick="window.open('mailto:leafweb.io@gmail.com','_blank')">
+               <span> ایمیل </span>
+               <span><i class="fas fa-envelope"></i></span>
+            </div>
+         </div>
+         <hr>
+      </menu-body>
+   </menu>
+   <!-- main -->
+   <main>
+      <page id="Palette">
+         <article>
+            <h1 class="m">پالت رنگ</h1>
+            <h2 class="c">رنگ ورودی</h2>
+            <div id="color"></div>
+            <hr>
+            <hr class="dash">
+            <h2 class="c">پالت رنگ اصلی</h2>
+            <div id="main-color"></div>
+            <hr>
+            <hr class="dash">
+            <h2 class="c">پالت فرعی</h2>
+            <div id="palette"></div>
+         </article>
+      </page>
+      <page id="Brush">
+         <article>
+            <hr>
+            <div class="ranges">
+               <div>
+                  <div><input id="H" type="range" min="0" max="360" oninput="fH(this.value)"></div>
+                  <div><output id="oH"></output></div>
+               </div>
+               <div>
+                  <div><input id="S" type="range" min="0" max="100" oninput="fS(this.value)"></div>
+                  <div><output id="oS"></output></div>
+               </div>
+               <div>
+                  <div><input id="L" type="range" min="0" max="100" step="10" oninput="fL(this.value)"></div>
+                  <div><output id="oL"></output></div>
+               </div>
+            </div>
+            <hr>
+            <hr class="dash">
+            <div class="input">
+               <input type="text" id="input">
+               <button class="ripple" onclick="Input(input.value)">تنظیم</button>
+            </div>
+            <hr>
+            <hr class="dash">
+            <button class="ripple full" onclick="fR()"> <span class="mds">casino</span> <span>تصادفی</span> </button>
+            <hr>
+            <div>
+               <label class="ripple">
+                  <span> Palette reverse</span>
+                  <input type="checkbox" oninput="M.setReversePalette(this.checked);Code();">
+               </label>
+               <label class="ripple">
+                  <span> Has palette </span>
+                  <input type="checkbox" checked oninput="M.setPalette(this.checked);Palette2();Code();">
+               </label>
+            </div>
+            <hr>
+            <div class="flex" dir="ltr">
+               <div>
+                  <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                     <defs>
+                        <path id="svg-slice" d="M 500,500 392,100, Q 500,0 608,100z" />
+                     </defs>
+                     <g id="svg-g">
+                        <use href="#svg-slice" transform="rotate(0 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(30 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(60 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(90 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(120 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(150 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(180 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(210 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(240 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(270 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(300 500 500)"></use>
+                        <use href="#svg-slice" transform="rotate(330 500 500)"></use>
+                     </g>
+                     <g id="svg-colorscheme-0">
+                        <g id="svg-color-1" transform="rotate(0 500 500)">
+                           <circle cx="500" cy="150" r="50" fill="none" stroke="var(--background)" stroke-width="10" />
+                           <path stroke="var(--background)" stroke-linecap="round" stroke-width="10" d="M 500,500 500,200" />
+                        </g>
+                        <g id="svg-color-2" transform="rotate(30 500 500)">
+                           <circle cx="500" cy="150" r="50" fill="none" stroke="var(--background)" stroke-width="10" />
+                           <path stroke="var(--background)" stroke-linecap="round" stroke-width="10" d="M 500,500 500,200" />
+                        </g>
+                        <g id="svg-color-3" transform="rotate(0 500 500)">
+                           <circle cx="500" cy="150" r="50" fill="none" stroke="var(--background)" stroke-width="10" />
+                           <path stroke="var(--background)" stroke-linecap="round" stroke-width="10" d="M 500,500 500,200" />
+                        </g>
+                        <g id="svg-color-4" transform="rotate(-30 500 500)">
+                           <circle cx="500" cy="150" r="50" fill="none" stroke="var(--background)" stroke-width="10" />
+                           <path stroke="var(--background)" stroke-linecap="round" stroke-width="10" d="M 500,500 500,200" />
+                        </g>
+                     </g>
+                  </svg>
+               </div>
+               <div>
+                  <label class="ripple">
+                     <span> Analogous </span>
+                     <input name="a" type="radio" checked oninput="SetColorScheme('Analogous');">
+                  </label>
+                  <label class="ripple">
+                     <span> Complementary </span>
+                     <input name="a" type="radio" oninput="SetColorScheme('Complementary')">
+                  </label>
+                  <label class="ripple">
+                     <span> Triadic </span>
+                     <input name="a" type="radio" oninput="SetColorScheme('Triadic')">
+                  </label>
+                  <label class="ripple">
+                     <span> Compound </span>
+                     <input name="a" type="radio" oninput="SetColorScheme('Compound')">
+                  </label>
+                  <label class="ripple">
+                     <span> Split-Complementary </span>
+                     <input name="a" type="radio" oninput="SetColorScheme('Split-Complementary')">
+                  </label>
+                  <label class="ripple">
+                     <span> Monochromatic </span>
+                     <input name="a" type="radio" oninput="SetColorScheme('Monochromatic')">
+                  </label>
+                  <label class="ripple">
+                     <span> Tetradic </span>
+                     <input name="a" type="radio" oninput="SetColorScheme('Tetradic')">
+                  </label>
+               </div>
+            </div>
+         </article>
+      </page>
+      <page id="Home" class="on">
+         <div class="start">
+            <div>
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                  <rect width="1000" height="1000" rx="200" fill="var(--primary)"/>
+                  <g transform="translate(0 50)">
+                     <path fill="var(--on-primary)" opacity="0.5" d="M 200,437.50 C 400,237.50 700,337.50 800,437.50 C 700,537.50 300,537.50 200,437.50z"/>
+                     <path fill="var(--on-primary)" d="M 550,837.50 C 600,737.50 600,637.50 550,437.50 C 700,437.50 300,362.50 450,437.50 C 400,637.50 400,737.50 450,837.50 C 466.67,870 533.33,870 550,837.50z"/>
+                     <path fill="var(--on-primary)" d="M 800,437.50 C 600,437.50 400,237.50 200,437.50 C 200,37.50 800,37.50 800,437.50z"/>
+                  </g>
+               </svg>
+               <p> تولید پالت رنگ به سبک <b class="p">Mushroom</b></p>
+            </div>
+            <div>
+               <div class="ripple">
+                  <i class="mds">school</i>
+                  <span>ساده</span>
+               </div>
+               <div class="ripple">
+                  <i class="mds">nest_eco_leaf</i>
+                  <span>سبک</span>
+               </div>
+               <div class="ripple">
+                  <i class="mds">code</i>
+                  <span>قدرتمند</span>
+               </div>
+               <div class="ripple">
+                  <i class="mds">brush</i>
+                  <span>انعطاف پذیر</span>
+               </div>
+            </div>
+         </div>
+         <article>
+            <h2><i class="tag fal fa-mushroom"></i><span class="p">Mushroom.js</span> چیست؟</h2>
+            <p><span class="p">Mushroom.js</span> اسکریپت ساخت پالت رنگ برای برنامه‌های تحت وب است که بسیار <mark>سبک</mark> و <mark>سریع</mark> هستش. </p>
+            <br>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> چطور <span class="p">Mushroom.js</span> را نصب کنیم؟</h2>
+            <p> برای نصب و راه‌اندازی کافیه است که اسکریپت <span class="p">Mushroom.js</span> را <a class="ripple" href="script/Mushroom.min.js" download>دانلود</a> کنیم و آن را با استفاده از تگ <mark>&lt;script></mark> به سند خود اضافه کنیم. </p>
+            <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
+            <p> حالا کافیست تا <span>Mushroom</span> را فرا بخوانیم </p>
+            <p>پس از اجرای این کد پالت رنگی زیر در سند شما ایجاد میشود: </p>
+            <pre lang="css"><code>/**** Mushroom v2 ****/
+:root{
+   --primary: #6666ffff;
+   --on-primary: #000033ff;
+   --primary-container: #000066ff;
+   --on-primary-container: #ccccffff;
+   --secondary: #66b2ffff;
+   --on-secondary: #001933ff;
+   --secondary-container: #003366ff;
+   --on-secondary-container: #cce5ffff;
+   --tertiary: #b266ffff;
+   --on-tertiary: #190033ff;
+   --tertiary-container: #330066ff;
+   --on-tertiary-container: #e5ccffff;
+   --error: #ff6666ff;
+   --on-error: #330000ff;
+   --error-container: #660000ff;
+   --on-error-container: #ffccccff;
+   --surface: #111122ff;
+   --on-surface: #bbbbddff;
+   --surface-variant: #131339ff;
+   --on-surface-variant: #d9d9f2ff;
+   --glass: #00000066;
+   --on-glass: #ffffff66;
+   --glass-variant: #1a1a3366;
+   --on-glass-variant: #cccce566;
+   --background: #090911ff;
+   --on-background: #cccce5ff;
+   --outline: #444488ff;
+}
+:root{
+   --primary-0: #000000ff;
+   --primary-5: #00001aff;
+   --primary-10: #000033ff;
+   --primary-15: #00004dff;
+   --primary-20: #000066ff;
+   --primary-25: #000080ff;
+   --primary-30: #000099ff;
+   --primary-35: #0000b3ff;
+   --primary-40: #0000ccff;
+   --primary-45: #0000e6ff;
+   --primary-50: #0000ffff;
+   --primary-55: #1a1affff;
+   --primary-60: #3333ffff;
+   --primary-65: #4d4dffff;
+   --primary-70: #6666ffff;
+   --primary-75: #8080ffff;
+   --primary-80: #9999ffff;
+   --primary-85: #b3b3ffff;
+   --primary-90: #ccccffff;
+   --primary-95: #e5e5ffff;
+   --primary-100: #ffffffff;
+   --secondary-0: #000000ff;
+   --secondary-5: #00111aff;
+   --secondary-10: #002233ff;
+   --secondary-15: #00334dff;
+   --secondary-20: #004466ff;
+   --secondary-25: #005580ff;
+   --secondary-30: #006699ff;
+   --secondary-35: #0077b3ff;
+   --secondary-40: #0088ccff;
+   --secondary-45: #0099e6ff;
+   --secondary-50: #00aaffff;
+   --secondary-55: #1ab2ffff;
+   --secondary-60: #33bbffff;
+   --secondary-65: #4dc3ffff;
+   --secondary-70: #66ccffff;
+   --secondary-75: #80d4ffff;
+   --secondary-80: #99ddffff;
+   --secondary-85: #b3e5ffff;
+   --secondary-90: #cceeffff;
+   --secondary-95: #e5f6ffff;
+   --secondary-100: #ffffffff;
+   --tertiary-0: #000000ff;
+   --tertiary-5: #11001aff;
+   --tertiary-10: #220033ff;
+   --tertiary-15: #33004dff;
+   --tertiary-20: #440066ff;
+   --tertiary-25: #550080ff;
+   --tertiary-30: #660099ff;
+   --tertiary-35: #7700b3ff;
+   --tertiary-40: #8800ccff;
+   --tertiary-45: #9900e6ff;
+   --tertiary-50: #aa00ffff;
+   --tertiary-55: #b31affff;
+   --tertiary-60: #bb33ffff;
+   --tertiary-65: #c44dffff;
+   --tertiary-70: #cc66ffff;
+   --tertiary-75: #d580ffff;
+   --tertiary-80: #dd99ffff;
+   --tertiary-85: #e6b3ffff;
+   --tertiary-90: #eeccffff;
+   --tertiary-95: #f7e5ffff;
+   --tertiary-100: #ffffffff;
+   --error-0: #000000ff;
+   --error-5: #1a0000ff;
+   --error-10: #330000ff;
+   --error-15: #4d0000ff;
+   --error-20: #660000ff;
+   --error-25: #800000ff;
+   --error-30: #990000ff;
+   --error-35: #b30000ff;
+   --error-40: #cc0000ff;
+   --error-45: #e60000ff;
+   --error-50: #ff0000ff;
+   --error-55: #ff1a1aff;
+   --error-60: #ff3333ff;
+   --error-65: #ff4d4dff;
+   --error-70: #ff6666ff;
+   --error-75: #ff8080ff;
+   --error-80: #ff9999ff;
+   --error-85: #ffb3b3ff;
+   --error-90: #ffccccff;
+   --error-95: #ffe5e5ff;
+   --error-100: #ffffffff;
+   --surface-0: #000000ff;
+   --surface-5: #00001aff;
+   --surface-10: #000033ff;
+   --surface-15: #00004dff;
+   --surface-20: #000066ff;
+   --surface-25: #000080ff;
+   --surface-30: #000099ff;
+   --surface-35: #0000b3ff;
+   --surface-40: #0000ccff;
+   --surface-45: #0000e6ff;
+   --surface-50: #0000ffff;
+   --surface-55: #1a1affff;
+   --surface-60: #3333ffff;
+   --surface-65: #4d4dffff;
+   --surface-70: #6666ffff;
+   --surface-75: #8080ffff;
+   --surface-80: #9999ffff;
+   --surface-85: #b3b3ffff;
+   --surface-90: #ccccffff;
+   --surface-95: #e5e5ffff;
+   --surface-100: #ffffffff;
+   --surface-variant-0: #000000ff;
+   --surface-variant-5: #0d0d0dff;
+   --surface-variant-10: #1a1a1aff;
+   --surface-variant-15: #262626ff;
+   --surface-variant-20: #333333ff;
+   --surface-variant-25: #404040ff;
+   --surface-variant-30: #4d4d4dff;
+   --surface-variant-35: #595959ff;
+   --surface-variant-40: #666666ff;
+   --surface-variant-45: #737373ff;
+   --surface-variant-50: #808080ff;
+   --surface-variant-55: #8c8c8cff;
+   --surface-variant-60: #999999ff;
+   --surface-variant-65: #a6a6a6ff;
+   --surface-variant-70: #b3b3b3ff;
+   --surface-variant-75: #bfbfbfff;
+   --surface-variant-80: #ccccccff;
+   --surface-variant-85: #d9d9d9ff;
+   --surface-variant-90: #e6e6e6ff;
+   --surface-variant-95: #f2f2f2ff;
+   --surface-variant-100: #ffffffff;
+   --glass-0: #00000066;
+   --glass-5: #09091166;
+   --glass-10: #11112266;
+   --glass-15: #1a1a3366;
+   --glass-20: #22224466;
+   --glass-25: #2b2b5566;
+   --glass-30: #33336666;
+   --glass-35: #3c3c7766;
+   --glass-40: #44448866;
+   --glass-45: #4d4d9966;
+   --glass-50: #5555aa66;
+   --glass-55: #6666b266;
+   --glass-60: #7777bb66;
+   --glass-65: #8888c366;
+   --glass-70: #9999cc66;
+   --glass-75: #aaaad466;
+   --glass-80: #bbbbdd66;
+   --glass-85: #cccce566;
+   --glass-90: #ddddee66;
+   --glass-95: #eeeef666;
+   --glass-100: #ffffff66;
+   --glass-variant-0: #00000066;
+   --glass-variant-5: #06061366;
+   --glass-variant-10: #0d0d2666;
+   --glass-variant-15: #13133966;
+   --glass-variant-20: #19194d66;
+   --glass-variant-25: #20206066;
+   --glass-variant-30: #26267366;
+   --glass-variant-35: #2d2d8666;
+   --glass-variant-40: #33339966;
+   --glass-variant-45: #3939ac66;
+   --glass-variant-50: #4040bf66;
+   --glass-variant-55: #5353c666;
+   --glass-variant-60: #6666cc66;
+   --glass-variant-65: #7979d266;
+   --glass-variant-70: #8c8cd966;
+   --glass-variant-75: #9f9fdf66;
+   --glass-variant-80: #b3b3e666;
+   --glass-variant-85: #c6c6ec66;
+   --glass-variant-90: #d9d9f266;
+   --glass-variant-95: #ececf966;
+   --glass-variant-100: #ffffff66;
+}</code></pre>
+            <br>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> بیشتر یاد بگیرید</h2>
+            <p>در اسناد <span class="p">Mushroom.js</span> با تمام ویژگی های آن آشنا شوید: </p>
+            <button class="ripple full" onclick="page('Docs')">اسناد</button>
+            <p> همچنین می‌توانید با ابزار زیر پالت رنگ مورد علاقه خودتان را داشته باشید: </p>
+            <button class="ripple full" onclick="page('Brush')">قلم</button>
+            <br>
+            <hr>
+            <hr class="dash">
+            <div class="end">
+               <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                     <g>
+                        <rect id="SvgRact" fill="var(--primary)" x="150" y="150" width="700" height="700" rx="130" />
+                        <use href="#SvgRact" transform="rotate(30 500 500)" />
+                        <use href="#SvgRact" transform="rotate(60 500 500)" />
+                        <animateTransform attributeName="transform" type="rotate" from="0 500 500" to="360 500 500" dur="30s" repeatCount="indefinite" />
+                     </g>
+                     <path fill="var(--on-primary)" transform="scale(0.8)translate(125,160)" d="M 500 700 C 300 700 200 500 50 400 C 250 350 400 400 500 600 C 600 400 750 350 950 400 C 800 500 700 700 500 700z M 500 700 C 200 700 350 300 500 100 C 650 300 800 700 500 700z M 480 680 L 520 680 Q 520 860 400 800 C 460 820 480 820 480 680z" />
+                  </svg>
+               </div>
+               <div>
+                  <p> ارائه شده توسط <br> <a href="https://leafweb.github.io/" class="ripple">Leaf Web</a></p>
+               </div>
+            </div>
+         </article>
+      </page>
+      <page id="Docs">
+         <article>
+            <h1 class="c">راهنما</h1>
+            <hr>
+            <h2><i class="tag fal fa-mushroom"></i> نصب <span class="p">Mushroom.js</span></h2>
+            <h3><i class="tag-c fal fa-circle-1"></i> <span class="p">Mushroom.js</span> را دانلود کنید</h3>
+            <a class="btn full ripple" href="script/Mushroom.js" download> دانلود Mushroom.js</a>
+            <a class="btn full ripple" href="script/Mushroom.min.js" download> دانلود Mushroom.min.js</a>
+            <h3><i class="tag-c fal fa-circle-2"></i> <span class="p">Mushroom.js</span> را به سند HTML لینک کنید</h3>
+            <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script> </code></pre>
+            <h3><i class="tag-c fal fa-circle-3"></i> <span class="p">Mushroom.js</span> را فرا بخوانید</h3>
+            <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+            <h3><i class="tag-c fal fa-circle-4"></i> یک <span class="p">رنگ</span> تنظیم کنید</h3>
+            <pre lang="JavaScript"><code>M.setColor("blue");</code></pre>
+            <div class="panel">از فرمت های رنگی HSL, RGB, Hex و رنگ های استاندارد وب میتوانید استفاده کنید.</div>
+            <h3><i class="tag-c fal fa-circle-5"></i> حالت <span class="p">تیره</span> یا <span class="s">روشن</span> ؟ </h3>
+            <pre lang="JavaScript"><code>M.setDarkmode(true); //Lightmode <br>M.setDarkmode(false); // Darkmode</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> تغییر حالت <span class="p">سریع</span></h2>
+            <pre lang="JavaScript"><code>M.toggleMode();</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> اضافه کردن رنگ های <span class="p">دلخواه</span></h2>
+            <pre lang="JavaScript"><code>M.addColot({<br>   "warn": "orange",<br>   "info": "royalblue"<br>});</code></pre>
+            <h4><i class="tag-c fal fa-star"></i> <span class="t">پاک کردن</span> رنگ های دلخواه </h4>
+            <pre lang="JavaScript"><code>M.clearCustomColor();</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> پالت <span class="p">تصادفی</span></h2>
+            <pre lang="JavaScript"><code>M.random();</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> پالت رنگ فرعی <span class="p">باشد</span> یا <span class="s">نباشد</span> ؟ </h2>
+            <pre lang="JavaScript"><code>M.setPalette(true);<br>M.setPalette(false);</code></pre>
+            <h4><i class="tag-c fal fa-star"></i> پالت فرعی وابسته به <span class="p">حالت</span></h4>
+            <pre lang="JavaScript"><code>M.reversePalette(true); //با تغییر حالت به تیره پالت رنگ فرعی وارون میشود <br>M.reversePalette(false); // پالت رنگ فرعی ثابت می ماند</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> <span class="p">تنظیمات</span> رنگی بیشتر </h2>
+            <pre lang="JavaScript"><code>M.setHue(34);<br>M.setSaturation(70);<br>M.setLightness(50);</code></pre>
+            <div class="panel"> این کدها همان فرمت رنگی HSL هستند.</div>
+            <pre lang="JavaScript"><code>M.setColor("hsl(34,70%,50%)");</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> تنظیم <span class="p">سطوح روشنایی</span> پالت رنگی فرعی </h2>
+            <pre lang="JavaScript"><code>M.setParts([0,5,10,20,40,50,60,80,90,95])</code></pre>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> تنظیم <span class="p"> ترکیبات رنگی </span></h2>
+            <pre lang="JavaScript"><code>M.setColorScheme("Complementary")</code></pre>
+            <p>تمام ترکیبات رنگی را میتوانید در صفحه Brush مشاهده کنید</p>
+            <button class="ripple full" onclick="page('Brush')">قلم</button>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> یک مرحله <span class="p"> بالاتر </span></h2>
+            <pre lang="JavaScript"><code>M.setLevel("pro");</code></pre>
+            <p>در این حالت چندین رنگ دیگه به پالت رنگ اصلی افزوده میشود. مانند: error-background, secondary-serface, tertiary-outline </p>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> اضافه کردن <span class="p">Mushroom</span> به بخش های<span class="t"> خاصی </span> </h2>
+            <pre lang="JavaScript"><code>let M1 = Mushroom("main");<br>let M2 = Mushroom("#Home");<br>let M3 = Mushroom(":root");</code></pre>
+            <p>شما میتوانید برای هر کدام تنظیمات خاصی قرار دهید! یرای مثال: </p>
+            <pre lang="JavaScript"><code>M1.setColor("blue");<br>M2.setColor("blueviolet");<br>M3.setColor("purple");</code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> گرفتن مقادیر مختلف از <span class="p">Mushroom</span></h2>
+            <pre lang="JavaScript"><code>M.addTo; //String<br>M.code; //String<br>M.color; //String<br>M.colorScheme; //String<br>M.customColor; //String<br>M.darkmode; //Boolean<br>M.hasPalette; //Boolean<br>M.hue; //Number<br>M.level; //"default" or "pro"<br>M.lightness; //Number<br>M.palette; //Object<br>M.parts; //Array<br>M.reversePalette; //Boolean<br>M.saturation; //Number<br>M.themeColor; //Object<br>M.version; //String<br></code></pre>
+            <hr>
+            <hr class="dash">
+            <h2><i class="tag fal fa-mushroom"></i> یک <span class="p">مثال</span> جمع و جور</h2>
+            <pre lang="JavaScript"><code>var mode = eval(localStorage.getItem('darkMode'));
+if (mode == undefined) {
+   mode = false;
+   localStorage.setItem('darkMode', mode);
+}
+let M = Mushroom();
+M.setColor('brown');
+M.setDarkmode(mode);
+function Darkmode() {
+   M.toggleMode();
+   localStorage.setItem('darkMode', M.darkmode);
+}</code></pre>
+            <hr>
+            <br>
+            <br>
+            <p class="c">-Mushroom-v2-</p>
+         </article>
+      </page>
+      <page id="Code">
+         <article>
+            <h1 class="c"> کد HTML</h1>
+            <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
+            <hr>
+            <hr class="dash">
+            <h1 class="c"> کد JavaScript</h1>
+            <pre lang="JavaScript"><code id="codeJs"></code></pre>
+            <hr>
+            <hr class="dash">
+            <h1 class="c">کد CSS (خروجی)</h1>
+            <pre lang="css"><code id="codeCss"></code></pre>
+         </article>
+      </page>
+   </main>
+   <div class="goToUp ripple"><span class="mds">vertical_align_top</span></div>
+   <tabbar>
+      <div class="ripple tab" for="Palette" name="Pale<span class='p'>tt</span>e">
+         <i class="mds">palette</i>
+      </div>
+      <div class="ripple tab" for="Brush" name="Br<span class='p'>u</span>sh">
+         <i class="mds">brush</i>
+      </div>
+      <div class="ripple tab on" for="Home" name="Mushroom.js<sup class='p'>v2</sup>">
+         <i class="mds">home</i>
+      </div>
+      <div class="ripple tab" for="Docs" name="Do<span class='p'>c</span>s">
+         <i class="mds">menu_book</i>
+      </div>
+      <div class="ripple tab" for="Code" name="Co<span class='p'>d</span>e">
+         <i class="mds">code</i>
+      </div>
+   </tabbar>
+   <!-- script -->
+   <script src="script/ripple.js"></script>
+   <script src="script/main.js"></script>
+</body>
+</html>
