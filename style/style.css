@@ -642,12 +642,20 @@ u {
    align-items: center;
    border-radius: 10px;
    padding-inline: 10px;
-   margin: 5px;
+   margin: 10px 5px;
    font-weight: 600;
    transition: 0.3s;
    font-size: 16px;
    background: var(--primary);
    color: var(--on-primary);
+}
+.btn.full,button.full {
+   display: flex;
+   width: 100%;
+   box-sizing: border-box;
+}
+.btn.full>*,button.full>* {
+   margin-inline: 5px;
 }
 mark {
    background: var(--primary);
