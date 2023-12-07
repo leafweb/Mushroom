@@ -1,4 +1,5 @@
 var mode = eval(localStorage.getItem('darkmode'));
+var TC = document.querySelector('meta[name="theme-color"]');
 if (mode == undefined) {
    mode = false;
    localStorage.setItem('darkmode', mode);
@@ -7,9 +8,11 @@ var M = Mushroom();
 M.random();
 M.setDarkmode(mode);
 M.setLevel('pro');
+TC.setAttribute('content',M.themeColor.surface);
 function Darkmode() {
    M.toggleMode();
    localStorage.setItem('darkmode', M.darkmode);
+   TC.setAttribute('content',M.themeColor.surface);
    Palette();
    Code();
 }
@@ -95,6 +98,7 @@ function fH(x){
    oH.innerHTML = M.hue;
    Palette();
    Code();
+   TC.setAttribute('content',M.themeColor.surface);
 }
 function fS(x){
    M.setSaturation(x);
@@ -102,12 +106,14 @@ function fS(x){
    oS.innerHTML = M.saturation;
    Palette();
    Code();
+   TC.setAttribute('content',M.themeColor.surface);
 }
 function fL(x){
    M.setLightness(x);
    oL.innerHTML = M.lightness;
    Palette();
    Code();
+   TC.setAttribute('content',M.themeColor.surface);
 }
 function fR(){
    M.random();
@@ -120,6 +126,7 @@ function fR(){
    oL.innerHTML = M.lightness;
    Palette();
    Code();
+   TC.setAttribute('content',M.themeColor.surface);
 }
 function Input(x){
    M.setColor(x)
@@ -132,6 +139,7 @@ function Input(x){
    oL.innerHTML = M.lightness;
    Palette();
    Code();
+   TC.setAttribute('content',M.themeColor['surface-variant']);
 }
 function ColorScheme() {
    var slice = document.querySelectorAll('#svg-g>*');
