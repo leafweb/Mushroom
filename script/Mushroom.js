@@ -703,7 +703,7 @@ function Mushroom(AddTo = ':root') {
          }
       }
       // pro 
-      if (level !== 'pro') {
+      if (level == 'pro') {
          for (i in data[0]) {
             for (j in data[2]) {
                for (k in data[4]) {
