@@ -60,12 +60,21 @@ function page(a) {
    })
    document.querySelector(`tabbar>*[for="${a}"]`).classList.add('on');
    document.querySelector(`navbar>div>*[for="${a}"]`).classList.add('on');
-   document.querySelectorAll('page')
-      .forEach(z => {
-         if (z.classList.contains('on')) {
-            z.classList.remove('on')
-         }
-      })
+   document.querySelectorAll('page').forEach(z => {
+      if (z.classList.contains('on')) {
+          z.classList.remove('on')
+      }
+   })
+   if (docs.scrollTop >= 200 && docs.classList.contains('on')) {
+      if (!goToUp.classList.contains('on')) {
+         goToUp.classList.add('on');
+         console.log(1);
+      }
+   } else {
+      if (goToUp.classList.contains('on')) {
+         goToUp.classList.remove('on');
+      }
+   }
    document.querySelector(`#${a}`).classList.add('on');
 }
 var H = document.querySelector('#H');
