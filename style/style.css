@@ -70,7 +70,7 @@
 ::-webkit-scrollbar-thumb {
    background: var(--primary) padding-box;
    cursor: pointer;
-   border-radius: 4px;
+   border-radius: 5px;
    border: 3px solid transparent;
 }
 ::-webkit-scrollbar-button {
@@ -504,6 +504,7 @@ pre {
    transform: rotate(180deg) scale(0);
    transition: 0.3s;
    z-index: 5;
+   cursor: pointer;
 }
 .goToUp.on {
    transform: rotate(0) scale(1);
@@ -620,6 +621,7 @@ u {
 }
 .flex>* {
    flex: 1 0 250px;
+   max-width: 250px;
 }
 .mono {
    font-family: monospace;
@@ -999,7 +1001,6 @@ navbar {
       top: calc(100% - 70px)
    }
 }
-
 @keyframes show {
    from {
       opacity: 0;
