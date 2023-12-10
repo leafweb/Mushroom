@@ -7,7 +7,6 @@ if (mode == undefined) {
 var M = Mushroom();
 M.random();
 M.setDarkmode(mode);
-M.setLevel('pro');
 TC.setAttribute('content',M.themeColor.surface);
 function Darkmode() {
    M.toggleMode();
