@@ -621,8 +621,11 @@ u {
 }
 .flex>* {
    flex: 1 0 250px;
-   max-width: 250px;
+   text-align: center;
 }
+.flex>*>svg {
+      max-width: 300px;
+   }
 .mono {
    font-family: monospace;
 }
