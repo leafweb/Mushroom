@@ -585,7 +585,7 @@ function Mushroom(AddTo = ':root') {
          }
       }
    };
-   function ThemeColor(H, S, L, darkmode, level, colorScheme, add) {
+   function ThemeColor(H, S, L, darkmode, colorScheme, add) {
       var data = [
          ['primary', 'secondary', 'tertiary'],
          ['error'],
@@ -647,7 +647,7 @@ function Mushroom(AddTo = ':root') {
       var saturation = [];
       var opacity = []
       var lightness = [];
-      // normal
+
       for (i in data[0]) {
          for (j in data[5]) {
             for (k in data[4]) {
@@ -702,65 +702,7 @@ function Mushroom(AddTo = ':root') {
             lightness.push(40);
          }
       }
-      // pro 
-      if (level == 'pro') {
-         for (i in data[0]) {
-            for (j in data[2]) {
-               for (k in data[4]) {
-                  KEY.push(data[4][k] + data[0][i] + '-' + data[2][j]);
-                  hue.push(data[6][i]);
-                  saturation.push(data[12][j]);
-                  opacity.push(data[16][j]);
-               }
-            }
-            if (!darkmode) {
-               lightness.push(85 + Math.round(L / 10), 25 - Math.round(L / 10), 75 + Math.round(L / 10), 10 - Math.round(L / 10), 100, 0, 85, 100, 90 + Math.round(L / 10), 10 - Math.round(L / 10));
-            } else {
-               lightness.push(15 - Math.round(L / 10), 75 + Math.round(L / 10), 25 - Math.round(L / 10), 85 + Math.round(L / 10), 70, 30, 10, 90, 10 - Math.round(L / 10), 80 + Math.round(L / 10));
-            }
-         }
-         for (i in data[1]) {
-            for (j in data[2]) {
-               for (k in data[4]) {
-                  KEY.push(data[4][k] + data[1][i] + '-' + data[2][j]);
-                  hue.push(data[7][0]);
-                  saturation.push(data[12][j]);
-                  opacity.push(data[16][j]);
-               }
-            }
-            if (!darkmode) {
-               lightness.push(85 + Math.round(L / 10), 25 - Math.round(L / 10), 75 + Math.round(L / 10), 10 - Math.round(L / 10), 100, 0, 85, 100, 90 + Math.round(L / 10), 10 - Math.round(L / 10));
-            } else {
-               lightness.push(15 - Math.round(L / 10), 75 + Math.round(L / 10), 25 - Math.round(L / 10), 85 + Math.round(L / 10), 70, 30, 10, 90, 10 - Math.round(L / 10), 80 + Math.round(L / 10));
-            }
-         }
-         for (i in data[0]) {
-            for (j in data[3]) {
-               KEY.push(data[0][i] + '-' + data[3][j]);
-               hue.push(data[6][i]);
-               saturation.push(data[12][j]);
-               opacity.push(data[16][j]);
-            }
-            if (!darkmode) {
-               lightness.push(60);
-            } else {
-               lightness.push(40);
-            }
-         }
-         for (i in data[1]) {
-            for (j in data[3]) {
-               KEY.push(data[1][i] + '-' + data[3][j]);
-               hue.push(data[7][0]);
-               saturation.push(data[12][j]);
-               opacity.push(data[16][j]);
-            }
-            if (!darkmode) {
-               lightness.push(60);
-            } else {
-               lightness.push(40);
-            }
-         }
-      }
+
       var obj = {};
       for (i in KEY) {
          var color = colorTransform.toHex(`hsla(${hue[i]},${saturation[i]}%,${lightness[i]}%,${opacity[i]})`);
@@ -768,23 +710,58 @@ function Mushroom(AddTo = ':root') {
       }
       return obj;
    }
-   function Palette(H, S, L, parts, darkmode, reversePalette, add) {
-      var KEY = ['primary', 'secondary', 'tertiary', 'error', 'surface', 'surface-variant', 'glass', 'glass-variant'];
-      var HUE = [H, H - 40, H + 40, 0, H, H, H, H]
-      var SATURATION = [S, S, S, 100, S, 0, Math.round(S / 3), Math.round(S / 2)];
-      var OPACITY = [1, 1, 1, 1, 1, 1, 0.4, 0.4];
-      var keys = Object.keys(add);
-      var values = Object.values(add);
-      for (i in keys) {
-         var h, s, a;
-         h = colorTransform.getHsl(values[i]).h;
-         s = colorTransform.getHsl(values[i]).s;
-         a = colorTransform.getHsl(values[i]).a;
-         KEY.push(keys[i]);
-         HUE.push(h);
-         SATURATION.push(s);
-         OPACITY.push(a);
+   function Palette(H, S, L, parts, darkmode, reversePalette, colorScheme, add) {
+      var KEY, HUE, SATURATION, OPACITY;
+      switch (colorScheme) {
+         case 'Analogous':
+            KEY = ['primary', 'secondary', 'tertiary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H - 30, H + 30, H, H, H, H, H, H];
+            SATURATION = [S, S, S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
+         case 'Complementary':
+            KEY = ['primary', 'secondary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H - 180, H, H, H, H, H, H];
+            SATURATION = [S, S, S, S, S, S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
+         case 'Triadic':
+            KEY = ['primary', 'secondary', 'tertiary', 'fourthiary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H - 60, H - 180, H - 240, H, H, H, H, H, H];
+            SATURATION = [S, S, S, S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
+         case 'Compound':
+            KEY = ['primary', 'secondary', 'tertiary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H - 150, H + 150, H, H, H, H, H, H];
+            SATURATION = [S, S, S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
+         case 'Split-Complementary':
+            KEY = ['primary', 'secondary', 'tertiary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H + 180, H + 210, H, H, H, H, H, H];
+            SATURATION = [S, S, S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
+         case 'Monochromatic':
+            KEY = ['primary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H, H, H, H, H, H];
+            SATURATION = [S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
+         case 'Tetradic':
+            KEY = ['primary', 'secondary', 'tertiary', 'background', 'surface', 'surface-variant', 'glass', 'glass-variant', 'outline'];
+            HUE = [H, H - 120, H + 120, H, H, H, H, H, H];
+            SATURATION = [S, S, S, Math.round(S / 3), Math.round(S / 3), Math.round(S / 2), 0, Math.round(S / 2), Math.round(S / 3)];
+            OPACITY = [1, 1, 1, 1, 1, 1, 0.4, 0.4, 1];
+            break;
       }
+      for (i in add) {
+         KEY.push(i);
+         HUE.push(colorTransform.getHsl(add[i]).h);
+         SATURATION.push(colorTransform.getHsl(add[i]).s);
+         OPACITY.push(colorTransform.getHsl(add[i]).a);
+      };
       var OBJ = {};
       if (reversePalette) {
          if (!darkmode) {
@@ -905,10 +882,6 @@ function Mushroom(AddTo = ':root') {
          M.document = [];
          Start();
       },
-      'setLevel': (x) => {
-         M.level = x;
-         Start();
-      },
       'color': 'blue',
       'darkmode': false,
       'parts': [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
@@ -927,15 +900,14 @@ function Mushroom(AddTo = ':root') {
       'saturation': null,
       'lightness': null,
       'code': null,
-      'level': 'normal',
       'addTo': AddTo,
       'version': '2',
    };
    function Start() {
       var [H, S, L] = [colorTransform.getHsl(M.color).h, colorTransform.getHsl(M.color).s, colorTransform.getHsl(M.color).l];
-      var themeColor = ThemeColor(H, S, L, M.darkmode, M.level, M.colorScheme, M.customColor);
+      var themeColor = ThemeColor(H, S, L, M.darkmode, M.colorScheme, M.customColor);
       if (M.hasPalette) {
-         var palette = Palette(H, S, L, M.parts, M.darkmode, M.reversePalette, M.customColor);
+         var palette = Palette(H, S, L, M.parts, M.darkmode, M.reversePalette, M.colorScheme, M.customColor);
          var code = Sprout(Code(themeColor), Code(palette));
       } else {
          var code = Sprout(Code(themeColor));
