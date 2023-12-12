@@ -658,7 +658,7 @@ function Mushroom(AddTo = ':root') {
             }
          }
          if (!darkmode) {
-            lightness.push(40, 100, 75, 20);
+            lightness.push(40, 100, 80, 20);
          } else {
             lightness.push(70, 10, 20, 80);
          }
