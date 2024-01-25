@@ -599,7 +599,7 @@ function Mushroom(AddTo = ':root') {
          [H],
          [S],
          [100],
-         [Math.round(S / 3), Math.round(S / 2), S, Math.round(S / 2), Math.round(S / 3)],
+         [Math.round(S / 3), Math.round(S / 3), S, Math.round(S / 2), Math.round(S / 3)],
          [Math.round(S / 3)],
          [1],
          [1],
