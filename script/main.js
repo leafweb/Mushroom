@@ -240,9 +240,9 @@ function Code(){
    var codeCss = document.querySelector('#codeCss');
    var code = 'let M = Mushroom();';
    code += `\nM.setColor("${M.color}");`;
-   code += `\nM.setDarkmode("${M.darkmode}");`;
-   code += `\nM.setPalette("${M.hasPalette}");`;
-   code += `\nM.setReversePalette("${M.reversePalette}");`;
+   code += `\nM.setDarkmode(${M.darkmode});`;
+   code += `\nM.setPalette(${M.hasPalette});`;
+   code += `\nM.setReversePalette(${M.reversePalette});`;
    code += `\nM.setColorScheme("${M.colorScheme}");`;
    codeJs.innerHTML = code;
    codeCss.innerHTML = M.code;
