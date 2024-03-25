@@ -293,10 +293,7 @@ preM.setDarkmode(Mode());
 preM.setPalette(true);
 
 Highlights();
-Palette();
-HSL();
-InsertInput();
-Code();
+Random()
 ColorScheme();
 CustomColor();
 Statusbar();
