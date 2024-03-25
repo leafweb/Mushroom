@@ -244,36 +244,35 @@ function CustomColor() {
    var inputKey = root.querySelectorAll('.key');
    var inputValue = root.querySelectorAll('.value');
    var btn = root.querySelector('button');
-   var key = [];
-   var value = [];
+   var keys = [];
+   var values = [];
    var obj = {};
-   inputKey.forEach(elm=>{
+
+   inputKey.forEach((elm, index) => {
       if (elm.value != '') {
-         key.push(elm.value)
+         keys.push(elm.value);
+         obj[elm.value] = inputValue[index].value;
       }
    });
-   inputValue.forEach(elm=>{
+
+   inputValue.forEach(elm => {
       if (elm.value != '') {
-         value.push(elm.value)
+         values.push(elm.value);
       }
    });
-   if (key.length == value.length && key.length == inputKey.length) {
-      Show(btn);
-      for (i in key) {
-         obj[key[i].replaceAll(' ','')] = value[i];
-      }
-      M.addCustomColor(obj);
-   } else {
-      Hide(btn);
-   }
-   if (inputKey.length - key.length > 1 && inputValue.length - value.length > 1) {
-      for(var i = 0; i < inputKey.length; i++){
-         if (inputKey[i].innerHTML === '' && inputValue[i].innerHTML === '') {
+
+   if (inputKey.length > 1) {
+      for (var i = 0; i < inputKey.length; i++) {
+         if (inputKey[i].value === '' && inputValue[i].value === '') {
             inputKey[i].parentNode.remove();
-            break
+            keys.splice(i, 1);
+            values.splice(i, 1);
+            break;
          }
       }
    }
+   M.clearCustomColor();
+   M.addCustomColor(obj);
 }
 function AddRow() {
    var row = document.querySelector('#custom-color .row');
@@ -285,14 +284,13 @@ function AddRow() {
    div.appendChild(span);
    div.appendChild(inputValue);
    row.appendChild(div);
-   span.innerHTML = ':'
+   span.textContent = ':';
    inputKey.className = 'key';
    inputKey.placeholder = 'Key Color';
    inputValue.className = 'value';
    inputValue.placeholder = 'Color';
    inputKey.type = inputValue.type = 'text';
-   inputKey.oninput = inputValue.oninput = () => CustomColor();
-   CustomColor();
+   inputKey.oninput = inputValue.oninput = CustomColor;
 }
 function Toast(massage) {
    var toast = document.querySelector('toast');
