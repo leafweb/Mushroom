@@ -585,6 +585,9 @@ page[name="p-brush"]{
       margin: 0;
       border-radius: 20px;
    }
+   input{
+      direction: ltr;
+   }
    padding: 20px;
    #hsl{
       &>div{
@@ -812,7 +815,7 @@ input{
    border-radius: 20px;
    background: var(--surface);
    color: var(--on-surface);
-   font-size: 16px;
+   font-size: calc(16px + 2px);
    box-sizing: border-box;
    width: 100%;
    padding: 5px 10px;
