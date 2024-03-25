@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+   <style>
+      :root{
+         --svg-color-0: #000;
+         --svg-color-1: #aaa;
+         --svg-color-3: #555;
+         --svg-color-4: #ddd;
+         --svg-color-5: #fff;
+         --svg-color-6: #777;
+         --svg-color-7: #000a;
+      }
+      path{
+         filter: drop-shadow(-70px 70px 50px var(--svg-color-7));
+      }
+   </style>
+   <defs>
+      <linearGradient id="fillGrad0" x1="0" y1="1" x2="1" y2="0">
+         <stop offset="0%" stop-color="var(--svg-color-0)"/>
+         <stop offset="100%" stop-color="var(--svg-color-1)"/>
+      </linearGradient>
+      <linearGradient id="fillGrad1" x1="0" y1="1" x2="1" y2="1">
+         <stop offset="0%" stop-color="var(--svg-color-3)"/>
+         <stop offset="100%" stop-color="var(--svg-color-4)"/>
+      </linearGradient>
+	   <radialGradient id="fillGrad2" cx="0.7" cy="0.2" r="1">
+         <stop offset="0%" stop-color="var(--svg-color-5)"/>
+         <stop offset="100%" stop-color="var(--svg-color-6)"/>
+      </radialGradient>
+   </defs>
+   <rect fill="url(#fillGrad0)" width="1000" height="1000" rx="200"/>
+	<path fill="url(#fillGrad1)" d="M 400,300 C 480,580 380,580 400,850 C 400,900 560,900 560,850 C 500,580 560,580 560,300"/>
+	<path fill="url(#fillGrad2)" d="M 421,468 L 421,385 L 393,468 C 143,468 31,413 143,302 C 476,24 588,24 866,357 C 977,468 810,468 421,468 z"/>
+</svg>
