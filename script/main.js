@@ -260,15 +260,19 @@ function CustomColor() {
    if (key.length == value.length && key.length == inputKey.length) {
       Show(btn);
       for (i in key) {
-         obj[key[i]] = value[i];
+         obj[key[i].replaceAll(' ','')] = value[i];
       }
       M.addCustomColor(obj);
    } else {
       Hide(btn);
    }
    if (inputKey.length - key.length > 1 && inputValue.length - value.length > 1) {
-      inputKey[inputKey.length - 1].parentNode.remove();
-      Show(btn);
+      for(var i = 0; i < inputKey.length; i++){
+         if (inputKey[i].innerHTML === '' && inputValue[i].innerHTML === '') {
+            inputKey[i].parentNode.remove();
+            break
+         }
+      }
    }
 }
 function AddRow() {
