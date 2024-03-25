@@ -706,6 +706,20 @@ card{
    background: linear-gradient(45deg, var(--error), var(--error-container));
    color: var(--on-error);
 }
+toast{
+   position: fixed;
+   bottom: 130px;
+   left: 50%;
+   z-index: 99;
+   transform: translateX(-50%);
+   display: block;
+   background: var(--primary);
+   color: var(--on-primary);
+   box-shadow: 0 0 30px -5px var(--primary);
+   padding: 10px 20px;
+   font-size: 16px;
+   border-radius: 10px;
+}
 a {
    all: unset;
    display: inline-flex;

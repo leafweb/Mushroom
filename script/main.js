@@ -47,6 +47,20 @@ function TabOn() {
    var num = tab.offsetLeft + Number(getComputedStyle(tab).width.replace('px', '')) / 2 + 'px';
    tabon.style.left = wave.style.left = num;
 }
+function CopyBtn() {
+   var copy = document.querySelectorAll('pre .copy');
+   copy.forEach(elm => {
+      elm.onclick = () => {
+         try {
+            navigator.clipboard.writeText(elm.parentNode.querySelector('code').innerText);
+            Toast('Copied')
+         } catch (error) {
+            console.error(error.message);
+            Toast('Error')
+         }
+      }
+   });
+}
 function Highlights() {
    var code = document.querySelectorAll('pre');
    code.forEach(elm => {
@@ -55,16 +69,6 @@ function Highlights() {
       copy.className = 'copy symbol';
       elm.appendChild(copy);
       copy.innerHTML = 'content_copy'
-   });
-   var copy = document.querySelectorAll('pre .copy');
-   copy.forEach(elm => {
-      elm.onclick = () => {
-         try {
-            navigator.clipboard.writeText(elm.parentNode.querySelector('code').innerText);
-         } catch (error) {
-            console.error(error.message);
-         }
-      }
    });
 }
 function Palette() {
@@ -168,8 +172,9 @@ function Code() {
    codeCss.innerHTML = '<code>' + M.code + '</code>';
    w3CodeColor(codeJs,'js');
    w3CodeColor(codeCss,'css');
-   codeJs.innerHTML += '<div class="copy symbol">content_copy</div>'
-   codeCss.innerHTML += '<div class="copy symbol">content_copy</div>'
+   codeJs.innerHTML += '<div class="copy symbol">content_copy</div>';
+   codeCss.innerHTML += '<div class="copy symbol">content_copy</div>';
+   CopyBtn();
 }
 function ColorScheme() {
    var slice = document.querySelectorAll('#svg-g>*');
@@ -285,6 +290,21 @@ function AddRow() {
    inputKey.oninput = inputValue.oninput = () => CustomColor();
    CustomColor();
 }
+function Toast(massage) {
+   var toast = document.querySelector('toast');
+   if (!toast) {
+      toast = document.createElement('toast');
+      document.body.appendChild(toast);
+   }
+   var show = toast.animate({
+      opacity: [0,1,1,1,1,1,1,1,1,0]
+   },{
+      fill: 'both',
+      duration: 3000,
+   }).play;
+   toast.innerHTML = massage;
+   show.onfinish = () => toast.remove();
+}
 
 let M = Mushroom();
 let preM = Mushroom('pre');
@@ -293,7 +313,8 @@ preM.setDarkmode(Mode());
 preM.setPalette(true);
 
 Highlights();
-Random()
+CopyBtn();
+Random();
 ColorScheme();
 CustomColor();
 Statusbar();
