@@ -13,7 +13,7 @@ function Darkmode() {
    preM.toggleMode();
    localStorage.setItem('mushroom-darkmode', M.darkmode);
    document.querySelector('header>.darkmode').innerHTML = M.darkmode ? 'light_mode' : 'dark_mode';
-   setTimeout(Code,200);
+   setTimeout(Code, 200);
    Statusbar();
 }
 function Statusbar() {
@@ -28,6 +28,42 @@ function Menu() {
    var menuBackdrop = document.querySelector('menu-backdrop');
    Toggle(menu);
    Toggle(menuBackdrop);
+}
+function RandomColor() {
+   var h = Math.round(Math.random() * 360);
+   var s = Math.round(Math.random() * 100);
+   var l = Math.round(Math.random() * 100);
+   var a = 1;
+   h /= 360;
+   s /= 100;
+   l /= 100;
+   let r, g, b;
+   if (s === 0) {
+      r = g = b = l;
+   } else {
+      var hue2rgb = (p, q, t) => {
+         if (t < 0) t += 1;
+         if (t > 1) t -= 1;
+         if (t < 1 / 6) return p + (q - p) * 6 * t;
+         if (t < 1 / 2) return q;
+         if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+         return p;
+      };
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1 / 3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1 / 3);
+   }
+   var toHex = (x) => {
+      var hex = Math.round(x * 255).toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+   };
+   if (a !== 1) {
+      return `#${toHex(r)}${toHex(g)}${toHex(b)}${toHex(a)}`;
+   } else {
+      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+   }
 }
 function Page(x) {
    var targetPage = document.querySelector(`page[name="p-${x}"]`);
@@ -170,8 +206,8 @@ function Code() {
    code += `\nM.addCustomColor(${JSON.stringify(M.customColor)});`;
    codeJs.innerHTML = '<code>' + code + '</code>';
    codeCss.innerHTML = '<code>' + M.code + '</code>';
-   w3CodeColor(codeJs,'js');
-   w3CodeColor(codeCss,'css');
+   w3CodeColor(codeJs, 'js');
+   w3CodeColor(codeCss, 'css');
    codeJs.innerHTML += '<div class="copy symbol">content_copy</div>';
    codeCss.innerHTML += '<div class="copy symbol">content_copy</div>';
    CopyBtn();
@@ -247,20 +283,17 @@ function CustomColor() {
    var keys = [];
    var values = [];
    var obj = {};
-
    inputKey.forEach((elm, index) => {
       if (elm.value != '') {
          keys.push(elm.value);
          obj[elm.value] = inputValue[index].value;
       }
    });
-
    inputValue.forEach(elm => {
       if (elm.value != '') {
          values.push(elm.value);
       }
    });
-
    if (inputKey.length > 1) {
       for (var i = 0; i < inputKey.length; i++) {
          if (inputKey[i].value === '' && inputValue[i].value === '') {
@@ -289,8 +322,18 @@ function AddRow() {
    inputKey.placeholder = 'Key Color';
    inputValue.className = 'value';
    inputValue.placeholder = 'Color';
+   var existingIndexes = Array.from(document.querySelectorAll('#custom-color .key')).map(elm =>
+      Number(elm.getAttribute('index'))).sort((a, b) => a - b);
+   var index = 1;
+   while (existingIndexes.includes(index)) {
+      index++;
+   }
+   inputKey.setAttribute('index', index);
+   inputKey.value = 'color-' + index;
+   inputValue.value = RandomColor();
    inputKey.type = inputValue.type = 'text';
    inputKey.oninput = inputValue.oninput = CustomColor;
+   CustomColor();
 }
 function Toast(massage) {
    var toast = document.querySelector('toast');
@@ -299,8 +342,8 @@ function Toast(massage) {
       document.body.appendChild(toast);
    }
    var show = toast.animate({
-      opacity: [0,1,1,1,1,1,1,1,1,0]
-   },{
+      opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 0]
+   }, {
       fill: 'both',
       duration: 3000,
    }).play;
@@ -323,5 +366,5 @@ Statusbar();
 
 less.pageLoadFinished.then(() => {
    console.clear();
-   console.log('%cMushrom.v3','background: var(--primary);color: var(--on-primary);padding: 2px 5px;border-radius:5px;')
+   console.log('%cMushrom.v3', 'background: var(--primary);color: var(--on-primary);padding: 2px 5px;border-radius:5px;')
 });
