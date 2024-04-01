@@ -688,31 +688,22 @@ function CustomColor() {
    var root = document.querySelector('#custom-color');
    var inputKey = root.querySelectorAll('.key');
    var inputValue = root.querySelectorAll('.value');
+   var removeBtn = root.querySelectorAll('button.error');
    var btn = root.querySelector('button');
    var keys = [];
    var values = [];
    var obj = {};
-   inputKey.forEach((elm, index) => {
-      if (elm.value != '') {
-         keys.push(elm.value);
-         obj[elm.value] = inputValue[index].value;
-      }
+   inputKey.forEach((elm, i) => {
+      keys.push(elm.value);
+      obj[elm.value] = inputValue[i].value;
    });
-   inputValue.forEach(elm => {
-      if (elm.value != '') {
-         values.push(elm.value);
+   removeBtn.forEach((elm,i)=>{
+      elm.onclick = ()=> {
+         elm.parentNode.remove();
+         keys.splice(i, 1);
+         values.splice(i, 1);
       }
-   });
-   if (inputKey.length > 1) {
-      for (var i = 0; i < inputKey.length; i++) {
-         if (inputKey[i].value === '' && inputValue[i].value === '') {
-            inputKey[i].parentNode.remove();
-            keys.splice(i, 1);
-            values.splice(i, 1);
-            break;
-         }
-      }
-   }
+   })
    M.clearCustomColor();
    M.addCustomColor(obj);
 }
@@ -720,16 +711,17 @@ function AddRow() {
    var row = document.querySelector('#custom-color .row');
    var div = document.createElement('div');
    var inputKey = document.createElement('input');
-   var inputValue = document.createElement('button');
-   var span = document.createElement('span');
+   var colorBtn = document.createElement('button');
+   var removeBtn = document.createElement('button');
    div.appendChild(inputKey);
-   div.appendChild(span);
-   div.appendChild(inputValue);
+   div.appendChild(colorBtn);
+   div.appendChild(removeBtn);
    row.appendChild(div);
-   span.textContent = ':';
    inputKey.className = 'key';
    inputKey.placeholder = 'Key Color';
-   inputValue.className = 'value';
+   colorBtn.className = 'value';
+   removeBtn.className = 'symbol error';
+   removeBtn.innerHTML = 'delete';
    var existingIndexes = Array.from(document.querySelectorAll('#custom-color .key')).map(elm =>
       Number(elm.getAttribute('index'))).sort((a, b) => a - b);
    var index = 1;
@@ -739,12 +731,13 @@ function AddRow() {
    inputKey.setAttribute('index', index);
    inputKey.value = 'color-' + index;
    var random = RandomColor()
-   input.style.color = (Color(random).l > 50 || Color(random).a < 0.8) ? '#000' : '#fff';
-   inputValue.innerHTML = inputValue.value = inputValue.style.background = random;
+   colorBtn.style.color = (Color(random).l > 50 || Color(random).a < 0.8) ? '#000' : '#fff';
+   colorBtn.innerHTML = colorBtn.value = colorBtn.style.background = random;
    inputKey.type = 'text';
    inputKey.oninput = CustomColor;
-   inputValue.setAttribute('onclick','ColorPicker()');
+   colorBtn.setAttribute('onclick','ColorPicker()');
    CustomColor();
+   Ripple();
 }
 function Toast(massage) {
    var toast = document.querySelector('toast');
