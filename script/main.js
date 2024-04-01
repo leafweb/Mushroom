@@ -500,6 +500,18 @@ function ColorPicker() {
       alpha.style.color = color2;
       span.style.background = color;
    }
+   span.onmousemove = span.onmousedown = canvas.onmousemove = canvas.onmousedown = ()=> {
+      var rect = canvas.getBoundingClientRect();
+      var x = clamp((event.clientX - rect.left),1,299);
+      var y = clamp((event.clientY - rect.top),1,299);
+      span.style.top = y + 'px';
+      span.style.left = x + 'px';
+      var d = ctx.getImageData(x,y,1,1).data;
+      var color = `rgba(${d[0]},${d[1]},${d[2]},${alpha.value})`;
+      var color2 = `rgba(${d[0]},${d[1]},${d[2]})`;
+      alpha.style.color = color2;
+      span.style.background = color;
+   }
    Show(colorPickerBackdrop);
    btn.onclick = ()=> {
       var x = getComputedStyle(span).left.replace('px', '');
