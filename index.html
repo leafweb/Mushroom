@@ -25,7 +25,7 @@
    <link rel="stylesheet" href="style/font-awesome/css/all.css">
    <!-- script -->
    <script src="script/less.js"></script>
-   <script src="script/Mushroom.min.js"></script>
+   <script src="script/Mushroom.js"></script>
 </head>
 <body>
    <header>
@@ -62,14 +62,20 @@
          <article>
             <h1 class="display c">پالت رن‍<span class="p">‍گ‌</span>ها</h1>
             <hr>
-            <h2> <div class="tag symbol">input</div> رنگ های ورودی</h2>
+            <h2>
+               <div class="tag symbol">input</div> رنگ های ورودی
+            </h2>
             <div class="input-colors">
                <div id="input-color"></div>
                <div id="input-custom-color"></div>
             </div>
-            <h2> <div class="tag symbol">palette</div> پالت اصلی</h2>
+            <h2>
+               <div class="tag symbol">palette</div> پالت اصلی
+            </h2>
             <card id="main-palette"></card>
-            <h2> <div class="tag symbol">palette</div> پالت فرعی</h2>
+            <h2>
+               <div class="tag symbol">palette</div> پالت فرعی
+            </h2>
             <card id="other-palette"></card>
             <br>
             <hr>
@@ -80,7 +86,9 @@
          <article>
             <h1 class="display c">ق‍<span class="p">‍ل‍</span>م</h1>
             <hr>
-            <h2><div class="tag symbol">colors</div> تنظیم رنگ </h2>
+            <h2>
+               <div class="tag symbol">colors</div> تنظیم رنگ
+            </h2>
             <card id="set-color">
                <h3>HSL:</h3>
                <div id="hsl">
@@ -108,7 +116,9 @@
                <h3>تصادفی:</h3>
                <button class="full" onclick="Random()">تصادفی</button>
             </card>
-            <h2><div class="tag symbol">add</div> افزودن رنگ دلخواه </h2>
+            <h2>
+               <div class="tag symbol">add</div> افزودن رنگ دلخواه
+            </h2>
             <card>
                <div id="custom-color">
                   <div class="row">
@@ -116,7 +126,9 @@
                   <button class="symbol" onclick="AddRow()">add</button>
                </div>
             </card>
-            <h2><div class="tag symbol">palette</div> تنظیم پالت فرعی </h2>
+            <h2>
+               <div class="tag symbol">palette</div> تنظیم پالت فرعی
+            </h2>
             <card id="set-palette">
                <h3>تنظیم پالت: </h3>
                <div class="list">
@@ -130,7 +142,9 @@
                   </label>
                </div>
             </card>
-            <h2> <div class="tag symbol">edit</div> طرح رنگی </h2>
+            <h2>
+               <div class="tag symbol">edit</div> طرح رنگی
+            </h2>
             <card>
                <div id="color-scheme" dir="ltr">
                   <div>
@@ -413,13 +427,19 @@ function Darkmode() {
          <article>
             <h1 class="display c"><span class="p">ک‍</span>د</h1>
             <hr>
-            <h2> <div class="tag symbol">html</div> کد HTML</h2>
+            <h2>
+               <div class="tag symbol">html</div> کد HTML
+            </h2>
             <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
             <br>
-            <h2> <div class="tag symbol">JavaScript</div> کد JavaScript</h2>
+            <h2>
+               <div class="tag symbol">JavaScript</div> کد JavaScript
+            </h2>
             <pre lang="js" id="codeJs"></pre>
             <br>
-            <h2> <div class="tag symbol">css</div> کد CSS (خروجی)</h2>
+            <h2>
+               <div class="tag symbol">css</div> کد CSS (خروجی)
+            </h2>
             <pre lang="css" id="codeCss"></pre>
             <br>
             <hr>
@@ -451,6 +471,16 @@ function Darkmode() {
          <div class="label">کد</div>
       </tab>
    </tabbar>
+   <color-picker-backdrop>
+      <color-picker>
+         <canvas class="square">
+         </canvas>
+         <span></span>
+         <input type="range" class="hue" min="0" max="360" value="360">
+         <input type="range" class="alpha" min="0" max="1" value="1" step="0.01">
+         <button class="full">Change</button>
+      </color-picker>
+   </color-picker-backdrop>
    <script src="script/ripple.js"></script>
    <script src="script/w3.highlights.js"></script>
    <script src="script/main.js"></script>

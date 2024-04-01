@@ -1059,6 +1059,106 @@ mark {
       border-radius: 20px;
    }
 }
+color-picker-backdrop{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: block;
+   margin: 0;
+   padding: 0;
+   opacity: 0;
+   z-index: -1;
+   background: var(--glass);
+   backdrop-filter: blur(30px);
+   transition: 0.3s;
+   &.show {
+      opacity: 1;
+      z-index: 29;
+      color-picker{
+         opacity: 1;
+         transform: translate(-50%,-50%)scale(1);
+         z-index: 30;
+      }
+   }
+}
+color-picker{
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: space-between;
+   align-items: stretch;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%)scale(0.5);
+   border-radius: 20px;
+   z-index: -1;
+   opacity: 0;
+   transition: 0.3s;
+   padding: 0;
+   gap: 0;
+   &>&{
+      box-shadow: 5px 5px 10px #0005;
+   }
+   *{
+      margin: 0;
+   }
+   .square{
+      position: relative;
+      aspect-ratio: 1;
+      width: 300px;
+      border-radius: 20px 20px 0 0;
+   }
+   span {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      transform: translate(-50%,-50%);
+      display: block;
+      background: red;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #fff;
+      z-index: 35;
+      border-radius: 50px;
+      box-shadow: 0 0 10px #0005;
+   }
+   .hue{
+      margin: 0;
+      &::-webkit-slider-runnable-track{
+         border-radius: 0;
+         background: linear-gradient(to right,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)!important;
+      }
+      &::-webkit-slider-thumb{
+         box-shadow: none;
+         border: 5px solid #0000;
+         background: #fff padding-box;
+         filter: drop-shadow(0 0 5px #0005);
+      }
+   }
+   .alpha{
+      transition: none!important;
+      color: red;
+      margin: 0;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+      &::-webkit-slider-runnable-track{
+         border-radius: 0;
+         background-image: linear-gradient(to left,currentColor,#0000),url(e.png);
+      }
+      &::-webkit-slider-thumb{
+         box-shadow: none;
+         border: 5px solid #0000;
+         background: #fff padding-box;
+         filter: drop-shadow(0 0 5px #0005);
+      }
+   }
+   button{
+      border-radius: 20px;
+      margin: 20px 0;
+   }
+}
 /* animation */
 @keyframes show {
    from {
