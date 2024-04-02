@@ -442,6 +442,7 @@ function ColorPicker() {
    span.style.left = '299px';
    span.style.top = '1px';
    span.style.background = 'red';
+   alpha.style.color = 'red';
    hue.value = 360;
    alpha.value = 1;
    canvas.width = canvas.height = 300;
