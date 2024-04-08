@@ -15,6 +15,7 @@ function Darkmode() {
    document.querySelector('header>.darkmode').innerHTML = M.darkmode ? 'light_mode' : 'dark_mode';
    setTimeout(Code, 200);
    Statusbar();
+   Console();
 }
 function Statusbar() {
    var TC = document.querySelector('meta[name="theme-color"]');
@@ -599,6 +600,7 @@ function HSL() {
    inputL.value = outputL.innerHTML = M.lightness;
    ColorScheme();
    Statusbar();
+   Console();
 }
 function Input(x) {
    Freeze();
@@ -696,13 +698,13 @@ function SetColorScheme(x) {
          c4.setAttribute('transform', 'rotate(-120 500 500)');
          break;
    }
+   Console();
 }
 function CustomColor() {
    var root = document.querySelector('#custom-color');
    var inputKey = root.querySelectorAll('.key');
    var inputValue = root.querySelectorAll('.value');
    var removeBtn = root.querySelectorAll('button.error');
-   var btn = root.querySelector('button');
    var keys = [];
    var values = [];
    var obj = {};
@@ -715,10 +717,12 @@ function CustomColor() {
          elm.parentNode.remove();
          keys.splice(i, 1);
          values.splice(i, 1);
+         CustomColor();
       }
    })
    M.clearCustomColor();
    M.addCustomColor(obj);
+   Console();
 }
 function AddRow() {
    var row = document.querySelector('#custom-color .row');
@@ -767,9 +771,21 @@ function Toast(massage) {
    toast.innerHTML = massage;
    show.onfinish = () => toast.remove();
 }
-
+function Console() {
+   console.clear()
+   var style = `
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 2px 5px;
+      border-radius:5px;
+      font-family: monospace;
+      font-weight: 800;
+   `;
+   console.log('%cMushrom v' + M.version, style)
+   console.log('%cGrow Times = ' + M.growTimes, style)
+}
 let M = Mushroom();
-let preM = Mushroom('pre');
+let preM = Mushroom('svg,pre');
 M.setDarkmode(Mode());
 preM.setDarkmode(Mode());
 preM.setPalette(true);
@@ -780,8 +796,4 @@ Random();
 ColorScheme();
 CustomColor();
 Statusbar();
-
-less.pageLoadFinished.then(() => {
-   console.clear();
-   console.log('%cMushrom.v3', 'background: var(--primary);color: var(--on-primary);padding: 2px 5px;border-radius:5px;')
-});
+Console();

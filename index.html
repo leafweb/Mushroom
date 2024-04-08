@@ -134,11 +134,11 @@
                <div class="list">
                   <label class="ripple">
                      <div> پالت </div>
-                     <div><input id="input-haspalette" type="checkbox" oninput="M.setPalette(this.checked)"></div>
+                     <div><input id="input-haspalette" type="checkbox" oninput="M.setPalette(this.checked);Console()"></div>
                   </label>
                   <label class="ripple">
                      <div> معکوس شدن پالت </div>
-                     <div><input id="input-reversepalette" type="checkbox" oninput="M.setReversePalette(this.checked)"></div>
+                     <div><input id="input-reversepalette" type="checkbox" oninput="M.setReversePalette(this.checked);Console()"></div>
                   </label>
                </div>
             </card>
@@ -227,32 +227,22 @@
             <div>
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
                   <style>
-                     :root {
-                        --svg-color-0: var(--background);
-                        --svg-color-1: var(--surface-variant);
-                        --svg-color-3: var(--primary);
-                        --svg-color-4: var(--primary-container);
-                        --svg-color-5: var(--primary-container);
-                        --svg-color-6: var(--primary);
-                        --svg-color-7: #0005;
-                     }
-
                      path {
-                        filter: drop-shadow(-50px 50px 50px var(--svg-color-7));
+                        filter: drop-shadow(-50px 30px 50px #0005);
                      }
                   </style>
                   <defs>
                      <linearGradient id="fillGrad0" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="var(--svg-color-0)" />
-                        <stop offset="100%" stop-color="var(--svg-color-1)" />
+                        <stop offset="0%" stop-color="var(--background)" />
+                        <stop offset="100%" stop-color="var(--surface-container)" />
                      </linearGradient>
                      <linearGradient id="fillGrad1" x1="0" y1="1" x2="1" y2="1">
-                        <stop offset="0%" stop-color="var(--svg-color-3)" />
-                        <stop offset="100%" stop-color="var(--svg-color-4)" />
+                        <stop offset="0%" stop-color="var(--primary-40)" />
+                        <stop offset="100%" stop-color="var(--primary-80)" />
                      </linearGradient>
                      <radialGradient id="fillGrad2" cx="0.7" cy="0.2" r="1">
-                        <stop offset="0%" stop-color="var(--svg-color-5)" />
-                        <stop offset="100%" stop-color="var(--svg-color-6)" />
+                        <stop offset="0%" stop-color="var(--primary-80)" />
+                        <stop offset="100%" stop-color="var(--primary-40)" />
                      </radialGradient>
                   </defs>
                   <rect fill="url(#fillGrad0)" width="1000" height="1000" rx="200" />

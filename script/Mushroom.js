@@ -289,7 +289,7 @@ function Mushroom(addTo) {
       h /= 360;
       s /= 100;
       l /= 100;
-      let r, g, b;
+      var r, g, b;
       if (s === 0) {
          r = g = b = l;
       } else {
@@ -578,7 +578,7 @@ function Mushroom(addTo) {
       return CODE;
    };
    function Sprout() {
-      var arr = ['#', '.', ':', '<', '>', '[', ']', '(', ')', '"', "'", '=', '$', '*', '-', '~'];
+      var arr = ['#', '.', ':', '<', '>', '[', ']', '(', ')', '"', "'", '=', '$', '*', '-', '~', ','];
       var str = M.addTo;
       str = str.replace(/\s/g, '');
       var ID = str;
@@ -602,7 +602,9 @@ function Mushroom(addTo) {
       return code;
    };
    var M = {
-      version: '3.0.1',
+      version: '3.0.3',
+      growTimes: NaN,
+      loadTimes: NaN,
       color: 'blue',
       darkmode: false,
       hasPalette: false,
@@ -685,14 +687,21 @@ function Mushroom(addTo) {
    }
    if (addTo) {
       M.addTo = addTo
+   } else if (addTo === null) {
+      M.addTo = null
    }
    function Grow() {
+      var startTime = performance.now();
       var themeColor = ThemeColor(M.color, M.customColor, M.darkmode, M.colorScheme);
       if (M.hasPalette) {
          var palette = Palette(M.color, M.customColor, M.darkmode, M.colorScheme, M.parts, M.reversePalette);
-         var code = Sprout(Code(themeColor), Code(palette));
+         if (M.addTo !== null) {
+            var code = Sprout(Code(themeColor), Code(palette));
+         }
       } else {
-         var code = Sprout(Code(themeColor));
+         if (M.addTo !== null) {
+            var code = Sprout(Code(themeColor));
+         }
       }
       M.hue = Color(M.color).h;
       M.saturation = Color(M.color).s;
@@ -700,6 +709,7 @@ function Mushroom(addTo) {
       M.themeColor = themeColor;
       M.palette = palette;
       M.code = code;
+      M.growTimes = (performance.now() - startTime).toFixed(5) + ' ms ';
       return M;
    }
    Grow();
