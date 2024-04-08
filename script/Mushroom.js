@@ -709,7 +709,7 @@ function Mushroom(addTo) {
       M.themeColor = themeColor;
       M.palette = palette;
       M.code = code;
-      M.growTimes = (performance.now() - startTime).toFixed(5) + ' ms ';
+      M.growTimes = (performance.now() - startTime).toFixed(5) + ' ms';
       return M;
    }
    Grow();

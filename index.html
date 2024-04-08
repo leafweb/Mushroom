@@ -25,7 +25,7 @@
    <link rel="stylesheet" href="style/font-awesome/css/all.css">
    <!-- script -->
    <script src="script/less.js"></script>
-   <script src="script/Mushroom.js"></script>
+   <script src="script/Mushroom.min.js"></script>
 </head>
 <body>
    <header>
@@ -346,7 +346,10 @@
                را<span class="p">ه‍</span>نما
             </h1>
             <hr>
-            <h2><i class="tag fal fa-mushroom"></i> نصب <span class="p">Mushroom.js</span></h2>
+            <card class="primary">
+               <span class="symbol"> package_2 </span>
+               <span> نصب Mushroom.js</span>
+            </card>
             <h3><i class="tag-c fal fa-circle-1"></i> <span class="p">Mushroom.js</span> را دانلود کنید</h3>
             <a class="btn full ripple" href="script/Mushroom.js" download> دانلود Mushroom.js</a>
             <a class="btn full ripple" href="script/Mushroom.min.js" download> دانلود Mushroom.min.js</a>
@@ -359,7 +362,7 @@
             <div class="panel">از فرمت های رنگی HSL, RGB, Hex و رنگ های استاندارد وب میتوانید استفاده کنید.</div>
             <h3><i class="tag-c fal fa-circle-5"></i> حالت <span class="p">تیره</span> یا <span class="s">روشن</span> ؟ </h3>
             <pre lang="js"><code>M.setDarkmode(true); /* Lightmode */ <br>M.setDarkmode(false); /* Darkmode */</code></pre>
-            <br>
+            <hr>
             <h2><i class="tag fal fa-mushroom"></i> تغییر حالت <span class="p">سریع</span></h2>
             <pre lang="js"><code>M.toggleMode();</code></pre>
             <br>
@@ -389,12 +392,14 @@
             <button class="ripple full" onclick="Page('brush')">قلم</button>
             <br>
             <h2><i class="tag fal fa-mushroom"></i> اضافه کردن <span class="p">Mushroom</span> به بخش های<span class="t"> خاصی </span> </h2>
-            <pre lang="js"><code>let M1 = Mushroom("main");<br>let M2 = Mushroom("#Home");<br>let M3 = Mushroom(":root");</code></pre>
+            <pre lang="js"><code>let M1 = Mushroom("main");<br>let M2 = Mushroom("#Home,#Menu");<br>let M3 = Mushroom(":root");</code></pre>
             <p>شما میتوانید برای هر کدام تنظیمات خاصی قرار دهید! برای مثال: </p>
             <pre lang="js"><code>M1.setColor("blue");<br>M2.setColor("blueviolet");<br>M3.setColor("purple");</code></pre>
+            <p> اگر هم که می‌خواهید پالت رنگی بسازید ولی آن را روی صفحه اعمال نکنید از این کد استفاده کنید: </p>
+            <pre lang="js"><code>let M1 = Mushroom(null);</code></pre>
             <br>
             <h2><i class="tag fal fa-mushroom"></i> گرفتن مقادیر مختلف از <span class="p">Mushroom</span></h2>
-            <pre lang="js"><code>M.addTo; /* String */<br>M.code; /* String */<br>M.color; /* String */<br>M.colorScheme; /* String */<br>M.customColor; /* String */<br>M.darkmode; /* Boolean */<br>M.hasPalette; /* Boolean */<br>M.hue; /* Number */<br>M.lightness; /* Number */<br>M.palette; /* Object or undefined */<br>M.parts; /* Array */<br>M.reversePalette; /* Boolean */<br>M.saturation; /* Number */<br>M.themeColor; /* Object */<br>M.version; /* String */<br></code></pre>
+            <pre lang="js"><code>M.addTo; /* String */<br>M.code; /* String */<br>M.color; /* String */<br>M.colorScheme; /* String */<br>M.customColor; /* String */<br>M.darkmode; /* Boolean */<br>M.growTimes /* String */<br>M.hasPalette; /* Boolean */<br>M.hue; /* Number */<br>M.lightness; /* Number */<br>M.palette; /* Object or undefined */<br>M.parts; /* Array */<br>M.reversePalette; /* Boolean */<br>M.saturation; /* Number */<br>M.themeColor; /* Object */<br>M.version; /* String */<br></code></pre>
             <hr>
             <h2><i class="tag fal fa-mushroom"></i> یک <span class="p">مثال</span> جمع و جور</h2>
             <pre lang="js"><code>var mode = eval(localStorage.getItem('darkMode'));
