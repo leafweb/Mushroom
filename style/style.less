@@ -725,12 +725,12 @@ card.primary{
    color: var(--on-primary);
    border-radius: 10px;
    padding: 5px;
-   margin-inline: 10px;
+   margin-inline: 5px;
    display: inline-flex;
    justify-content: center;
    align-items: center;
    transition: 0.3s;
-   font-size: 1.2em;
+   font-size: 1em;
 }
 .tag-c {
    .tag;
@@ -1003,7 +1003,7 @@ pre {
       position: absolute!important;
       top: 10px;
       background: linear-gradient(45deg,var(--primary),var(--primary-container));
-      color: var(--primary-90);
+      color: var(--on-primary);
       text-transform: uppercase;
       user-select: none;
       border-radius: 10px;
@@ -1017,6 +1017,7 @@ pre {
       font-family: "RobotoMono";
    }
    .copy{
+      background: linear-gradient(45deg,var(--secondary),var(--secondary-container));
       right: 10px;
       font-family: "Symbol";
       font-variation-settings:
