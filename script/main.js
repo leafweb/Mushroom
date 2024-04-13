@@ -623,7 +623,6 @@ function Random() {
 function InsertInput() {
    document.querySelector('#input').value = M.color;
    preM.setColor(M.color);
-   alert(M.color)
 }
 function Code() {
    var codeJs = document.querySelector('#codeJs');
