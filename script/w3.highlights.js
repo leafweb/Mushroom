@@ -2,25 +2,25 @@ function w3CodeColor(elmnt, mode) {
    var lang = (mode || "html");
    var elmntObj = (document.getElementById(elmnt) || elmnt);
    var elmntTxt = elmntObj.innerHTML;
-   var tagcolor = "var(--primary-50)";
-   var tagnamecolor = "var(--primary-70)";
-   var attributecolor = "var(--tertiary-70)";
-   var attributevaluecolor = "var(--secondary-70)";
+   var tagcolor = "var(--primary-60)";
+   var tagnamecolor = "var(--primary-80)";
+   var attributecolor = "var(--tertiary-80)";
+   var attributevaluecolor = "var(--secondary-80)";
    var commentcolor = "var(--surface-30)";
-   var cssselectorcolor = "var(--primary-70)";
-   var csspropertycolor = "var(--tertiary-70)";
-   var csspropertyvaluecolor = "var(--surface-70)";
-   var cssdelimitercolor = "var(--primary-50)";
-   var cssimportantcolor = "var(--secondary-70)";
+   var cssselectorcolor = "var(--primary-80)";
+   var csspropertycolor = "var(--tertiary-80)";
+   var csspropertyvaluecolor = "var(--surface-80)";
+   var cssdelimitercolor = "var(--primary-60)";
+   var cssimportantcolor = "var(--secondary-80)";
    var jscolor = "var(--surface-70)";
-   var jskeywordcolor = "var(--primary-70)";
-   var jsstringcolor = "var(--secondary-70)";
-   var jsnumbercolor = "var(--tertiary-70)";
-   var jspropertycolor = "var(--tertiary-70)";
+   var jskeywordcolor = "var(--primary-80)";
+   var jsstringcolor = "var(--secondary-80)";
+   var jsnumbercolor = "var(--tertiary-80)";
+   var jspropertycolor = "var(--tertiary-80)";
    elmntObj.style.fontFamily = "Consolas,'Courier New', monospace";
    lang = lang.toLowerCase()
    if (!lang) { lang = "html"; }
-   if (lang == "html") { elmntTxt = htmlMode(elmntTxt); }
+   if (lang == "html" || lang == "svg") { elmntTxt = htmlMode(elmntTxt); }
    if (lang == "css") { elmntTxt = cssMode(elmntTxt); }
    if (lang == "js" || lang == "javascript") { elmntTxt = jsMode(elmntTxt); }
    elmntObj.innerHTML = elmntTxt;

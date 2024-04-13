@@ -1,5 +1,5 @@
 function Mode() {
-   let mode = eval(localStorage.getItem('mushroom-darkmode'));
+   var mode = eval(localStorage.getItem('mushroom-darkmode'));
    if (mode == undefined) {
       mode = false;
       localStorage.setItem('mushroom-darkmode', mode);
@@ -20,6 +20,7 @@ function Darkmode() {
 function Statusbar() {
    var TC = document.querySelector('meta[name="theme-color"]');
    TC.setAttribute('content', M.themeColor['surface-container']);
+   //StatusBar.backgroundColorByHexString(M.themeColor['surface-container']);
 }
 function Show(x, y = 'show') { if (!x.classList.contains(y)) { x.classList.add(y) } };
 function Hide(x, y = 'show') { if (x.classList.contains(y)) { x.classList.remove(y) } };
@@ -109,323 +110,328 @@ function Highlights() {
    });
 }
 function Color(color) {
-      var colors = {
-            aliceblue: "#f0f8ff",
-            antiquewhite: "#faebd7",
-            aqua: "#00ffff",
-            aquamarine: "#7fffd4",
-            azure: "#f0ffff",
-            beige: "#f5f5dc",
-            bisque: "#ffe4c4",
-            black: "#000000",
-            blanchedalmond: "#ffebcd",
-            blue: "#0000ff",
-            blueviolet: "#8a2be2",
-            brown: "#a52a2a",
-            burlywood: "#deb887",
-            cadetblue: "#5f9ea0",
-            chartreuse: "#7fff00",
-            chocolate: "#d2691e",
-            coral: "#ff7f50",
-            cornflowerblue: "#6495ed",
-            cornsilk: "#fff8dc",
-            crimson: "#dc143c",
-            cyan: "#00ffff",
-            darkblue: "#00008b",
-            darkcyan: "#008b8b",
-            darkgoldenrod: "#b8860b",
-            darkgray: "#a9a9a9",
-            darkgrey: "#a9a9a9",
-            darkgreen: "#006400",
-            darkkhaki: "#bdb76b",
-            darkmagenta: "#8b008b",
-            darkolivegreen: "#556b2f",
-            darkorange: "#ff8c00",
-            darkorchid: "#9932cc",
-            darkred: "#8b0000",
-            darksalmon: "#e9967a",
-            darkseagreen: "#8fbc8f",
-            darkslateblue: "#483d8b",
-            darkslategray: "#2f4f4f",
-            darkslategrey: "#2f4f4f",
-            darkturquoise: "#00ced1",
-            darkviolet: "#9400d3",
-            deeppink: "#ff1493",
-            deepskyblue: "#00bfff",
-            dimgray: "#696969",
-            dimgrey: "#696969",
-            dodgerblue: "#1e90ff",
-            firebrick: "#b22222",
-            floralwhite: "#fffaf0",
-            forestgreen: "#228b22",
-            fuchsia: "#ff00ff",
-            gainsboro: "#dcdcdc",
-            ghostwhite: "#f8f8ff",
-            gold: "#ffd700",
-            goldenrod: "#daa520",
-            gray: "#808080",
-            grey: "#808080",
-            green: "#008000",
-            greenyellow: "#adff2f",
-            honeydew: "#f0fff0",
-            hotpink: "#ff69b4",
-            indianred: "#cd5c5c",
-            indigo: "#4b0082",
-            ivory: "#fffff0",
-            khaki: "#f0e68c",
-            lavender: "#e6e6fa",
-            lavenderblush: "#fff0f5",
-            lawngreen: "#7cfc00",
-            lemonchiffon: "#fffacd",
-            lightblue: "#add8e6",
-            lightcoral: "#f08080",
-            lightcyan: "#e0ffff",
-            lightgoldenrodyellow: "#fafad2",
-            lightgray: "#d3d3d3",
-            lightgrey: "#d3d3d3",
-            lightgreen: "#90ee90",
-            lightpink: "#ffb6c1",
-            lightsalmon: "#ffa07a",
-            lightseagreen: "#20b2aa",
-            lightskyblue: "#87cefa",
-            lightslategray: "#778899",
-            lightslategrey: "#778899",
-            lightsteelblue: "#b0c4de",
-            lightyellow: "#ffffe0",
-            lime: "#00ff00",
-            limegreen: "#32cd32",
-            linen: "#faf0e6",
-            magenta: "#ff00ff",
-            maroon: "#800000",
-            mediumaquamarine: "#66cdaa",
-            mediumblue: "#0000cd",
-            mediumorchid: "#ba55d3",
-            mediumpurple: "#9370d8",
-            mediumseagreen: "#3cb371",
-            mediumslateblue: "#7b68ee",
-            mediumspringgreen: "#00fa9a",
-            mediumturquoise: "#48d1cc",
-            mediumvioletred: "#c71585",
-            midnightblue: "#191970",
-            mintcream: "#f5fffa",
-            mistyrose: "#ffe4e1",
-            moccasin: "#ffe4b5",
-            navajowhite: "#ffdead",
-            navy: "#000080",
-            oldlace: "#fdf5e6",
-            olive: "#808000",
-            olivedrab: "#6b8e23",
-            orange: "#ffa500",
-            orangered: "#ff4500",
-            orchid: "#da70d6",
-            palegoldenrod: "#eee8aa",
-            palegreen: "#98fb98",
-            paleturquoise: "#afeeee",
-            palevioletred: "#d87093",
-            papayawhip: "#ffefd5",
-            peachpuff: "#ffdab9",
-            peru: "#cd853f",
-            pink: "#ffc0cb",
-            plum: "#dda0dd",
-            powderblue: "#b0e0e6",
-            purple: "#800080",
-            rebeccapurple: "#663399",
-            red: "#ff0000",
-            rosybrown: "#bc8f8f",
-            royalblue: "#4169e1",
-            saddlebrown: "#8b4513",
-            salmon: "#fa8072",
-            sandybrown: "#f4a460",
-            seagreen: "#2e8b57",
-            seashell: "#fff5ee",
-            sienna: "#a0522d",
-            silver: "#c0c0c0",
-            skyblue: "#87ceeb",
-            slateblue: "#6a5acd",
-            slategray: "#708090",
-            slategrey: "#708090",
-            snow: "#fffafa",
-            springgreen: "#00ff7f",
-            steelblue: "#4682b4",
-            tan: "#d2b48c",
-            teal: "#008080",
-            thistle: "#d8bfd8",
-            tomato: "#ff6347",
-            turquoise: "#40e0d0",
-            violet: "#ee82ee",
-            wheat: "#f5deb3",
-            white: "#ffffff",
-            whitesmoke: "#f5f5f5",
-            yellow: "#ffff00",
-            yellowgreen: "#9acd32"
-         }
-      switch (true) {
-         case /^#([0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(color):
-            return hexToHSL(color);
-            break;
-         case /^hsla?\(((\d+(?:\.\d+)?)|\d+)%?\s*,\s*((\d+(?:\.\d+)?)|\d+)%?\s*,\s*((\d+(?:\.\d+)?)|\d+)%?(?:\s*,\s*((\d+(?:\.\d+)?)|\d+)%?)?\)$/i.test(color):
-            return hslToHsl(color);
-            break;
-         case /^rgba?\(((\d+(?:\.\d+)?)|\d+)\s*,\s*((\d+(?:\.\d+)?)|\d+)\s*,\s*((\d+(?:\.\d+)?)|\d+)(?:\s*,\s*((\d+(?:\.\d+)?)|\d+)%?)?\)$/i.test(color):
-            return rgbToHsl(color);
-            break;
-         case Object.keys(colors).includes(color.replaceAll(' ', '').toLowerCase()):
-            return colorNameToHsl(color);
-            break;
-         default:
-            console.warn(`Mushroom: The "${color}" color wasn't found!`);
-            return undefined;
+   var colors = {
+      aliceblue: "#f0f8ff",
+      antiquewhite: "#faebd7",
+      aqua: "#00ffff",
+      aquamarine: "#7fffd4",
+      azure: "#f0ffff",
+      beige: "#f5f5dc",
+      bisque: "#ffe4c4",
+      black: "#000000",
+      blanchedalmond: "#ffebcd",
+      blue: "#0000ff",
+      blueviolet: "#8a2be2",
+      brown: "#a52a2a",
+      burlywood: "#deb887",
+      cadetblue: "#5f9ea0",
+      chartreuse: "#7fff00",
+      chocolate: "#d2691e",
+      coral: "#ff7f50",
+      cornflowerblue: "#6495ed",
+      cornsilk: "#fff8dc",
+      crimson: "#dc143c",
+      cyan: "#00ffff",
+      darkblue: "#00008b",
+      darkcyan: "#008b8b",
+      darkgoldenrod: "#b8860b",
+      darkgray: "#a9a9a9",
+      darkgrey: "#a9a9a9",
+      darkgreen: "#006400",
+      darkkhaki: "#bdb76b",
+      darkmagenta: "#8b008b",
+      darkolivegreen: "#556b2f",
+      darkorange: "#ff8c00",
+      darkorchid: "#9932cc",
+      darkred: "#8b0000",
+      darksalmon: "#e9967a",
+      darkseagreen: "#8fbc8f",
+      darkslateblue: "#483d8b",
+      darkslategray: "#2f4f4f",
+      darkslategrey: "#2f4f4f",
+      darkturquoise: "#00ced1",
+      darkviolet: "#9400d3",
+      deeppink: "#ff1493",
+      deepskyblue: "#00bfff",
+      dimgray: "#696969",
+      dimgrey: "#696969",
+      dodgerblue: "#1e90ff",
+      firebrick: "#b22222",
+      floralwhite: "#fffaf0",
+      forestgreen: "#228b22",
+      fuchsia: "#ff00ff",
+      gainsboro: "#dcdcdc",
+      ghostwhite: "#f8f8ff",
+      gold: "#ffd700",
+      goldenrod: "#daa520",
+      gray: "#808080",
+      grey: "#808080",
+      green: "#008000",
+      greenyellow: "#adff2f",
+      honeydew: "#f0fff0",
+      hotpink: "#ff69b4",
+      indianred: "#cd5c5c",
+      indigo: "#4b0082",
+      ivory: "#fffff0",
+      khaki: "#f0e68c",
+      lavender: "#e6e6fa",
+      lavenderblush: "#fff0f5",
+      lawngreen: "#7cfc00",
+      lemonchiffon: "#fffacd",
+      lightblue: "#add8e6",
+      lightcoral: "#f08080",
+      lightcyan: "#e0ffff",
+      lightgoldenrodyellow: "#fafad2",
+      lightgray: "#d3d3d3",
+      lightgrey: "#d3d3d3",
+      lightgreen: "#90ee90",
+      lightpink: "#ffb6c1",
+      lightsalmon: "#ffa07a",
+      lightseagreen: "#20b2aa",
+      lightskyblue: "#87cefa",
+      lightslategray: "#778899",
+      lightslategrey: "#778899",
+      lightsteelblue: "#b0c4de",
+      lightyellow: "#ffffe0",
+      lime: "#00ff00",
+      limegreen: "#32cd32",
+      linen: "#faf0e6",
+      magenta: "#ff00ff",
+      maroon: "#800000",
+      mediumaquamarine: "#66cdaa",
+      mediumblue: "#0000cd",
+      mediumorchid: "#ba55d3",
+      mediumpurple: "#9370d8",
+      mediumseagreen: "#3cb371",
+      mediumslateblue: "#7b68ee",
+      mediumspringgreen: "#00fa9a",
+      mediumturquoise: "#48d1cc",
+      mediumvioletred: "#c71585",
+      midnightblue: "#191970",
+      mintcream: "#f5fffa",
+      mistyrose: "#ffe4e1",
+      moccasin: "#ffe4b5",
+      navajowhite: "#ffdead",
+      navy: "#000080",
+      oldlace: "#fdf5e6",
+      olive: "#808000",
+      olivedrab: "#6b8e23",
+      orange: "#ffa500",
+      orangered: "#ff4500",
+      orchid: "#da70d6",
+      palegoldenrod: "#eee8aa",
+      palegreen: "#98fb98",
+      paleturquoise: "#afeeee",
+      palevioletred: "#d87093",
+      papayawhip: "#ffefd5",
+      peachpuff: "#ffdab9",
+      peru: "#cd853f",
+      pink: "#ffc0cb",
+      plum: "#dda0dd",
+      powderblue: "#b0e0e6",
+      purple: "#800080",
+      rebeccapurple: "#663399",
+      red: "#ff0000",
+      rosybrown: "#bc8f8f",
+      royalblue: "#4169e1",
+      saddlebrown: "#8b4513",
+      salmon: "#fa8072",
+      sandybrown: "#f4a460",
+      seagreen: "#2e8b57",
+      seashell: "#fff5ee",
+      sienna: "#a0522d",
+      silver: "#c0c0c0",
+      skyblue: "#87ceeb",
+      slateblue: "#6a5acd",
+      slategray: "#708090",
+      slategrey: "#708090",
+      snow: "#fffafa",
+      springgreen: "#00ff7f",
+      steelblue: "#4682b4",
+      tan: "#d2b48c",
+      teal: "#008080",
+      thistle: "#d8bfd8",
+      tomato: "#ff6347",
+      turquoise: "#40e0d0",
+      violet: "#ee82ee",
+      wheat: "#f5deb3",
+      white: "#ffffff",
+      whitesmoke: "#f5f5f5",
+      yellow: "#ffff00",
+      yellowgreen: "#9acd32"
+   }
+   switch (true) {
+      case /^#([0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(color):
+         return hexToHSL(color);
+         break;
+      case /^hsla?\(((\d+(?:\.\d+)?)|\d+)%?\s*,\s*((\d+(?:\.\d+)?)|\d+)%?\s*,\s*((\d+(?:\.\d+)?)|\d+)%?(?:\s*,\s*((\d+(?:\.\d+)?)|\d+)%?)?\)$/i.test(color):
+         return hslToHsl(color);
+         break;
+      case /^rgba?\(((\d+(?:\.\d+)?)|\d+)\s*,\s*((\d+(?:\.\d+)?)|\d+)\s*,\s*((\d+(?:\.\d+)?)|\d+)(?:\s*,\s*((\d+(?:\.\d+)?)|\d+)%?)?\)$/i.test(color):
+         return rgbToHsl(color);
+         break;
+      case Object.keys(colors).includes(color.replaceAll(' ', '').toLowerCase()):
+         return colorNameToHsl(color);
+         break;
+      default:
+         console.warn(`Mushroom: The "${color}" color wasn't found!`);
+         return undefined;
+   }
+
+   function hexToHSL(hex) {
+      var result;
+      if (hex.length == 4) {
+         hex = hex.replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3');
+         result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+      } else if (hex.length == 5) {
+         hex = hex.replace(/^#(.)(.)(.)(.)$/, '#$1$1$2$2$3$3$4$4');
+         result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+      } else {
+         result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
       }
-      function hexToHSL(hex) {
-         var result;
-         if (hex.length == 4) {
-            hex = hex.replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3');
-            result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-         } else if (hex.length == 5) {
-            hex = hex.replace(/^#(.)(.)(.)(.)$/, '#$1$1$2$2$3$3$4$4');
-            result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-         } else {
-            result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+      var r = parseInt(result[1], 16);
+      var g = parseInt(result[2], 16);
+      var b = parseInt(result[3], 16);
+      r /= 255, g /= 255, b /= 255;
+      var max = Math.max(r, g, b);
+      var min = Math.min(r, g, b);
+      var h, s, l = (max + min) / 2;
+      if (max == min) {
+         h = s = 0;
+      } else {
+         var d = max - min;
+         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+         switch (max) {
+            case r:
+               h = (g - b) / d + (g < b ? 6 : 0);
+               break;
+            case g:
+               h = (b - r) / d + 2;
+               break;
+            case b:
+               h = (r - g) / d + 4;
+               break;
          }
-         var r = parseInt(result[1], 16);
-         var g = parseInt(result[2], 16);
-         var b = parseInt(result[3], 16);
-         r /= 255, g /= 255, b /= 255;
-         var max = Math.max(r, g, b);
-         var min = Math.min(r, g, b);
-         var h, s, l = (max + min) / 2;
-         if (max == min) {
-            h = s = 0;
-         } else {
-            var d = max - min;
-            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-            switch (max) {
-               case r:
-                  h = (g - b) / d + (g < b ? 6 : 0);
-                  break;
-               case g:
-                  h = (b - r) / d + 2;
-                  break;
-               case b:
-                  h = (r - g) / d + 4;
-                  break;
-            }
-            h /= 6;
-         }
-         h = Math.round(h * 360);
-         s = Math.round(s * 100);
-         l = Math.round(l * 100);
-         if (hex.length == 5 || hex.length == 9) {
-            var a = Number(parseInt(hex.substring(7, 9), 16) / 255).toFixed(2);
-            return { h: h, s: s, l: l, a: a }
-         } else {
-            return { h: h, s: s, l: l, a: 1 }
-         }
+         h /= 6;
       }
-      function rgbToHsl(rgb) {
-         if (rgb.includes('rgba')) {
-            var nums = rgb.substring(5, rgb.length - 1).split(",");
-         } else {
-            var nums = rgb.substring(4, rgb.length - 1).split(",");
-         }
-         var r = parseInt(nums[0]);
-         var g = parseInt(nums[1]);
-         var b = parseInt(nums[2]);
-         r /= 255;
-         g /= 255;
-         b /= 255;
-         var max = Math.max(r, g, b);
-         var min = Math.min(r, g, b);
-         var h, s, l = (max + min) / 2;
-         if (max == min) {
-            h = s = 0;
-         } else {
-            var d = max - min;
-            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-            switch (max) {
-               case r:
-                  h = (g - b) / d + (g < b ? 6 : 0);
-                  break;
-               case g:
-                  h = (b - r) / d + 2;
-                  break;
-               case b:
-                  h = (r - g) / d + 4;
-                  break;
-            }
-            h /= 6;
-         }
-         h = Math.round(h * 360);
-         s = Math.round(s * 100);
-         l = Math.round(l * 100);
-         if (rgb.includes('rgba')) {
-            var a = nums[3];
-            if (a == undefined) {
-               a = 1;
-            }
-            if (a > 1) { a = 1 }
-            return { h: h, s: s, l: l, a: a }
-         } else {
-            return { h: h, s: s, l: l, a: 1 }
-         }
-      }
-      function hslToHsl(hsl) {
-         if (hsl.includes('hsla')) {
-            var nums = hsl.substring(5, hsl.length - 1).split(",");
-         } else {
-            var nums = hsl.substring(4, hsl.length - 1).split(",");
-         }
-         var h = parseInt(nums[0]);
-         var s = parseInt(nums[1]);
-         var l = parseInt(nums[2]);
-         if (hsl.includes('hsla')) {
-            var a = Number(nums[3]).toFixed(4);
-            if (a == undefined) {
-               a = 1;
-            }
-            return { h: h, s: s, l: l, a: a }
-         } else {
-            return { h: h, s: s, l: l, a: 1 }
-         }
-      }
-      function colorNameToHsl(colorName) {
-         return hexToHSL(colors[colorName.replaceAll(' ', '').toLowerCase()])
+      h = Math.round(h * 360);
+      s = Math.round(s * 100);
+      l = Math.round(l * 100);
+      if (hex.length == 5 || hex.length == 9) {
+         var a = Number(parseInt(hex.substring(7, 9), 16) / 255).toFixed(2);
+         return { h: h, s: s, l: l, a: a }
+      } else {
+         return { h: h, s: s, l: l, a: 1 }
       }
    }
+
+   function rgbToHsl(rgb) {
+      if (rgb.includes('rgba')) {
+         var nums = rgb.substring(5, rgb.length - 1).split(",");
+      } else {
+         var nums = rgb.substring(4, rgb.length - 1).split(",");
+      }
+      var r = parseInt(nums[0]);
+      var g = parseInt(nums[1]);
+      var b = parseInt(nums[2]);
+      r /= 255;
+      g /= 255;
+      b /= 255;
+      var max = Math.max(r, g, b);
+      var min = Math.min(r, g, b);
+      var h, s, l = (max + min) / 2;
+      if (max == min) {
+         h = s = 0;
+      } else {
+         var d = max - min;
+         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+         switch (max) {
+            case r:
+               h = (g - b) / d + (g < b ? 6 : 0);
+               break;
+            case g:
+               h = (b - r) / d + 2;
+               break;
+            case b:
+               h = (r - g) / d + 4;
+               break;
+         }
+         h /= 6;
+      }
+      h = Math.round(h * 360);
+      s = Math.round(s * 100);
+      l = Math.round(l * 100);
+      if (rgb.includes('rgba')) {
+         var a = nums[3];
+         if (a == undefined) {
+            a = 1;
+         }
+         if (a > 1) { a = 1 }
+         return { h: h, s: s, l: l, a: a }
+      } else {
+         return { h: h, s: s, l: l, a: 1 }
+      }
+   }
+
+   function hslToHsl(hsl) {
+      if (hsl.includes('hsla')) {
+         var nums = hsl.substring(5, hsl.length - 1).split(",");
+      } else {
+         var nums = hsl.substring(4, hsl.length - 1).split(",");
+      }
+      var h = parseInt(nums[0]);
+      var s = parseInt(nums[1]);
+      var l = parseInt(nums[2]);
+      if (hsl.includes('hsla')) {
+         var a = Number(nums[3]).toFixed(4);
+         if (a == undefined) {
+            a = 1;
+         }
+         return { h: h, s: s, l: l, a: a }
+      } else {
+         return { h: h, s: s, l: l, a: 1 }
+      }
+   }
+
+   function colorNameToHsl(colorName) {
+      return hexToHSL(colors[colorName.replaceAll(' ', '').toLowerCase()])
+   }
+}
 function toHex(h, s, l, a = 1) {
-      h /= 360;
-      s /= 100;
-      l /= 100;
-      let r, g, b;
-      if (s === 0) {
-         r = g = b = l;
-      } else {
-         var hue2rgb = (p, q, t) => {
-            if (t < 0) t += 1;
-            if (t > 1) t -= 1;
-            if (t < 1 / 6) return p + (q - p) * 6 * t;
-            if (t < 1 / 2) return q;
-            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-            return p;
-         };
-         var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-         var p = 2 * l - q;
-         r = hue2rgb(p, q, h + 1 / 3);
-         g = hue2rgb(p, q, h);
-         b = hue2rgb(p, q, h - 1 / 3);
-      }
-      var tohex = (x) => {
-         var hex = Math.round(x * 255).toString(16);
-         return hex.length === 1 ? '0' + hex : hex;
+   h /= 360;
+   s /= 100;
+   l /= 100;
+   let r, g, b;
+   if (s === 0) {
+      r = g = b = l;
+   } else {
+      var hue2rgb = (p, q, t) => {
+         if (t < 0) t += 1;
+         if (t > 1) t -= 1;
+         if (t < 1 / 6) return p + (q - p) * 6 * t;
+         if (t < 1 / 2) return q;
+         if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+         return p;
       };
-      if (a != 1) {
-         return `#${tohex(r)}${tohex(g)}${tohex(b)}${tohex(a)}`;
-      } else {
-         return `#${tohex(r)}${tohex(g)}${tohex(b)}`;
-      }
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1 / 3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1 / 3);
    }
+   var tohex = (x) => {
+      var hex = Math.round(x * 255).toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+   };
+   if (a != 1) {
+      return `#${tohex(r)}${tohex(g)}${tohex(b)}${tohex(a)}`;
+   } else {
+      return `#${tohex(r)}${tohex(g)}${tohex(b)}`;
+   }
+}
 function ColorPicker() {
    event.preventDefault();
+
    function clamp(num, min, max) {
       return num <= min ?
          min :
@@ -448,20 +454,20 @@ function ColorPicker() {
    alpha.value = 1;
    canvas.width = canvas.height = 300;
    var ctx = canvas.getContext('2d');
-   ctx.globalCompositeOperation='destination-over';
-   var lg1 = ctx.createLinearGradient(0,300,0,0);
-   var lg2 = ctx.createLinearGradient(0,0,300,0);
-   lg1.addColorStop(0.05,'#000');
-   lg1.addColorStop(0.95,'#0000');
-   lg2.addColorStop(0.05,'#fff');
-   lg2.addColorStop(0.95,'#fff0');
+   ctx.globalCompositeOperation = 'destination-over';
+   var lg1 = ctx.createLinearGradient(0, 300, 0, 0);
+   var lg2 = ctx.createLinearGradient(0, 0, 300, 0);
+   lg1.addColorStop(0.05, '#000');
+   lg1.addColorStop(0.95, '#0000');
+   lg2.addColorStop(0.05, '#fff');
+   lg2.addColorStop(0.95, '#fff0');
    ctx.fillStyle = lg1;
    ctx.fillRect(0, 0, 300, 300);
    ctx.fillStyle = lg2;
    ctx.fillRect(0, 0, 300, 300);
    ctx.fillStyle = 'red';
    ctx.fillRect(0, 0, 300, 300);
-   hue.oninput = ()=> {
+   hue.oninput = () => {
       ctx.clearRect(0, 0, 300, 300)
       ctx.fillStyle = lg1;
       ctx.fillRect(0, 0, 300, 300);
@@ -469,60 +475,60 @@ function ColorPicker() {
       ctx.fillRect(0, 0, 300, 300);
       ctx.fillStyle = `hsl(${event.currentTarget.value},100%,50%)`;
       ctx.fillRect(0, 0, 300, 300);
-      var x = getComputedStyle(span).left.replace('px','');
-      var y = getComputedStyle(span).top.replace('px','');
-      var x = clamp(x,1,299);
-      var y = clamp(y,1,299);
+      var x = getComputedStyle(span).left.replace('px', '');
+      var y = getComputedStyle(span).top.replace('px', '');
+      var x = clamp(x, 1, 299);
+      var y = clamp(y, 1, 299);
       var d = ctx.getImageData(x, y, 1, 1).data;
       var color = `rgba(${d[0]},${d[1]},${d[2]},${alpha.value})`;
       var color2 = `rgba(${d[0]},${d[1]},${d[2]})`;
       alpha.style.color = color2;
       span.style.background = color;
    }
-   alpha.oninput = ()=> {
-      var x = getComputedStyle(span).left.replace('px','');
-      var y = getComputedStyle(span).top.replace('px','');
-      var x = clamp(x,1,299);
-      var y = clamp(y,1,299);
+   alpha.oninput = () => {
+      var x = getComputedStyle(span).left.replace('px', '');
+      var y = getComputedStyle(span).top.replace('px', '');
+      var x = clamp(x, 1, 299);
+      var y = clamp(y, 1, 299);
       var d = ctx.getImageData(x, y, 1, 1).data;
       var color = `rgba(${d[0]},${d[1]},${d[2]},${alpha.value})`;
       var color2 = `rgba(${d[0]},${d[1]},${d[2]})`;
       alpha.style.color = color2;
       span.style.background = color;
    }
-   span.ontouchmove = span.ontouchstart = canvas.ontouchmove = canvas.ontouchstart = ()=> {
+   span.ontouchmove = span.ontouchstart = canvas.ontouchmove = canvas.ontouchstart = () => {
       var rect = canvas.getBoundingClientRect();
-      var x = clamp((event.touches[0].clientX - rect.left),1,299);
-      var y = clamp((event.touches[0].clientY - rect.top),1,299);
+      var x = clamp((event.touches[0].clientX - rect.left), 1, 299);
+      var y = clamp((event.touches[0].clientY - rect.top), 1, 299);
       span.style.top = y + 'px';
       span.style.left = x + 'px';
-      var d = ctx.getImageData(x,y,1,1).data;
+      var d = ctx.getImageData(x, y, 1, 1).data;
       var color = `rgba(${d[0]},${d[1]},${d[2]},${alpha.value})`;
       var color2 = `rgba(${d[0]},${d[1]},${d[2]})`;
       alpha.style.color = color2;
       span.style.background = color;
    }
-   span.onmousemove = span.onmousedown = canvas.onmousemove = canvas.onmousedown = ()=> {
+   span.onmousemove = span.onmousedown = canvas.onmousemove = canvas.onmousedown = () => {
       var rect = canvas.getBoundingClientRect();
-      var x = clamp((event.clientX - rect.left),1,299);
-      var y = clamp((event.clientY - rect.top),1,299);
+      var x = clamp((event.clientX - rect.left), 1, 299);
+      var y = clamp((event.clientY - rect.top), 1, 299);
       span.style.top = y + 'px';
       span.style.left = x + 'px';
-      var d = ctx.getImageData(x,y,1,1).data;
+      var d = ctx.getImageData(x, y, 1, 1).data;
       var color = `rgba(${d[0]},${d[1]},${d[2]},${alpha.value})`;
       var color2 = `rgba(${d[0]},${d[1]},${d[2]})`;
       alpha.style.color = color2;
       span.style.background = color;
    }
    Show(colorPickerBackdrop);
-   btn.onclick = ()=> {
+   btn.onclick = () => {
       var x = getComputedStyle(span).left.replace('px', '');
       var y = getComputedStyle(span).top.replace('px', '');
       var x = clamp(x, 1, 299);
       var y = clamp(y, 1, 299);
-      var d = ctx.getImageData(x,y,1,1).data;
+      var d = ctx.getImageData(x, y, 1, 1).data;
       var color = `rgba(${d[0]},${d[1]},${d[2]},${alpha.value})`;
-      input.value = input.innerHTML = toHex(Color(color).h,Color(color).s,Color(color).l,Color(color).a);
+      input.value = input.innerHTML = toHex(Color(color).h, Color(color).s, Color(color).l, Color(color).a);
       input.style.color = (Color(color).l > 50 || Color(color).a < 0.8) ? '#000' : '#fff';
       input.style.background = color;
       Hide(colorPickerBackdrop);
@@ -617,6 +623,7 @@ function Random() {
 function InsertInput() {
    document.querySelector('#input').value = M.color;
    preM.setColor(M.color);
+   alert(M.color)
 }
 function Code() {
    var codeJs = document.querySelector('#codeJs');
@@ -712,8 +719,8 @@ function CustomColor() {
       keys.push(elm.value);
       obj[elm.value] = inputValue[i].value;
    });
-   removeBtn.forEach((elm,i)=>{
-      elm.onclick = ()=> {
+   removeBtn.forEach((elm, i) => {
+      elm.onclick = () => {
          elm.parentNode.remove();
          keys.splice(i, 1);
          values.splice(i, 1);
@@ -752,7 +759,7 @@ function AddRow() {
    colorBtn.innerHTML = colorBtn.value = colorBtn.style.background = random;
    inputKey.type = 'text';
    inputKey.oninput = CustomColor;
-   colorBtn.setAttribute('onclick','ColorPicker()');
+   colorBtn.setAttribute('onclick', 'ColorPicker()');
    CustomColor();
    Ripple();
 }
@@ -792,7 +799,7 @@ preM.setPalette(true);
 
 Highlights();
 CopyBtn();
-Random();
+Input('Blue');
 ColorScheme();
 CustomColor();
 Statusbar();

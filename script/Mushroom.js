@@ -602,7 +602,7 @@ function Mushroom(addTo) {
       return code;
    };
    var M = {
-      version: '3.0.3',
+      version: '3.03',
       growTimes: NaN,
       loadTimes: NaN,
       color: 'blue',
