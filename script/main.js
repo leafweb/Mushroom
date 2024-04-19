@@ -7,6 +7,7 @@ function Mode() {
    document.querySelector('header>.darkmode').innerHTML = mode ? 'light_mode' : 'dark_mode';
    return mode;
 }
+
 function Darkmode() {
    Freeze();
    M.toggleMode();
@@ -17,20 +18,26 @@ function Darkmode() {
    Statusbar();
    Console();
 }
+
 function Statusbar() {
    var TC = document.querySelector('meta[name="theme-color"]');
    TC.setAttribute('content', M.themeColor['surface-container']);
    //StatusBar.backgroundColorByHexString(M.themeColor['surface-container']);
 }
+
 function Show(x, y = 'show') { if (!x.classList.contains(y)) { x.classList.add(y) } };
+
 function Hide(x, y = 'show') { if (x.classList.contains(y)) { x.classList.remove(y) } };
+
 function Toggle(x, y = 'show') { x.classList.toggle(y) };
+
 function Menu() {
    var menu = document.querySelector('menu');
    var menuBackdrop = document.querySelector('menu-backdrop');
    Toggle(menu);
    Toggle(menuBackdrop);
 }
+
 function RandomColor() {
    var h = Math.round(Math.random() * 360);
    var s = Math.round(Math.random() * 100);
@@ -67,6 +74,7 @@ function RandomColor() {
       return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
    }
 }
+
 function Page(x) {
    var targetPage = document.querySelector(`page[name="p-${x}"]`);
    var targetBtn = document.querySelector(`[name="pb-${x}"]`);
@@ -78,6 +86,7 @@ function Page(x) {
    if (targetBtn) { Show(targetBtn, "on") };
    TabOn();
 }
+
 function TabOn() {
    var tab = document.querySelector('tabbar>tab.on');
    var tabon = document.querySelector('tabbar>div.tabon');
@@ -85,6 +94,7 @@ function TabOn() {
    var num = tab.offsetLeft + Number(getComputedStyle(tab).width.replace('px', '')) / 2 + 'px';
    tabon.style.left = wave.style.left = num;
 }
+
 function CopyBtn() {
    var copy = document.querySelectorAll('pre .copy');
    copy.forEach(elm => {
@@ -99,6 +109,7 @@ function CopyBtn() {
       }
    });
 }
+
 function Highlights() {
    var code = document.querySelectorAll('pre');
    code.forEach(elm => {
@@ -109,6 +120,7 @@ function Highlights() {
       copy.innerHTML = 'content_copy'
    });
 }
+
 function Color(color) {
    var colors = {
       aliceblue: "#f0f8ff",
@@ -397,6 +409,7 @@ function Color(color) {
       return hexToHSL(colors[colorName.replaceAll(' ', '').toLowerCase()])
    }
 }
+
 function toHex(h, s, l, a = 1) {
    h /= 360;
    s /= 100;
@@ -429,6 +442,7 @@ function toHex(h, s, l, a = 1) {
       return `#${tohex(r)}${tohex(g)}${tohex(b)}`;
    }
 }
+
 function ColorPicker() {
    event.preventDefault();
 
@@ -536,6 +550,7 @@ function ColorPicker() {
       CustomColor();
    };
 }
+
 function Palette() {
    var inpuColor = document.querySelector('#input-color');
    var inpuCustomColor = document.querySelector('#input-custom-color');
@@ -565,6 +580,7 @@ function Palette() {
       otherPalette.innerHTML = '<h3 class="c">No palette!<h3>';
    }
 }
+
 function Freeze() {
    var all = document.querySelectorAll('*,*:after,*:before');
    all.forEach(elm => {
@@ -576,24 +592,28 @@ function Freeze() {
       });
    }, 100);
 }
+
 function H(x) {
    Freeze();
    M.setHue(x);
    HSL();
    InsertInput();
 }
+
 function S(x) {
    Freeze();
    M.setSaturation(x);
    HSL();
    InsertInput();
 }
+
 function L(x) {
    Freeze();
    M.setLightness(x);
    HSL();
    InsertInput();
 }
+
 function HSL() {
    var inputH = document.querySelector('#input-h');
    var inputS = document.querySelector('#input-s');
@@ -608,22 +628,26 @@ function HSL() {
    Statusbar();
    Console();
 }
+
 function Input(x) {
    Freeze();
    M.setColor(x);
    preM.setColor(x);
    HSL();
 }
+
 function Random() {
    Freeze();
    M.random();
    HSL();
    InsertInput();
 }
+
 function InsertInput() {
    document.querySelector('#input').value = M.color;
    preM.setColor(M.color);
 }
+
 function Code() {
    var codeJs = document.querySelector('#codeJs');
    var codeCss = document.querySelector('#codeCss');
@@ -642,12 +666,14 @@ function Code() {
    codeCss.innerHTML += '<div class="copy symbol">content_copy</div>';
    CopyBtn();
 }
+
 function ColorScheme() {
    var slice = document.querySelectorAll('#svg-g>*');
    for (var i = 0; i < slice.length; i++) {
       slice[i].setAttribute('fill', `hsl(${(i*30) + M.hue},${M.saturation}%,50%)`)
    }
 }
+
 function SetColorScheme(x) {
    var c1 = document.querySelector('#svg-color-1');
    var c2 = document.querySelector('#svg-color-2');
@@ -706,6 +732,7 @@ function SetColorScheme(x) {
    }
    Console();
 }
+
 function CustomColor() {
    var root = document.querySelector('#custom-color');
    var inputKey = root.querySelectorAll('.key');
@@ -730,6 +757,7 @@ function CustomColor() {
    M.addCustomColor(obj);
    Console();
 }
+
 function AddRow() {
    var row = document.querySelector('#custom-color .row');
    var div = document.createElement('div');
@@ -762,6 +790,7 @@ function AddRow() {
    CustomColor();
    Ripple();
 }
+
 function Toast(massage) {
    var toast = document.querySelector('toast');
    if (!toast) {
@@ -777,6 +806,7 @@ function Toast(massage) {
    toast.innerHTML = massage;
    show.onfinish = () => toast.remove();
 }
+
 function Console() {
    console.clear()
    var style = `
