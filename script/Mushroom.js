@@ -401,7 +401,7 @@ function Mushroom(addTo) {
             data.hue.accent = [H, H - 180];
             break;
          case 'Triadic':
-            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthiary'];
+            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthary'];
             data.hue.accent = [H, H - 60, H - 180, H - 240];
             break;
          case 'Compound':
@@ -409,7 +409,7 @@ function Mushroom(addTo) {
             data.hue.accent = [H, H - 150, H + 150];
             break;
          case 'Split-Complementary':
-            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthiary'];
+            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthary'];
             data.hue.accent = [H, H + 30, H + 180, H + 210];
             break;
          case 'Monochromatic':
@@ -504,7 +504,7 @@ function Mushroom(addTo) {
             data.hue.accent = [H, H - 180];
             break;
          case 'Triadic':
-            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthiary'];
+            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthary'];
             data.hue.accent = [H, H - 60, H - 180, H - 240];
             break;
          case 'Compound':
@@ -512,7 +512,7 @@ function Mushroom(addTo) {
             data.hue.accent = [H, H - 150, H + 150];
             break;
          case 'Split-Complementary':
-            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthiary'];
+            data.name.accent = ['primary', 'secondary', 'tertiary', 'fourthary'];
             data.hue.accent = [H, H + 30, H + 180, H + 210];
             break;
          case 'Monochromatic':
@@ -602,7 +602,7 @@ function Mushroom(addTo) {
       return code;
    };
    var M = {
-      version: '3.03',
+      version: '3.04',
       growTimes: NaN,
       loadTimes: NaN,
       color: 'blue',
