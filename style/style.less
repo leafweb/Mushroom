@@ -534,7 +534,7 @@ splash-screen{
    }
    &.show{
       display: flex;
-      transition: display 2s 4s;
+      animation: fa-fade 2s infinite;
       .logo{
          animation: show 0.3s both;
       }
@@ -544,14 +544,22 @@ splash-screen{
    }
    &:not(.show){
       display: none;
-      transition: display 2s 4s;
-      .logo{
-         animation: hide 0.3s both;
-      }
-      .title{
-         animation: hide 0.3s 0.1s both;
-      }
    }
+   .progress {
+         position: fixed;
+         top: 0;
+         left: 0;
+         height: 4.5px;
+         width: 100%;
+         background: linear-gradient(var(--primary) 0 0),
+            linear-gradient(var(--primary) 0 0),
+            var(--background);
+         background-size: 60% 100%;
+         background-repeat: no-repeat;
+         animation: progress-7x9cg2 3s infinite;
+      }
+   
+      
 }
 body.load{
    main,menu,header,tabbar,navbar{
@@ -2345,3 +2353,16 @@ color-picker {
       opacity: 1;
    }
 }
+@keyframes progress-7x9cg2 {
+         0% {
+            background-position: -150% 0, -150% 0;
+         }
+   
+         66% {
+            background-position: 250% 0, -150% 0;
+         }
+   
+         100% {
+            background-position: 250% 0, 250% 0;
+         }
+      }

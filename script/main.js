@@ -909,7 +909,7 @@ function Code() {
       return diff;
    }, {});
    var code = '';
-   if (Object.keys(difference).length < 0) {
+   if (Object.keys(difference).length > 1) {
       code = 'var primarySettings = {';
       for (i in difference) {
          if (typeof(difference[i]) == 'string') {
