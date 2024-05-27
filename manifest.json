@@ -1,0 +1,48 @@
+{
+   "name": "Mushroom.js",
+   "short_name": "Mushroom",
+   "description": "Generate theme colors for websites",
+   "display": "standalone",
+   "background_color": "#f3f0f6",
+   "icons": [
+      {
+         "src": "image/icon/icon(32).png",
+         "type": "image/png",
+         "sizes": "32×32"
+      },
+      {
+         "src": "image/icon/icon(64).png",
+         "type": "image/png",
+         "sizes": "64×64"
+      },
+      {
+         "src": "image/icon/icon(128).png",
+         "type": "image/png",
+         "sizes": "128×128"
+      },
+      {
+         "src": "image/icon/icon(256).png",
+         "type": "image/png",
+         "sizes": "256×256"
+      },
+      {
+         "src": "image/icon/icon(512).png",
+         "type": "image/png",
+         "sizes": "512×512"
+      },
+      {
+         "src": "image/icon/icon(1024).png",
+         "type": "image/png",
+         "sizes": "1024×1024"
+      },
+      {
+         "src": "image/icon/icon(2048).png",
+         "type": "image/png",
+         "sizes": "2048×2048"
+      },
+      {
+         "src": "image/icon.svg",
+         "sizes": "any"
+      }
+   ]
+}
