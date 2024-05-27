@@ -67,6 +67,7 @@
 // Layout
 html {
    scroll-behavior: smooth;
+   background: var(--background);
 }
 
 body {
@@ -2366,3 +2367,16 @@ color-picker {
             background-position: 250% 0, 250% 0;
          }
       }
+@keyframes filter {
+   0%{filter: url(filter.svg#noise0)};
+   10%{filter: url(filter.svg#noise1)};
+   20%{filter: url(filter.svg#noise2)};
+   30%{filter: url(filter.svg#noise3)};
+   40%{filter: url(filter.svg#noise4)};
+   50%{filter: url(filter.svg#noise5)};
+   60%{filter: url(filter.svg#noise6)};
+   70%{filter: url(filter.svg#noise7)};
+   80%{filter: url(filter.svg#noise8)};
+   90%{filter: url(filter.svg#noise9)};
+   100%{filter: url(filter.svg#noise0)};
+}

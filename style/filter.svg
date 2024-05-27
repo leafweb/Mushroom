@@ -7,8 +7,44 @@
       <feGaussianBlur stdDeviation="10" x="0%" y="0%" width="100%" height="100%" in="colormatrix1" edgeMode="none" result="blur2" />
       <feComposite in="blur2" in2="SourceAlpha" operator="atop" result="composite" />
    </filter>
-   <filter id="noise" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
+   <filter id="noise0" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
       <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="1" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise1" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="2" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise2" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="3" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise3" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="4" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise4" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="5" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise5" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="6" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise6" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="7" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise7" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="8" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise8" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="9" stitchTiles="noStitch" result="turbulence" />
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
+   </filter>
+   <filter id="noise9" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" >
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" seed="10" stitchTiles="noStitch" result="turbulence" />
       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="G" yChannelSelector="A" result="displacementMap" />
    </filter>
 </svg>

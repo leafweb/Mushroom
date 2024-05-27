@@ -38,6 +38,33 @@ function Freeze(x) {
          });
       }, x);
 }
+function Mirage(){
+   var body = document.body;
+   var check = document.querySelector('#mirage').checked;
+   if (check) {
+      body.style.setProperty('animation','filter 0.5s infinite');
+   } else {
+      body.style.removeProperty('animation');
+   }
+   localStorage.setItem('mirage',check);
+}
+function LoeadMirage() {
+   var body = document.body;
+   var storage = localStorage.getItem('mirage');
+   var data;
+   if (storage == undefined) {
+      data = false;
+      localStorage.setItem('mushroom', JSON.stringify({ mode: darkmode }));
+   } else {
+      data = eval(storage);
+   }
+   var check = document.querySelector('#mirage').checked = data;
+   if (data) {
+      body.style.setProperty('animation', 'filter 0.5s infinite');
+   } else {
+      body.style.removeProperty('animation');
+   }
+}
 
 function Show(x, y = 'show') { if (!x.classList.contains(y)) { x.classList.add(y) } };
 function Hide(x, y = 'show') { if (x.classList.contains(y)) { x.classList.remove(y) } };
@@ -949,6 +976,7 @@ Forms();
 Highlights();
 CopyBtn();
 Statusbar();
+LoeadMirage();
 
 var PCS = window.matchMedia("(prefers-color-scheme: dark)");
 PCS.onchange = (e) => {
