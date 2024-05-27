@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Mushroom</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color">
+   <!-- favicon -->
+   <link rel="icon" href="image/icon/icon-foreground(1024).png" sizes="1024x1024" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(512).png" sizes="512x512" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(256).png" sizes="256x256" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(128).png" sizes="128x128" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(64).png" sizes="64x64" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(32).png" sizes="32x32" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground.svg" type="image/svg+xml">
+   <!-- OG -->
+   <meta property="og:title" content="Mushroom.js">
+   <meta property="og:description" content="Generate theme colors for websites">
+   <meta property="og:url" content="https://leafweb.github.io/Mushroom/">
+   <meta property="og:image" content="https://leafweb.github.io/Mushroom/image/icon-foreground(1024).png">
+   <meta property="og:image:width" content="1024" />
+   <meta property="og:image:height" content="512" />
+   <meta property="og:type" content="website">
+   <meta property="og:locale" content="en">
+   <!-- style -->
+   <link rel="stylesheet/less" href="style/style.less">
+   <link rel="stylesheet" href="style/font-awesome/css/all.css">
+   <!-- script -->
+   <script src="script/less.js"></script>
+   <script src="script/Mushroom.js"></script>
+</head>
+<body class="load">
+   <splash-screen class="show">
+      <div class="logo">
+         <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="var(--surface)" width="1000" height="1000" rx="200"/>
+            <g fill="var(--on-surface)">
+               <path d="M 400,300 C 480,580 380,580 400,850 C 400,900 560,900 560,850 C 500,580 560,580 560,300" />
+               <path d="M 421,468 L 421,385 L 393,468 C 143,468 31,413 143,302 C 476,24 588,24 866,357 C 977,468 810,468 421,468 z" />
+            </g>
+         </svg>
+      </div>
+      <div class="title">
+         <span>Mushroom.js</span>
+      </div>
+   </splash-screen>
+   <header>
+      <div class="logo"><img src="image/icon/icon-foreground.svg" alt="Mushroom"></div>
+      <div class="title">Mushroom.js</div>
+      <div class="symbol" onclick="Menu()">menu</div>
+   </header>
+   <backdrop></backdrop>
+   <menu>
+      <menu-header>
+         <div class="color"></div>
+         <div class="title">Mushroom.js</div>
+      </menu-header>
+      <menu-body>
+         <accordion onclick="Toggle(this)">
+            <div class="header">
+               <div>Theme : </div>
+               <div class="darkmode"></div>
+            </div>
+            <div class="container">
+               <div onclick="Darkmode(false)">
+                  <div class="label">Light</div>
+                  <div class="symbol">light_mode</div>
+               </div>
+               <div onclick="Darkmode(true)">
+                  <div class="label">Dark</div>
+                  <div class="symbol">dark_mode</div>
+               </div>
+               <div onclick="Darkmode('auto')">
+                  <div class="label">Auto</div>
+                  <div class="symbol">brightness_auto</div>
+               </div>
+            </div>
+         </accordion>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <div class="list">
+            <div onclick="OpenUrl('https://github.com/leafweb')">
+               <span> GitHub </span>
+               <i class="fab fa-github"></i>
+            </div>
+            <div onclick="OpenUrl('https://instagram.com/leafweb.io')">
+               <span> Instagram </span>
+               <i class="fab fa-instagram"></i>
+            </div>
+            <div onclick="OpenUrl('https://t.me/leafweb_io')">
+               <span> Telegram </span>
+               <i class="fab fa-telegram"></i>
+            </div>
+            <div onclick="OpenUrl('mailto:leafweb.io@gmail.com')">
+               <span> Email </span>
+               <i class="fas fa-envelope"></i>
+            </div>
+         </div>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <div class="list">
+            <div class="mushroom" onclick="OpenUrl('https://github.com/leafweb/Mushroom')">
+               <div class="label"> Mushroom v4.0 </div>
+               <div class="icon">
+                  <img src="image/icon/icon-foreground.svg" alt="Mushroom">
+               </div>
+            </div>
+            <div class="leafweb" onclick="OpenUrl('https://leafweb.github.io/')">
+               <div class="label"> Made By Leafweb </div>
+               <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                     <defs>
+                        <style>
+                           #svg-leaf-path {
+                              filter: drop-shadow(-30px 50px 50px #0005);
+                           }
+                        </style>
+                        <g id="svg-leaf">
+                           <rect transform="rotate(15 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+                           <rect transform="rotate(45 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+                           <rect transform="rotate(75 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+                           <animateTransform attributeName="transform" type="rotate" from="0 500 500" to="360 500 500" dur="30s" repeatCount="indefinite" />
+                        </g>
+                        <mask id="svg-mask-leaf">
+                           <rect fill="#000" width="1000" height="1000" />
+                           <use fill="#fff" href="#svg-leaf" />
+                        </mask>
+                     </defs>
+                     <rect fill="var(--primary)" mask="url(#svg-mask-leaf)" width="1000" height="1000" />
+                     <path id="svg-leaf-path" fill="var(--on-primary)" transform="scale(0.8)translate(125,160)" d="M 500 700 C 300 700 200 500 50 400 C 250 350 400 400 500 600 C 600 400 750 350 950 400 C 800 500 700 700 500 700z M 500 700 C 200 700 350 300 500 100 C 650 300 800 700 500 700z M 480 680 L 520 680 Q 520 860 400 800 C 460 820 480 820 480 680z" />
+                  </svg>
+               </div>
+            </div>
+         </div>
+      </menu-body>
+   </menu>
+   <main>
+      <page name="p-palette">
+         <article>
+            <h1 class="c d1">Pale<span class="p">tt</span>e</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div id="palettes">
+               <h3 class="tag">Input Colors</h3>
+               <div class="input-colors">
+                  <div id="input-color"></div>
+                  <div id="input-custom-color"></div>
+               </div>
+               <h3 class="tag">Main Palette</h3>
+               <div id="main-palette"></div>
+               <h3 class="tag">Sub Palette</h3>
+               <div id="other-palette"></div>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+      <page name="p-brush">
+         <article>
+            <h1 class="c d1">Br<span class="p">us</span>h</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div class="switch">
+               <div class="b-static show" onclick="DynamicTab(false)"> Static </div>
+               <div class="b-dynamic" onclick="DynamicTab(true)"> Dynamic </div>
+            </div>
+            <div id="forms">
+               <div class="static show">
+                  <div>
+                     <form id="FormTheme" oninput="FormTheme()" method="dialog">
+                        <h3 class="tag">Theme</h3>
+                        <div class="theme">
+                           <input type="radio" name="theme" class="text" placeholder="Light" value="false">
+                           <input type="radio" name="theme" class="text" placeholder="Dark" value="true">
+                           <input type="radio" name="theme" class="text" placeholder="Auto" value="'auto'">
+                        </div>
+                     </form>
+                     <form id="FormHSL" oninput="FormHSL()" method="dialog">
+                        <h3 class="tag">HSL Color</h3>
+                        <div class="hsl">
+                           <div>
+                              <input type="range" min="0" max="360" name="hue">
+                              <output class="o-hue">000</output>
+                           </div>
+                           <div>
+                              <input type="range" min="0" max="100" name="saturation">
+                              <output class="o-saturation">000</output>
+                           </div>
+                           <div>
+                              <input type="range" min="0" max="100" name="lightness">
+                              <output class="o-lightness">000</output>
+                           </div>
+                        </div>
+                     </form>
+                     <form id="FormColorName" oninput="FormColorName()" method="dialog">
+                        <h3 class="tag">Color Name</h3>
+                        <div class="color-name">
+                           <input type="text" name="color-name">
+                        </div>
+                     </form>
+                     <form id="FormRandom" onsubmit="FormRandom()" method="dialog">
+                        <h3 class="tag">Random Color</h3>
+                        <button class="full" type="submit">Random</button>
+                     </form>
+                     <form id="FormPalette" oninput="FormPalette()" method="dialog">
+                        <h3 class="tag">Palette</h3>
+                        <div class="palette">
+                           <label>
+                              <div>Has Palette</div>
+                              <input type="checkbox" name="hasPalette" class="switch">
+                           </label>
+                           <label>
+                              <div>Reverse Palette</div>
+                              <input type="checkbox" name="reversePalette" class="switch">
+                           </label>
+                        </div>
+                     </form>
+                     <form id="FormCustomColor" oninput="FormCustomColor()" method="dialog">
+                        <h3 class="tag">Custom Color</h3>
+                        <div class="custom-color">
+                           <div class="row"></div>
+                           <button class="full symbol" onclick="AddRow()">add</button>
+                        </div>
+                     </form>
+                  </div>
+                  <div>
+                     <form id="FormColorScheme" oninput="FormColorScheme()" method="dialog">
+                        <h3 class="tag">Colors Scheme</h3>
+                        <div class="colors-scheme">
+                           <div class="preview">
+                              <div class="conic"></div>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                                 <defs>
+                                    <g id="svg-a55">
+                                       <path d="M 500,250 C 300,50 700,50 500,250" />
+                                       <path d="M 500,500 500,250" />
+                                    </g>
+                                 </defs>
+                                 <g id="svg-color-rotate" fill="var(--background)" stroke="var(--background)" stroke-linecap="round" stroke-width="10">
+                                    <use id="svg-color-1" href="#svg-a55" />
+                                    <use id="svg-color-2" fill="none" href="#svg-a55" />
+                                    <use id="svg-color-3" fill="none" href="#svg-a55" />
+                                    <use id="svg-color-4" fill="none" href="#svg-a55" />
+                                 </g>
+                                 <circle fill="var(--background)" cx="500" cy="500" r="20" />
+                              </svg>
+                           </div>
+                           <div class="list">
+                              <label>
+                                 <div>Monochromatic</div>
+                                 <input type="radio" name="color-scheme" value="Monochromatic">
+                              </label>
+                              <label>
+                                 <div>Complementary</div>
+                                 <input type="radio" name="color-scheme" value="Complementary">
+                              </label>
+                              <label>
+                                 <div>Analogous</div>
+                                 <input type="radio" name="color-scheme" value="Analogous">
+                              </label>
+                              <label>
+                                 <div>Triadic</div>
+                                 <input type="radio" name="color-scheme" value="Triadic">
+                              </label>
+                              <label>
+                                 <div>Compound</div>
+                                 <input type="radio" name="color-scheme" value="Compound">
+                              </label>
+                              <label>
+                                 <div>Square</div>
+                                 <input type="radio" name="color-scheme" value="Square">
+                              </label>
+                              <label>
+                                 <div>Tetradic</div>
+                                 <input type="radio" name="color-scheme" value="Tetradic">
+                              </label>
+                              <label>
+                                 <div>Split-Complementary</div>
+                                 <input type="radio" name="color-scheme" value="Split-Complementary">
+                              </label>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="dynamic">
+                  <h3 class="tag">Dynamic Color</h3>
+                  <div class="images">
+                     <img src="image/preview/5.jpg">
+                     <img src="image/preview/8.jpg">
+                     <img src="image/preview/6.jpg">
+                     <img src="image/preview/1.jpg">
+                     <img src="image/preview/3.jpg">
+                     <img src="image/preview/7.jpg">
+                     <img src="image/preview/4.jpg">
+                     <img src="image/preview/2.jpg">
+                     <img src="image/preview/0.jpg">
+                     <img src="image/preview/9.jpg">
+                  </div>
+                  <input type="file" id="image" onchange="FormDynamic()" hidden>
+                  <label for="image" class="btn full"> Select From Your Device </label>
+               </div>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+      <page name="p-home" class="show">
+         <div class="start">
+            <div class="logo">
+               <div class="image">
+                  <img src="image/icon/icon-foreground.svg" alt="Mushroom">
+               </div>
+               <div class="title">
+                  <span>Mushroom.js</span>
+                  <p>Generate theme colors for websites</p>
+               </div>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div class="options">
+               <div>
+                  <div class="label">Easy To Learn</div>
+                  <div class="symbol">school</div>
+               </div>
+               <div>
+                  <div class="label">Fast And Powerful</div>
+                  <div class="symbol">Bolt</div>
+               </div>
+               <div>
+                  <div class="label">Light And Compact</div>
+                  <div class="symbol">nest_eco_leaf</div>
+               </div>
+               <div>
+                  <div class="label">Flexible</div>
+                  <div class="symbol">brush</div>
+               </div>
+            </div>
+         </div>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <article>
+            <h1 class="tag1"> What is <span class="p"><b>Mushroom.js</b></span> ?</h1>
+            <p>
+               <b>Mushroom.js</b> is a script for creating color palettes for web applications, which is very <mark>fast</mark> and <mark>Light</mark>.
+            </p>
+            <h2 class="tag2"> Install <b>Mushroom.js</b>:</h2>
+            <p>
+               To install and set up it, just
+               <a href="script/Mushroom.min.js" download>download</a>
+               it and put the following code in your <b>HTML</b> document:
+            </p>
+            <pre lang="html"><code>&lt;script src="Mushroom.min.js">&lt;/script></code></pre>
+            <p> Now it's time to call the <mark class="mono">Mushroom()</mark> function: </p>
+            <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+            <p>
+               After running this code, you will see the following color palette in your <b>HTML</b> document:
+            </p>
+            <pre lang="css"><code>/**** Mushroom v4 ****/
+:root{
+   --primary: #0000cc;
+   --on-primary: #ffffff;
+   --primary-container: #b3b3ff;
+   --on-primary-container: #00004d;
+   --secondary: #6600cc;
+   --on-secondary: #ffffff;
+   --secondary-container: #d9b3ff;
+   --on-secondary-container: #26004d;
+   --tertiary: #0066cc;
+   --on-tertiary: #ffffff;
+   --tertiary-container: #b3d9ff;
+   --on-tertiary-container: #00264d;
+   --error: #cc0000;
+   --on-error: #ffffff;
+   --error-container: #ffb3b3;
+   --on-error-container: #4d0000;
+   --inverse-primary: #9999ff;
+   --on-inverse-primary: #000066;
+   --inverse-secondary: #cc99ff;
+   --on-inverse-secondary: #330066;
+   --inverse-tertiary: #99ccff;
+   --on-inverse-tertiary: #003366;
+   --inverse-error: #ff9999;
+   --on-inverse-error: #660000;
+   --inverse-surface: #222244;
+   --on-inverse-surface: #aaaad5;
+   --primary-fixed: #9999ff;
+   --on-primary-fixed: #000033;
+   --primary-fixed-dim: #0000cc;
+   --on-primary-fixed-dim: #ffffff;
+   --secondary-fixed: #cc99ff;
+   --on-secondary-fixed: #190033;
+   --secondary-fixed-dim: #6600cc;
+   --on-secondary-fixed-dim: #ffffff;
+   --tertiary-fixed: #99ccff;
+   --on-tertiary-fixed: #001933;
+   --tertiary-fixed-dim: #0066cc;
+   --on-tertiary-fixed-dim: #ffffff;
+   --error-fixed: #ff9999;
+   --on-error-fixed: #330000;
+   --error-fixed-dim: #cc0000;
+   --on-error-fixed-dim: #ffffff;
+   --surface: #ddddee;
+   --on-surface: #3b3b77;
+   --surface-container-low: #d6d6eb;
+   --on-surface-container-low: #383870;
+   --surface-container: #cccce5;
+   --on-surface-container: #353569;
+   --surface-container-high: #c5c5e2;
+   --on-surface-container-high: #313163;
+   --surface-variant: #9f9fdf;
+   --on-surface-variant: #202060;
+   --background: #eeeef6;
+   --on-background: #080811;
+   --glass: #eeeef666;
+   --on-glass: #080811cc;
+   --glass-container: #cccce566;
+   --on-glass-container: #191933cc;
+   --glass-variant: #0000cc66;
+   --on-glass-variant: #ffffffcc;
+   --outline: #7777bb;
+   --outline-variant: #b3b3e6;
+}</code></pre>
+            <h2 class="tag3">Learn More</h2>
+            <p>
+               To learn more about <b>Mushroom.js</b>, visit the learning section.
+            </p>
+            <button class="full" onclick="Page('doc')">
+               <div>Learn</div>
+               <span class="symbol">import_contacts</span>
+            </button>
+            <p>
+               You can also create your favorite color palette in the pen section.
+            </p>
+            <button class="full" onclick="Page('brush')">
+               <div>Brush</div>
+               <span class="symbol">brush</span>
+            </button>
+         </article>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+      </page>
+      <page name="p-doc">
+         <article>
+            <h1 class="c d1">L<span class="p">ea</span>rn</h1> 
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div id="docs">
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+      <page name="p-code">
+         <article>
+            <h1 class="c d1">Co<span class="p">d</span>e</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div id="codes">
+               <h3 class="tag">HTML Code</h3>
+               <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
+               <h3 class="tag"> JavaScript Code </h3>
+               <pre lang="js" id="codeJs"></pre>
+               <h3 class="tag"> CSS Output </h3>
+               <pre lang="css" id="codeCss"></pre>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+   </main>
+   <tabbar>
+      <tab name="pb-code" onclick="Page('code');Code()">
+         <div class="symbol">code</div>
+         <div class="label">Code</div>
+      </tab>
+      <tab name="pb-doc" onclick="Page('doc')">
+         <div class="symbol">import_contacts</div>
+         <div class="label">Learn</div>
+      </tab>
+      <tab name="pb-home" onclick="Page('home')" class="on">
+         <div class="symbol">home</div>
+         <div class="label">Home</div>
+      </tab>
+      <tab name="pb-brush" onclick="Page('brush')">
+         <div class="symbol">brush</div>
+         <div class="label">Brush</div>
+      </tab>
+      <tab name="pb-palette" onclick="Page('palette');Palette()">
+         <div class="symbol">palette</div>
+         <div class="label">Palette</div>
+      </tab>
+   </tabbar>
+   <navbar>
+      <div class="faq symbol" onclick="Menu()">menu</div>
+      <div class="tabbar">
+         <tab name="pb-home" onclick="Page('home')" class="on">
+            <div class="symbol">home</div>
+            <div class="label">Home</div>
+         </tab>
+         <tab name="pb-brush" onclick="Page('brush')">
+            <div class="symbol">brush</div>
+            <div class="label">Brush</div>
+         </tab>
+         <tab name="pb-doc" onclick="Page('doc')">
+            <div class="symbol">import_contacts</div>
+            <div class="label">Learn</div>
+         </tab>
+         <tab name="pb-palette" onclick="Page('palette');Palette()">
+            <div class="symbol">palette</div>
+            <div class="label">Palette</div>
+         </tab>
+         <tab name="pb-code" onclick="Page('code');Code()">
+            <div class="symbol">code</div>
+            <div class="label">Code</div>
+         </tab>
+      </div>
+   </navbar>
+   <color-picker-backdrop>
+      <color-picker>
+         <div class="preview"></div>
+         <div class="range">
+            <input type="range" class="hue" min="0" max="360" value="360">
+            <input type="range" class="saturation" min="0" max="100" value="100">
+            <input type="range" class="lightness" min="0" max="100" value="50">
+            <input type="range" class="alpha" min="0" max="1" value="1" step="0.01">
+         </div>
+         <div class="btns">
+            <button class="text cancel"> Cancel </button>
+            <button class="text set"> Set </button>
+         </div>
+      </color-picker>
+   </color-picker-backdrop>
+   <script src="script/w3.highlights.js"></script>
+   <script src="script/main.js"></script>
+   <script>
+      window.addEventListener('load', ()=>{
+         var font1 = new FontFace('Symbol', 'url(style/font/Symbol.woff2)');
+         var font2 = new FontFace('RobotoFlex', 'url(style/font/RobotoFlex.ttf)');
+         var font3 = new FontFace('RobotoMono', 'url(style/font/RobotoMono.ttf)');
+         Promise.all([font1.load(), font2.load(), font3.load()])
+            .then(() => {
+               setTimeout(()=>{
+                  Hide(document.querySelector('splash-screen'))
+                  Hide(document.body, 'load')
+               },2000);
+            })
+            .catch((err) => console.error(err));
+      });
+   </script>
+</body>
+</html>
