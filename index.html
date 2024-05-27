@@ -27,7 +27,7 @@
    <link rel="stylesheet/less" href="style/style.less">
    <link rel="stylesheet" href="style/font-awesome/css/all.css">
    <!-- script -->
-   <script src="script/less.js"></script>
+   <script src="script/less.min.js"></script>
    <script src="script/Mushroom.js"></script>
 </head>
 <body class="load">
@@ -575,9 +575,9 @@
    <script src="script/main.js"></script>
    <script>
       window.addEventListener('load', ()=>{
-         var font1 = new FontFace('Symbol', 'url(style/font/Symbol.woff2)');
-         var font2 = new FontFace('RobotoFlex', 'url(style/font/RobotoFlex.ttf)');
-         var font3 = new FontFace('RobotoMono', 'url(style/font/RobotoMono.ttf)');
+         var font1 = new FontFace('Symbol', 'url(style/fonts/Symbol.woff2)');
+         var font2 = new FontFace('RobotoFlex', 'url(style/fonts/RobotoFlex.ttf)');
+         var font3 = new FontFace('RobotoMono', 'url(style/fonts/RobotoMono.ttf)');
          Promise.all([font1.load(), font2.load(), font3.load()])
             .then(() => {
                setTimeout(()=>{
