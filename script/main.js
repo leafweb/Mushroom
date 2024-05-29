@@ -48,7 +48,7 @@ function Mirage(){
    }
    localStorage.setItem('mirage',check);
 }
-function LoeadMirage() {
+function LoadMirage() {
    var body = document.body;
    var storage = localStorage.getItem('mirage');
    var data;
@@ -940,7 +940,7 @@ function Code() {
       code = 'var primarySettings = {';
       for (i in difference) {
          if (typeof(difference[i]) == 'string') {
-            code += `\n   ${i}: '${difference[i]}',`;
+            code += `\n   ${i}: "${difference[i]}",`;
          } else if (typeof(difference[i]) == 'object') {
             if (JSON.stringify(difference[i]) == '{}') {
                code += '';
@@ -976,7 +976,7 @@ Forms();
 Highlights();
 CopyBtn();
 Statusbar();
-LoeadMirage();
+LoadMirage();
 
 var PCS = window.matchMedia("(prefers-color-scheme: dark)");
 PCS.onchange = (e) => {

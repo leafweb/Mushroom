@@ -826,7 +826,7 @@ function Mushroom(primarySettings) {
       return code;
    };
    var M = {
-      version: '4',
+      version: 4,
       growTimes: 0,
       code: '',
       themeColor: {},
@@ -951,6 +951,7 @@ function Mushroom(primarySettings) {
    PCS.onchange = (e) => { if (M.darkmode === 'auto') Grow() };
 
    function Grow() {
+      var startTime = performance.now();
       var mode;
       switch (M.darkmode) {
          case true:
@@ -968,7 +969,6 @@ function Mushroom(primarySettings) {
             }
             break;
       }
-      var startTime = performance.now();
       var themeColor = ThemeColor(M.color, M.customColor, mode, M.colorScheme);
       if (M.hasPalette) {
          var palette = Palette(M.color, M.customColor, mode, M.colorScheme, M.parts, M.reversePalette);
@@ -986,7 +986,7 @@ function Mushroom(primarySettings) {
       M.themeColor = themeColor;
       M.palette = palette;
       M.code = code;
-      M.growTimes = (performance.now() - startTime).toFixed(1);
+      M.growTimes = Number((performance.now() - startTime).toFixed(1));
       return M;
    }
    Grow();

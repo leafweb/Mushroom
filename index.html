@@ -381,7 +381,7 @@
          <article>
             <h1 class="tag1"> What is <span class="p"><b>Mushroom.js</b></span> ?</h1>
             <p>
-               <b>Mushroom.js</b> is a script for creating color palettes for web applications, which is very <mark>fast</mark> and <mark>Light</mark>.
+               <b>Mushroom.js</b> is a script for generating color palettes for web applications, which is very <mark>fast</mark> and <mark>Light</mark>.
             </p>
             <h2 class="tag2"> Install <b>Mushroom.js</b>:</h2>
             <p>
@@ -491,6 +491,231 @@
                </svg>
             </div>
             <div id="docs">
+               <h2 class="tag">installation</h2>
+               <p>To install, you must first download the Mushroom script.</p>
+               <div>
+                  <a href="script/Mushroom.js" download class="btn full"> Mushroom.js</a>
+                  <a href="script/Mushroom.min.js" download class="btn full"> Mushroom.min.js </a>
+               </div>
+               <p>Now you need to add it to your HTML document</p>
+               <pre lang="HTML"><code>&lt;script src="Mushroom.js">&lt;script></code></pre>
+               <p> And finally call the <mark class="mono">Mushroom()</mark> function </p>
+               <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+               <p>Now you can use the Mushroom color palette in CSS as a variable.</p>
+               <pre lang="css"><code>body {
+   background: var(--background);
+   color: var(--on-background);
+}
+button {
+   background: var(--primary);
+   color: var(--on-primary);
+}</code></pre>
+               <h2 class="tag"> Primary Settings </h2>
+               <p>
+                  You can write the primary settings of <mark>Mushroom</mark> inside an object and give that object to the <mark class="mono">Mushroom()</mark> function as an argument.
+               </p>
+               <pre lang="JavaScript"><code>var primarySettings = {
+   color: 'blue',
+   darkmode: false,
+}
+
+let M = Mushroom(primarySettings);</code></pre>
+               <p>list of <mark>Primary Settings</mark> :</p>
+               <ul>
+               <li>addTo</li>
+               <li>color</li>
+               <li>colorScheme</li>
+               <li>customColor</li>
+               <li>darkmode</li>
+               <li>hasPalette</li>
+               <li>reversePalette</li>
+               <li>parts</li>
+               <li>prefix</li>
+            </ul>
+               <h3 class="tag2">addTo</h3>
+               <p>This item determines where the color palette is added. Its default value is ':root'.</p>
+               <pre lang="JavaScript"><code>let M1 = Mushroom({addTo: 'footer'});
+let M2 = Mushroom({addTo: '#goldCard'});
+let M3 = Mushroom({addTo: 'pre>*'});</code></pre>
+               <h3 class="tag2">color</h3>
+               <p>
+                  With this item you can set the color for your palette. You can only use the <mark>HEX</mark>, <mark>HSL</mark>, <mark>RGB</mark> color formats and <mark>140 standard web color names</mark>. The default value is 'Blue Violet'.
+               </p>
+               <pre lang="JavaScript"><code>let M1 = Mushroom({color: 'orange'});
+let M2 = Mushroom({color: '#28a428'});
+let M3 = Mushroom({color: 'hsl(340, 35%, 18%)'});
+let M4 = Mushroom({color: 'rgb(190, 218, 211)'});</code></pre>
+               <h3 class="tag2">colorScheme</h3>
+               <p>With this item, you can determine your color scheme from <mark>Monochromatic</mark>, <mark>Complementary</mark>, <mark>Analogous</mark>, <mark>Triadic</mark>, <mark>Compound</mark>, <mark>Square</mark>, <mark>Tetradic</mark>, <mark>Split-Complementary</mark>.  The default value is 'Analogous'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({colorScheme: 'monochromatic'});</code></pre>
+               <h3 class="tag">customColor</h3>
+               <p>With this item, you can add and use a color with the desired name. The default value is '{}'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({customColor: {"warn": "orange"}});</code></pre>
+               <h3 class="tag2">darkmode</h3>
+               <p>With this item you can specify the dark mode. You can use <mark class="mono">true</mark>, <mark class="mono">false</mark> and <mark class="mono">auto</mark> values . The default value is 'auto'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({darkmode: 'auto'});</code></pre>
+               <h3 class="tag2"> hasPalette </h3>
+               <p>With this item, you can also use a sub-palette. Its default value is 'false'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({hasPalette: true});</code></pre>
+               <h3 class="tag2"> reversePalette </h3>
+               <p>When this item is on True, when you switch between light and dark mode, sub-palette colors are reversed. Its default value is 'false'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({reversePalette: true});</code></pre>
+               <h3 class="tag2"> parts </h3>
+               <p>With this item, you can specify the number of members of the sub-pallet as well as its Lightness value. Its default value is <span class="mono">[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]</span></p>
+               <pre lang="JavaScript"><code>let M = Mushroom({parts: [10, 30, 50, 70, 90]});</code></pre>
+               <h3 class="tag2"> prefix </h3>
+               <p>To be sure, you can set a prefix for css variables with this item. Its default value is ' '</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({parts: [10, 30, 50, 70, 90]});</code></pre>
+               <pre lang="css"><code>body{
+   background: var(--mjs-background);
+   color: var(--mgs-on-background);
+}</code></pre>
+               <h2 class="tag">Quick actions</h2>
+               <p>You can change Mushroom Settings with quick reactions without calling the function again.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom();
+M.setColor('red');
+M.darkmode(true);</code></pre>
+               <p>list of Mushroom functions:</p>
+               <table>
+                  <tr>
+                     <th>Code</th>
+                     <th>Description</th>
+                  </tr>
+                  <tr>
+                     <td>addCustomColor(object)</td>
+                     <td>Add custom colors.</td>
+                  </tr>
+                  <tr>
+                     <td>clearCustomColor()</td>
+                     <td>Clear custom colors.</td>
+                  </tr>
+                  <tr>
+                     <td>random()</td>
+                     <td>Set a random color.</td>
+                  </tr>
+                  <tr>
+                     <td>setColor(string)</td>
+                     <td>Set a color.</td>
+                  </tr>
+                  <tr>
+                     <td>setColorScheme(string)</td>
+                     <td>Set a color scheme</td>
+                  </tr>
+                  <tr>
+                     <td>setDarkmode(boolean || 'auto')</td>
+                     <td>Set Darkmode.</td>
+                  </tr>
+                  <tr>
+                     <td>setDynamicColor(element)</td>
+                     <td>Create a theme of colors in a image elm</td>
+                  </tr>
+                  <tr>
+                     <td>setHue(number)</td>
+                     <td>Set hue.</td>
+                  </tr>
+                  <tr>
+                     <td>setLightness(number)</td>
+                     <td>Set lightness.</td>
+                  </tr>
+                  <tr>
+                     <td>setPalette(boolean)</td>
+                     <td>Set palette.</td>
+                  </tr>
+                  <tr>
+                     <td>setParts(array)</td>
+                     <td>Set parts of sup-palette.</td>
+                  </tr>
+                  <tr>
+                     <td>setReversePalette(boolean)</td>
+                     <td>Reverse palette colors.</td>
+                  </tr>
+                  <tr>
+                     <td>setSaturation(number)</td>
+                     <td>Set saturation.</td>
+                  </tr>
+                  <tr>
+                     <td>toggleMode()</td>
+                     <td>Quick switch between dark and light mode.</td>
+                  </tr>
+               </table>
+               <h3 class="tag">Return values from Mushroom function</h3>
+               <pre lang="JavaScript"><code>let M = Mushroom();
+console.log(M.darkmode); // 'auto' 
+console.log(M.hasPalette); // false</code></pre>
+               <table>
+                  <tr>
+                     <th>Code</th>
+                     <th>Output</th>
+                  </tr>
+                  <tr>
+                     <td>addTo</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>color</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>colorScheme</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>customColor</td>
+                     <td>object</td>
+                  </tr>
+                  <tr>
+                     <td>darkmode</td>
+                     <td>boolean</td>
+                  </tr>
+                  <tr>
+                     <td>growTimes</td>
+                     <td>number (ms)</td>
+                  </tr>
+                  <tr>
+                     <td>hasPalette</td>
+                     <td>boolean</td>
+                  </tr>
+                  <tr>
+                     <td>hue</td>
+                     <td>number</td>
+                  </tr>
+                  <tr>
+                     <td>lightness</td>
+                     <td>number</td>
+                  </tr>
+                  <tr>
+                     <td>palette</td>
+                     <td>object</td>
+                  </tr>
+                  <tr>
+                     <td>parts</td>
+                     <td>array</td>
+                  </tr>
+                  <tr>
+                     <td>prefix</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>reversePalette</td>
+                     <td>boolean</td>
+                  </tr>
+                  <tr>
+                     <td>saturation</td>
+                     <td>number</td>
+                  </tr>
+                  <tr>
+                     <td>themeColor (main palette)</td>
+                     <td>object</td>
+                  </tr>
+                  <tr>
+                     <td>version</td>
+                     <td>number</td>
+                  </tr>
+               </table>
             </div>
             <div class="hwr">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
@@ -597,7 +822,7 @@
                setTimeout(()=>{
                   Hide(document.querySelector('splash-screen'))
                   Hide(document.body, 'load')
-               },2000);
+               },3000);
             })
             .catch((err) => console.error(err));
       });
