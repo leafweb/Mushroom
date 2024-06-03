@@ -514,7 +514,8 @@ function Mushroom(primarySettings){
       }
       for(i in customColor){
          var limit=Object.keys(result);
-         if(limit.indexOf(i)==-1 || i=='error'){
+         var allowed = ['primary','secondary','tertiary','quaternary','error']
+         if(limit.includes(i) == false || allowed.includes(i)){
             data.name.custom.push(i);
             data.hue.custom.push(Color(customColor[i]).h);
             data.saturation.custom.push(Color(customColor[i]).s);

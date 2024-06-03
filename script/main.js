@@ -775,9 +775,12 @@ function FormCustomColor() {
          values.splice(i, 1);
          FormCustomColor();
       }
-   })
+   });
+   Freeze(10);
    M.clearCustomColor();
    M.addCustomColor(obj);
+   preM.clearCustomColor();
+   preM.addCustomColor(obj);
    if (M.error) {
       Toast(M.errorNote,['error'])
    }
@@ -970,7 +973,7 @@ function Code() {
 }
 
 let M = Mushroom();
-let preM = Mushroom({addTo: 'pre,color-picker'})
+let preM = Mushroom({addTo: 'pre,color-picker'});
 M.setDarkmode(Mode());
 preM.setDarkmode(Mode());
 preM.setPalette(true);
