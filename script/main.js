@@ -828,6 +828,7 @@ function DynamicTab(x) {
       Hide(s);
       Show(d);
       if (img) Dynamic(img);
+      Freeze(10)
    } else {
       Hide(DYNAMIC);
       Show(STATIC);
@@ -842,6 +843,7 @@ function DynamicTab(x) {
       document.querySelector('#forms .custom-color .row').innerHTML = '';
       FormCustomColor();
       Statusbar();
+      Freeze(10);
    }
 }
 function TabImage() {
@@ -977,6 +979,7 @@ Highlights();
 CopyBtn();
 Statusbar();
 LoadMirage();
+Freeze(10)
 
 var PCS = window.matchMedia("(prefers-color-scheme: dark)");
 PCS.onchange = (e) => {
