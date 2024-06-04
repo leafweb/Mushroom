@@ -972,7 +972,7 @@ function Code() {
    CopyBtn();
 }
 
-let M = Mushroom({addTo: ':root,:host'});
+let M = Mushroom();
 let preM = Mushroom({addTo: 'pre,color-picker'});
 M.setDarkmode(Mode());
 preM.setDarkmode(Mode());
