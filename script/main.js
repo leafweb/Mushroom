@@ -3,7 +3,7 @@ function Mode() {
    var darkmode;
    if (storage == undefined) {
       darkmode = false;
-      localStorage.setItem('mushroom', JSON.stringify({mode: darkmode}));
+      localStorage.setItem('mushroom', JSON.stringify({ mode: darkmode }));
    } else {
       darkmode = storage.mode
    }
@@ -13,40 +13,41 @@ function Mode() {
 function Darkmode(x) {
    M.setDarkmode(x);
    preM.setDarkmode(x);
-   localStorage.setItem('mushroom', JSON.stringify({mode: M.darkmode}));
+   localStorage.setItem('mushroom', JSON.stringify({ mode: M.darkmode }));
    document.querySelector('menu .darkmode').innerHTML = typeof(M.darkmode) == 'boolean' ? (M.darkmode ? 'Dark' : 'Light') : 'Auto';
    Freeze(10);
    Forms();
    Statusbar();
-   setTimeout(()=>{
+   setTimeout(() => {
       Code();
       Palette();
-   },500)
+   }, 500)
 }
 function Statusbar() {
    var TC = document.querySelector('meta[name="theme-color"]');
    TC.setAttribute('content', M.themeColor['background']);
 }
 function Freeze(x) {
-      var all = document.querySelectorAll('*,*:after,*:before');
+   var all = document.querySelectorAll('*,*:after,*:before');
+   all.forEach(elm => {
+      elm.style.setProperty('transition', '0s');
+   });
+   setTimeout(() => {
       all.forEach(elm => {
-         elm.style.setProperty('transition', '0s');
+         elm.style.removeProperty('transition');
       });
-      setTimeout(() => {
-         all.forEach(elm => {
-            elm.style.removeProperty('transition');
-         });
-      }, x);
+   }, x);
 }
-function Mirage(){
+
+function Mirage() {
    var body = document.body;
    var check = document.querySelector('#mirage').checked;
    if (check) {
-      body.style.setProperty('animation','filter 0.5s infinite');
+      body.style.setProperty('animation', 'filter 0.5s infinite');
    } else {
       body.style.removeProperty('animation');
    }
-   localStorage.setItem('mirage',check);
+   localStorage.setItem('mirage', check);
 }
 function LoadMirage() {
    var body = document.body;
@@ -65,7 +66,6 @@ function LoadMirage() {
       body.style.removeProperty('animation');
    }
 }
-
 function Show(x, y = 'show') { if (!x.classList.contains(y)) { x.classList.add(y) } };
 function Hide(x, y = 'show') { if (x.classList.contains(y)) { x.classList.remove(y) } };
 function Toggle(x, y = 'show') { x.classList.toggle(y) };
@@ -74,7 +74,7 @@ function Menu() {
    var backdrop = document.querySelector('backdrop');
    Toggle(menu);
    Toggle(backdrop);
-   backdrop.onclick = ()=>{
+   backdrop.onclick = () => {
       Toggle(menu);
       Toggle(backdrop);
    }
@@ -89,7 +89,7 @@ function CopyBtn() {
             Toast('Copied')
          } catch (error) {
             console.error(error.message);
-            Toast('Error',['error'])
+            Toast('Error', ['error'])
          }
       }
    });
@@ -144,19 +144,19 @@ function Highlights() {
    });
 }
 function Page(x) {
-   var main = document.querySelector('main');
    var targetPage = document.querySelector(`page[name="p-${x}"]`);
    var targetBtn = document.querySelectorAll(`[name="pb-${x}"]`);
    var activePage = document.querySelector(`page.show`);
    var activeBtn = document.querySelectorAll(`[name^="pb-"].on`);
    if (activePage) { Hide(activePage) };
    if (activeBtn) {
-      activeBtn.forEach(x =>  Hide(x, "on"));
+      activeBtn.forEach(x => Hide(x, "on"));
    }
    if (targetPage) { Show(targetPage) };
    if (targetBtn) {
       targetBtn.forEach(x => Show(x, "on"));
    };
+   var main = document.querySelector('main');
    main.scrollTop = 0;
 }
 function OpenUrl(x) {
@@ -499,7 +499,7 @@ function ColorPicker() {
    var ra = colorPicker.querySelector('.alpha');
    var input = event.currentTarget;
    var currentColor = input.value;
-   var {h,s,l,a} = Color(currentColor);
+   var { h, s, l, a } = Color(currentColor);
    rh.value = h;
    rs.value = s;
    rl.value = l;
@@ -509,20 +509,20 @@ function ColorPicker() {
    ra.style.color = `hsl(${h},${s}%,${l}%)`;
    preview.style.background = currentColor;
    Show(colorPickerBackdrop);
-   
+
    ranges.forEach(x => {
-      x.oninput = ()=> {
+      x.oninput = () => {
          rs.style.color = `hsl(${rh.value},100%,50%)`;
          rl.style.color = `hsl(${rh.value},${rs.value}%,50%)`;
          ra.style.color = `hsl(${rh.value},${rs.value}%,${rl.value}%)`;
          preview.style.background = `hsl(${rh.value},${rs.value}%,${rl.value}%,${ra.value})`;
       }
    })
-   
+
    btnSet.onclick = () => {
       Hide(colorPicker);
       Hide(colorPickerBackdrop);
-      var color = ToHex(rh.value,rs.value,rl.value,ra.value);
+      var color = ToHex(rh.value, rs.value, rl.value, ra.value);
       input.style.color = (Color(color).l > 50 || Color(color).a < 0.8) ? '#000' : '#fff';
       input.innerHTML = input.value = input.style.background = color;
       FormCustomColor();
@@ -584,14 +584,14 @@ function FormHSL() {
    preM.setHue(data.get('hue'));
    preM.setSaturation(data.get('saturation'));
    preM.setLightness(data.get('lightness'));
-   
+
    document.querySelector('#FormHSL .o-hue').innerHTML = data.get('hue');
    document.querySelector('#FormHSL .o-saturation').innerHTML = data.get('saturation');
    document.querySelector('#FormHSL .o-lightness').innerHTML = data.get('lightness');
    document.querySelector('#FormColorName [name="color-name"]').value = M.color;
    var rotate = document.querySelector('#svg-color-rotate');
    rotate.style.transform = `rotate(${data.get('hue')}deg)`;
-   
+
    Statusbar();
 }
 function FormColorName() {
@@ -600,11 +600,11 @@ function FormColorName() {
    var data = new FormData(f);
    M.setColor(data.get('color-name'));
    preM.setColor(data.get('color-name'));
-   
+
    document.querySelector('#FormHSL [name="hue"]').value = document.querySelector('#FormHSL .o-hue').innerHTML = M.hue;
    document.querySelector('#FormHSL [name="saturation"]').value = document.querySelector('#FormHSL .o-saturation').innerHTML = M.saturation;
    document.querySelector('#FormHSL [name="lightness"]').value = document.querySelector('#FormHSL .o-lightness').innerHTML = M.lightness;
-   
+
    Statusbar();
 }
 function FormColorScheme() {
@@ -612,7 +612,7 @@ function FormColorScheme() {
    var data = new FormData(f);
    M.setColorScheme(data.get('color-scheme'));
    preM.setColorScheme(data.get('color-scheme'));
-   
+
    var c1 = document.querySelector('#svg-color-1');
    var c2 = document.querySelector('#svg-color-2');
    var c3 = document.querySelector('#svg-color-3');
@@ -659,28 +659,28 @@ function FormColorScheme() {
          c2.setAttribute('transform', 'rotate(60 500 500)');
          c3.setAttribute('transform', 'rotate(180 500 500)');
          c4.setAttribute('transform', 'rotate(240 500 500)');
-         break; 
+         break;
       case 'Square':
          c1.setAttribute('transform', 'rotate(0 500 500)');
          c2.setAttribute('transform', 'rotate(90 500 500)');
          c3.setAttribute('transform', 'rotate(-90 500 500)');
          c4.setAttribute('transform', 'rotate(180 500 500)');
          break;
-   
+
    }
 }
 function FormRandom() {
    Freeze(10)
    M.random();
    preM.setColor(M.color);
-   
+
    document.querySelector('#FormColorName [name="color-name"]').value = M.color;
    document.querySelector('#FormHSL [name="hue"]').value = document.querySelector('#FormHSL .o-hue').innerHTML = M.hue;
    document.querySelector('#FormHSL [name="saturation"]').value = document.querySelector('#FormHSL .o-saturation').innerHTML = M.saturation;
    document.querySelector('#FormHSL [name="lightness"]').value = document.querySelector('#FormHSL .o-lightness').innerHTML = M.lightness;
    var rotate = document.querySelector('#svg-color-rotate');
    rotate.style.transform = `rotate(${M.hue}deg)`;
-   
+
    Statusbar();
 }
 function FormPalette() {
@@ -752,10 +752,9 @@ function Forms() {
          c3.setAttribute('transform', 'rotate(-90 500 500)');
          c4.setAttribute('transform', 'rotate(180 500 500)');
          break;
-      
+
    }
 }
-
 function FormCustomColor() {
    var root = document.querySelector('#FormCustomColor');
    var inputKey = root.querySelectorAll('.key');
@@ -782,9 +781,10 @@ function FormCustomColor() {
    preM.clearCustomColor();
    preM.addCustomColor(obj);
    if (M.error) {
-      Toast(M.errorNote,['error'])
+      Toast(M.errorNote, ['error'])
    }
 }
+
 function AddRow() {
    var row = document.querySelector('#FormCustomColor .row');
    var existingIndexes = Array.from(document.querySelectorAll('#FormCustomColor .key')).map(elm => Number(elm.getAttribute('index'))).sort((a, b) => a - b);
@@ -815,10 +815,9 @@ function AddRow() {
       colorBtn.setAttribute('onclick', 'ColorPicker()');
       FormCustomColor();
    } else {
-      Toast('Limited: You cannot add new custom colors',['error'])
+      Toast('Limited: You cannot add new custom colors', ['error'])
    }
 }
-
 function DynamicTab(x) {
    var STATIC = document.querySelector('#forms .static')
    var DYNAMIC = document.querySelector('#forms .dynamic')
@@ -852,10 +851,10 @@ function DynamicTab(x) {
 function TabImage() {
    var r = document.querySelector('#forms .dynamic');
    var images = r.querySelectorAll('.images img');
-   images.forEach(img=>{
-      img.onclick = ()=>{
-         images.forEach(x => Hide(x,'on'))
-         Show(event.currentTarget,'on');
+   images.forEach(img => {
+      img.onclick = () => {
+         images.forEach(x => Hide(x, 'on'))
+         Show(event.currentTarget, 'on');
          Dynamic(event.currentTarget);
       }
    })
@@ -879,7 +878,7 @@ function FormDynamic() {
          Dynamic(img);
       }
    }
-   
+
    Statusbar();
 }
 TabImage();
@@ -961,8 +960,8 @@ function Code() {
    } else {
       code += 'var M = Mushroom();';
    }
-   
-   
+
+
    codeJs.innerHTML = '<code>' + code + '</code>';
    codeCss.innerHTML = '<code>' + M.code + '</code>';
    w3CodeColor(codeJs, 'js');
@@ -973,7 +972,7 @@ function Code() {
 }
 
 let M = Mushroom();
-let preM = Mushroom({addTo: 'pre,color-picker'});
+let preM = Mushroom({ addTo: 'pre,color-picker' });
 M.setDarkmode(Mode());
 preM.setDarkmode(Mode());
 preM.setPalette(true);
@@ -986,5 +985,25 @@ Freeze(10)
 
 var PCS = window.matchMedia("(prefers-color-scheme: dark)");
 PCS.onchange = (e) => {
-   Freeze(100);
+   Freeze(10);
+};
+
+function updateProgressBar() {
+   var mainElement = document.querySelector('main');
+   var progressElement = document.querySelector('#progress');
+   var scrollTop = mainElement.scrollTop;
+   var scrollHeight = mainElement.scrollHeight;
+   var clientHeight = mainElement.clientHeight;
+   var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+   if (window.matchMedia('(min-width: 400px)').matches) {
+      progressElement.style.width =  `calc(${scrollPercent}% - 90px)`;
+   } else {
+      progressElement.style.width = scrollPercent + '%';
+   }
+}
+document.querySelector('main').addEventListener('scroll', updateProgressBar);
+updateProgressBar();
+
+window.matchMedia("(min-width: 400px)").onchange=(e)=> {
+   updateProgressBar();
 };

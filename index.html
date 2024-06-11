@@ -34,18 +34,8 @@
 </head>
 <body class="load">
    <splash-screen class="show">
-      <div class="progress"></div>
-      <div class="logo">
-         <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-            <rect fill="var(--surface)" width="1000" height="1000" rx="200"/>
-            <g fill="var(--on-surface)">
-               <path d="M 400,300 C 480,580 380,580 400,850 C 400,900 560,900 560,850 C 500,580 560,580 560,300" />
-               <path d="M 421,468 L 421,385 L 393,468 C 143,468 31,413 143,302 C 476,24 588,24 866,357 C 977,468 810,468 421,468 z" />
-            </g>
-         </svg>
-      </div>
       <div class="title">
-         <span>Mushroom.js</span>
+         <span style="--d: 0.0s">M</span><span style="--d: 0.1s">u</span><span style="--d: 0.2s">s</span><span style="--d: 0.3s">h</span><span style="--d: 0.4s">r</span><span style="--d: 0.5s">o</span><span style="--d: 0.6s">o</span><span style="--d: 0.7s">m</span><span style="--d: 0.8s">.</span><span style="--d: 0.9s">j</span><span style="--d: 1s">s</span>
       </div>
    </splash-screen>
    <header>
@@ -53,6 +43,7 @@
       <div class="title">Mushroom.js</div>
       <div class="symbol" onclick="Menu()">menu</div>
    </header>
+   <div id="progress"></div>
    <backdrop></backdrop>
    <menu>
       <menu-header>
