@@ -515,22 +515,18 @@ splash-screen {
    color: var(--on-background);
    z-index: 10;
    .title {
-      color: var(--surface);
+      color: var(--surface-container-low);
       font-size: 50px;
-      font-weight: 1000;
       font-stretch: 20%;
+      font-weight: 1000;
       &>*{
          position: relative;
          top: 50px;
+         animation: wave 2s var(--d) both infinite;
       }
    }
-   &.show {
+   &.show{
       display: flex;
-      .title {
-         &>*{
-            animation: turnon 2s var(--d) infinite;
-         }
-      }
    }
 }
 body.load {
@@ -2345,15 +2341,18 @@ color-picker {
       filter: url(filter.svg#noise0)
    }
 }
-@keyframes turnon {
+@keyframes wave {
    0%,100% {
       filter: none;
       top: 50px;
       text-shadow: 5px 5px 20px #0000;
+      //font-stretch: 150%;
    }
    50% {
       filter: url(filter.svg#colors);
       top: -50px;
       text-shadow: 5px 5px 20px #0005;
+      //font-weight: 1000;
+      //font-stretch: 20%;
    }
 }
