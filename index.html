@@ -475,7 +475,7 @@
       </page>
       <page name="p-doc">
          <article>
-            <h1 class="c d1">L<span class="p">ea</span>rn</h1> 
+            <h1 class="c d1">L<span class="p">ea</span>rn</h1>
             <div class="hwr">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
                   <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
@@ -513,16 +513,16 @@ button {
 let M = Mushroom(primarySettings);</code></pre>
                <p>list of <mark>Primary Settings</mark> :</p>
                <ul>
-               <li>addTo</li>
-               <li>color</li>
-               <li>colorScheme</li>
-               <li>customColor</li>
-               <li>darkmode</li>
-               <li>hasPalette</li>
-               <li>reversePalette</li>
-               <li>parts</li>
-               <li>prefix</li>
-            </ul>
+                  <li>addTo</li>
+                  <li>color</li>
+                  <li>colorScheme</li>
+                  <li>customColor</li>
+                  <li>darkmode</li>
+                  <li>hasPalette</li>
+                  <li>reversePalette</li>
+                  <li>parts</li>
+                  <li>prefix</li>
+               </ul>
                <h3 class="tag2">addTo</h3>
                <p>This item determines where the color palette is added. Its default value is ':root'.</p>
                <pre lang="JavaScript"><code>let M1 = Mushroom({addTo: 'footer'});
@@ -537,7 +537,7 @@ let M2 = Mushroom({color: '#28a428'});
 let M3 = Mushroom({color: 'hsl(340, 35%, 18%)'});
 let M4 = Mushroom({color: 'rgb(190, 218, 211)'});</code></pre>
                <h3 class="tag2">colorScheme</h3>
-               <p>With this item, you can determine your color scheme from <mark>Monochromatic</mark>, <mark>Complementary</mark>, <mark>Analogous</mark>, <mark>Triadic</mark>, <mark>Compound</mark>, <mark>Square</mark>, <mark>Tetradic</mark>, <mark>Split-Complementary</mark>.  The default value is 'Analogous'.</p>
+               <p>With this item, you can determine your color scheme from <mark>Monochromatic</mark>, <mark>Complementary</mark>, <mark>Analogous</mark>, <mark>Triadic</mark>, <mark>Compound</mark>, <mark>Square</mark>, <mark>Tetradic</mark>, <mark>Split-Complementary</mark>. The default value is 'Analogous'.</p>
                <pre lang="JavaScript"><code>let M = Mushroom({colorScheme: 'monochromatic'});</code></pre>
                <h3 class="tag">customColor</h3>
                <p>With this item, you can add and use a color with the desired name. The default value is '{}'.</p>
@@ -804,16 +804,16 @@ console.log(M.hasPalette); // false</code></pre>
    <script src="script/w3.highlights.js"></script>
    <script src="script/main.js"></script>
    <script>
-      window.addEventListener('load', ()=>{
+      window.addEventListener('load', () => {
          var font1 = new FontFace('Symbol', 'url(style/fonts/Symbol.woff2)');
          var font2 = new FontFace('RobotoFlex', 'url(style/fonts/RobotoFlex.ttf)');
          var font3 = new FontFace('RobotoMono', 'url(style/fonts/RobotoMono.ttf)');
          Promise.all([font1.load(), font2.load(), font3.load()])
             .then(() => {
-               setTimeout(()=>{
+               setTimeout(() => {
                   Hide(document.querySelector('splash-screen'))
                   Hide(document.body, 'load')
-               },5000);
+               }, 5000);
             })
             .catch((err) => console.error(err));
       });
