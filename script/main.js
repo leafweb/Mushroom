@@ -987,23 +987,3 @@ var PCS = window.matchMedia("(prefers-color-scheme: dark)");
 PCS.onchange = (e) => {
    Freeze(10);
 };
-
-function updateProgressBar() {
-   var mainElement = document.querySelector('main');
-   var progressElement = document.querySelector('#progress');
-   var scrollTop = mainElement.scrollTop;
-   var scrollHeight = mainElement.scrollHeight;
-   var clientHeight = mainElement.clientHeight;
-   var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
-   if (window.matchMedia('(min-width: 400px)').matches) {
-      progressElement.style.width =  `calc(${scrollPercent}% - 90px)`;
-   } else {
-      progressElement.style.width = scrollPercent + '%';
-   }
-}
-document.querySelector('main').addEventListener('scroll', updateProgressBar);
-updateProgressBar();
-
-window.matchMedia("(min-width: 400px)").onchange=(e)=> {
-   updateProgressBar();
-};

@@ -406,7 +406,7 @@ function Mushroom(primarySettings){
          lightness:{
             light:{
                accent:[[35,100],[80+(l/10),20-(l/10)]],
-               glass:[[90+(l/10),10-(l/10)],[80+(l/10),20-(l/10)],[40,100]],
+               glass:[[90+(l/10),10-(l/10)],[80+(l/10),20-(l/10)],[70,10]],
                surface:[
                   [85+(l/10),40-(l/10)],
                   [83+(l/10),38-(l/10)],
@@ -421,7 +421,7 @@ function Mushroom(primarySettings){
             },
             dark:{
                accent:[[70,10],[20-(l/10),70+(l/10)]],
-               glass:[[10-(l/10),85+(l/10)],[30-(l/10),70+(l/10)],[70,10]],
+               glass:[[10-(l/10),85+(l/10)],[30-(l/10),70+(l/10)],[35,90]],
                surface:[
                   [15-(l/10),60+(l/10)],
                   [17-(l/10),62+(l/10)],
@@ -816,7 +816,7 @@ function Mushroom(primarySettings){
       return code;
    };
    var M={
-      version:4.01,
+      version:4.02,
       growTimes:0,
       code:'',
       themeColor:{},
