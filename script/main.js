@@ -656,7 +656,7 @@ function FormColorName() {
   document.querySelector('#FormHSL [name="saturation"]').value = document.querySelector('#FormHSL .o-saturation').innerHTML = M.saturation;
   document.querySelector('#FormHSL [name="lightness"]').value = document.querySelector('#FormHSL .o-lightness').innerHTML = M.lightness;
   var rotate = document.querySelector('#svg-color-rotate');
-  rotate.style.transform = `rotate(${data.get('hue')}deg)`;
+  rotate.style.transform = `rotate(${M.hue}deg)`;
   Statusbar();
 }
 function FormColorScheme() {
