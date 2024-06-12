@@ -1884,23 +1884,19 @@ input {
    }
 }
 pre {
-   background: var(--neutral-0);
-   color: var(--neutral-80);
+   background: var(--neutral-variant-95);
+   color: var(--neutral-variant-10);
    border-radius: 20px;
    direction: ltr;
    margin: 20px 0;
    padding: 50px 10px 10px 10px;
    position: relative;
    overflow: hidden;
-   border: 3px solid var(--surface-container);
-
    * {
       font-family: "RobotoMono", "VazirCode", "Emoji";
       user-select: initial;
    }
-
-   &::after,
-   .copy {
+   &::after,.copy {
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -1908,15 +1904,14 @@ pre {
       padding-inline: 10px;
       position: absolute !important;
       top: 10px;
-      background: var(--primary-30);
-      color: var(--primary-90);
+      background: var(--primary-container);
+      color: var(--primary);
       text-transform: uppercase;
       user-select: none;
       border-radius: 10px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 800;
    }
-
    &::after {
       left: 10px;
       content: attr(lang);
@@ -1924,8 +1919,8 @@ pre {
    }
 
    .copy {
-      background: var(--secondary-30);
-      color: var(--secondary-90);
+      background: var(--secondary-container,var(--primary-container));
+      color: var(--secondary,var(--primary));
       right: 10px;
       font-family: "Symbol";
       font-variation-settings:
@@ -1933,44 +1928,36 @@ pre {
          'wght' 600,
          'GRAD' 0,
          'opsz' 48;
-      font-size: 1.5em;
+      font-size: 18px;
       cursor: pointer;
       transition: 0.3s;
-
       &:active {
          transform: scale(0.95);
       }
    }
-
    code {
       display: block;
       max-height: 300px;
       overflow: auto;
       font-size: 16px;
    }
-
-
    ::-webkit-scrollbar {
       display: unset;
       background: none;
       width: 10px;
       height: 10px;
    }
-
    ::-webkit-scrollbar-thumb {
-      background: var(--primary-70) padding-box;
+      background: var(--secondary,var(--primary)) padding-box;
       border: 4px solid transparent;
       border-radius: 10px;
    }
-
    ::-webkit-scrollbar-button {
       display: none;
    }
-
    ::-webkit-scrollbar-corner {
       display: none;
    }
-
 }
 b {
    font-weight: 800;

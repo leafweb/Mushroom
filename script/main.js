@@ -972,10 +972,14 @@ function Code() {
 }
 
 let M = Mushroom();
-let preM = Mushroom({ addTo: 'pre,color-picker' });
+let preM = Mushroom({ 
+   addTo: 'pre,color-picker',
+   hasPalette: true,
+   reversePalette: true,
+   parts: [0,5,10,40,50,70,90,95,100]
+});
 M.setDarkmode(Mode());
 preM.setDarkmode(Mode());
-preM.setPalette(true);
 Forms();
 Highlights();
 CopyBtn();

@@ -3,11 +3,11 @@ function w3CodeColor(elmnt, mode) {
    var elmntObj = (document.getElementById(elmnt) || elmnt);
    var elmntTxt = elmntObj.innerHTML;
    var colorObj = {
-      n: "var(--neutral-80)",
-      p: "var(--primary-70)",
-      s: "var(--secondary-70,var(--primary-70))",
-      t: "var(--tertiary-70,var(--secondary-70,var(--primary-70)))",
-      q: "var(--quaternary--70,var(--tertiary-70,var(--secondary-70,var(--primary-70))))",
+      n: "var(--neutral-variant-30)",
+      p: "var(--primary-40)",
+      s: "var(--secondary-40,var(--primary-40))",
+      t: "var(--tertiary-40,var(--secondary-40,var(--primary-40)))",
+      q: "var(--quaternary--40,var(--tertiary-40,var(--secondary-40,var(--primary-40))))",
       dp: "var(--primary-50)",
       ds: "var(--secondary-50,var(--primary-50))",
       dt: "var(--tertiary-50,var(--secondary-50,var(--primary-50)))",
