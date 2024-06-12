@@ -810,7 +810,7 @@ console.log(M.hasPalette); // false</code></pre>
          var font2 = new FontFace('RobotoFlex', 'url(style/fonts/RobotoFlex.ttf)');
          var font3 = new FontFace('RobotoMono', 'url(style/fonts/RobotoMono.ttf)');
          var font4 = new FontFace('fab', 'url(style/font-awesome/webfonts/fa-brands-400.woff2)');
-         var font5 = new FontFace('fas', 'urlstyle/font-awesome/webfonts/fa-solid-900.woff2');
+         var font5 = new FontFace('fas', 'url(style/font-awesome/webfonts/fa-solid-900.woff2)');
          Promise.all([font1.load(), font2.load(), font3.load(), font4.load(), font5.load()])
             .then(() => {
                setTimeout(() => {
