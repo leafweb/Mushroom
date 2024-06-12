@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Mushroom</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <meta name="theme-color">
+   <!-- manifest -->
+   <link rel="manifest" href="manifest.json">
+   <!-- favicon -->
+   <link rel="icon" href="image/icon/icon-foreground(1024).png" sizes="1024x1024" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(512).png" sizes="512x512" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(256).png" sizes="256x256" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(128).png" sizes="128x128" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(64).png" sizes="64x64" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground(32).png" sizes="32x32" type="image/png">
+   <link rel="icon" href="image/icon/icon-foreground.svg" type="image/svg+xml">
+   <!-- OG -->
+   <meta property="og:title" content="Mushroom.js">
+   <meta property="og:description" content="Generate theme colors for websites">
+   <meta property="og:url" content="https://leafweb.github.io/Mushroom/">
+   <meta property="og:image" content="https://leafweb.github.io/Mushroom/image/poster.png">
+   <meta property="og:image:width" content="1024" />
+   <meta property="og:image:height" content="512" />
+   <meta property="og:type" content="website">
+   <meta property="og:locale" content="en">
+   <!-- style -->
+   <link rel="stylesheet" href="style/font-awesome/css/all.css">
+   <!-- <link rel="stylesheet/less" href="style/style.less"> -->
+   <link rel="stylesheet" href="style/style.css">
+   <!-- script -->
+   <!-- <script src="script/less.min.js"></script> -->
+   <script src="script/Mushroom.min.js"></script>
+</head>
+<body class="load">
+   <splash-screen class="show">
+      <div class="title">
+         <span style="--d: 0.0s">M</span><span style="--d: 0.1s">u</span><span style="--d: 0.2s">s</span><span style="--d: 0.3s">h</span><span style="--d: 0.4s">r</span><span style="--d: 0.5s">o</span><span style="--d: 0.6s">o</span><span style="--d: 0.7s">m</span><span style="--d: 0.8s">.</span><span style="--d: 0.9s">j</span><span style="--d: 1s">s</span>
+      </div>
+   </splash-screen>
+   <header>
+      <div class="logo"><img src="image/icon/icon-foreground(512).png" alt="Mushroom"></div>
+      <div class="title">Mushroom.js</div>
+      <div class="symbol" onclick="Menu()">menu</div>
+   </header>
+   <div id="progress"></div>
+   <backdrop></backdrop>
+   <menu>
+      <menu-header>
+         <div class="color"></div>
+         <div class="title">Mushroom.js</div>
+      </menu-header>
+      <menu-body>
+         <accordion onclick="Toggle(this)">
+            <div class="header">
+               <div>Theme : </div>
+               <div class="darkmode"></div>
+            </div>
+            <div class="container">
+               <div onclick="Darkmode(false)">
+                  <div class="label">Light</div>
+                  <div class="symbol">light_mode</div>
+               </div>
+               <div onclick="Darkmode(true)">
+                  <div class="label">Dark</div>
+                  <div class="symbol">dark_mode</div>
+               </div>
+               <div onclick="Darkmode('auto')">
+                  <div class="label">Auto</div>
+                  <div class="symbol">brightness_auto</div>
+               </div>
+            </div>
+         </accordion>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <div class="list">
+            <label oninput="Mirage()">
+               <span>Mirage Effect</span>
+               <input id="mirage" type="checkbox" class="switch">
+            </label>
+         </div>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <div class="list">
+            <div onclick="OpenUrl('https://github.com/leafweb')">
+               <span> GitHub </span>
+               <i class="fab fa-github"></i>
+            </div>
+            <div onclick="OpenUrl('https://instagram.com/leafweb.io')">
+               <span> Instagram </span>
+               <i class="fab fa-instagram"></i>
+            </div>
+            <div onclick="OpenUrl('https://t.me/leafweb_io')">
+               <span> Telegram </span>
+               <i class="fab fa-telegram"></i>
+            </div>
+            <div onclick="OpenUrl('mailto:leafweb.io@gmail.com')">
+               <span> Email </span>
+               <i class="fas fa-envelope"></i>
+            </div>
+         </div>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <div class="list">
+            <div class="mushroom" onclick="OpenUrl('https://github.com/leafweb/Mushroom')">
+               <div class="label"> Mushroom v4.02 </div>
+               <div class="icon">
+                  <img src="image/icon/icon-foreground(512).png" alt="Mushroom">
+               </div>
+            </div>
+            <div class="leafweb" onclick="OpenUrl('https://leafweb.github.io/')">
+               <div class="label"> Made By Leafweb </div>
+               <div class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                     <defs>
+                        <style>
+                           #svg-leaf-path {
+                              filter: drop-shadow(-30px 50px 50px #0005);
+                           }
+                        </style>
+                        <g id="svg-leaf">
+                           <rect transform="rotate(15 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+                           <rect transform="rotate(45 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+                           <rect transform="rotate(75 500 500)" x="150" y="150" width="700" height="700" rx="130" />
+                           <animateTransform attributeName="transform" type="rotate" from="0 500 500" to="360 500 500" dur="30s" repeatCount="indefinite" />
+                        </g>
+                        <mask id="svg-mask-leaf">
+                           <rect fill="#000" width="1000" height="1000" />
+                           <use fill="#fff" href="#svg-leaf" />
+                        </mask>
+                     </defs>
+                     <rect fill="var(--primary)" mask="url(#svg-mask-leaf)" width="1000" height="1000" />
+                     <path id="svg-leaf-path" fill="var(--on-primary)" transform="scale(0.8)translate(125,160)" d="M 500 700 C 300 700 200 500 50 400 C 250 350 400 400 500 600 C 600 400 750 350 950 400 C 800 500 700 700 500 700z M 500 700 C 200 700 350 300 500 100 C 650 300 800 700 500 700z M 480 680 L 520 680 Q 520 860 400 800 C 460 820 480 820 480 680z" />
+                  </svg>
+               </div>
+            </div>
+         </div>
+      </menu-body>
+   </menu>
+   <main>
+      <page name="p-palette">
+         <article>
+            <h1 class="c d1">Pale<span class="p">tt</span>e</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div id="palettes">
+               <h3 class="tag">Input Colors</h3>
+               <div class="input-colors">
+                  <div id="input-color"></div>
+                  <div id="input-custom-color"></div>
+               </div>
+               <h3 class="tag">Main Palette</h3>
+               <div id="main-palette"></div>
+               <h3 class="tag">Sub Palette</h3>
+               <div id="other-palette"></div>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+      <page name="p-brush">
+         <article>
+            <h1 class="c d1">Br<span class="p">us</span>h</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div class="switch">
+               <div class="b-static show" onclick="DynamicTab(false)"> Static </div>
+               <div class="b-dynamic" onclick="DynamicTab(true)"> Dynamic </div>
+            </div>
+            <div id="forms">
+               <div class="static show">
+                  <div>
+                     <form id="FormTheme" oninput="FormTheme()" method="dialog">
+                        <h3 class="tag">Theme</h3>
+                        <div class="theme">
+                           <input type="radio" name="theme" class="text" placeholder="Light" value="false">
+                           <input type="radio" name="theme" class="text" placeholder="Dark" value="true">
+                           <input type="radio" name="theme" class="text" placeholder="Auto" value="'auto'">
+                        </div>
+                     </form>
+                     <form id="FormHSL" oninput="FormHSL()" method="dialog">
+                        <h3 class="tag">HSL Color</h3>
+                        <div class="hsl">
+                           <div>
+                              <input type="range" min="0" max="360" name="hue">
+                              <output class="o-hue">000</output>
+                           </div>
+                           <div>
+                              <input type="range" min="0" max="100" name="saturation">
+                              <output class="o-saturation">000</output>
+                           </div>
+                           <div>
+                              <input type="range" min="0" max="100" name="lightness">
+                              <output class="o-lightness">000</output>
+                           </div>
+                        </div>
+                     </form>
+                     <form id="FormColorName" oninput="FormColorName()" method="dialog">
+                        <h3 class="tag">Color Name</h3>
+                        <div class="color-name">
+                           <input type="text" name="color-name">
+                        </div>
+                     </form>
+                     <form id="FormRandom" onsubmit="FormRandom()" method="dialog">
+                        <h3 class="tag">Random Color</h3>
+                        <button class="full" type="submit">Random</button>
+                     </form>
+                     <form id="FormPalette" oninput="FormPalette()" method="dialog">
+                        <h3 class="tag">Palette</h3>
+                        <div class="palette">
+                           <label>
+                              <div>Has Palette</div>
+                              <input type="checkbox" name="hasPalette" class="switch">
+                           </label>
+                           <label>
+                              <div>Reverse Palette</div>
+                              <input type="checkbox" name="reversePalette" class="switch">
+                           </label>
+                        </div>
+                     </form>
+                     <form id="FormCustomColor" oninput="FormCustomColor()" method="dialog">
+                        <h3 class="tag">Custom Color</h3>
+                        <div class="custom-color">
+                           <div class="row"></div>
+                           <button class="full symbol" onclick="AddRow()">add</button>
+                        </div>
+                     </form>
+                  </div>
+                  <div>
+                     <form id="FormColorScheme" oninput="FormColorScheme()" method="dialog">
+                        <h3 class="tag">Colors Scheme</h3>
+                        <div class="colors-scheme">
+                           <div class="preview">
+                              <div class="conic"></div>
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                                 <defs>
+                                    <g id="svg-a55">
+                                       <path d="M 500,250 C 300,50 700,50 500,250" />
+                                       <path d="M 500,500 500,250" />
+                                    </g>
+                                 </defs>
+                                 <g id="svg-color-rotate" fill="var(--background)" stroke="var(--background)" stroke-linecap="round" stroke-width="10">
+                                    <use id="svg-color-1" href="#svg-a55" />
+                                    <use id="svg-color-2" fill="none" href="#svg-a55" />
+                                    <use id="svg-color-3" fill="none" href="#svg-a55" />
+                                    <use id="svg-color-4" fill="none" href="#svg-a55" />
+                                 </g>
+                                 <circle fill="var(--background)" cx="500" cy="500" r="20" />
+                              </svg>
+                           </div>
+                           <div class="list">
+                              <label>
+                                 <div>Monochromatic</div>
+                                 <input type="radio" name="color-scheme" value="Monochromatic">
+                              </label>
+                              <label>
+                                 <div>Complementary</div>
+                                 <input type="radio" name="color-scheme" value="Complementary">
+                              </label>
+                              <label>
+                                 <div>Analogous</div>
+                                 <input type="radio" name="color-scheme" value="Analogous">
+                              </label>
+                              <label>
+                                 <div>Triadic</div>
+                                 <input type="radio" name="color-scheme" value="Triadic">
+                              </label>
+                              <label>
+                                 <div>Compound</div>
+                                 <input type="radio" name="color-scheme" value="Compound">
+                              </label>
+                              <label>
+                                 <div>Square</div>
+                                 <input type="radio" name="color-scheme" value="Square">
+                              </label>
+                              <label>
+                                 <div>Tetradic</div>
+                                 <input type="radio" name="color-scheme" value="Tetradic">
+                              </label>
+                              <label>
+                                 <div>Split-Complementary</div>
+                                 <input type="radio" name="color-scheme" value="Split-Complementary">
+                              </label>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <div class="dynamic">
+                  <h3 class="tag">Dynamic Color</h3>
+                  <div class="images">
+                     <img src="image/preview/0.jpg">
+                     <img src="image/preview/1.jpg">
+                     <img src="image/preview/2.jpg">
+                     <img src="image/preview/3.jpg">
+                     <img src="image/preview/4.jpg">
+                     <img src="image/preview/5.jpg">
+                     <img src="image/preview/6.jpg">
+                     <img src="image/preview/7.jpg">
+                     <img src="image/preview/8.jpg">
+                     <img src="image/preview/9.jpg">
+                  </div>
+                  <input type="file" id="image" onchange="FormDynamic()" hidden>
+                  <label for="image" class="btn full"> Select From Your Device </label>
+               </div>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+      <page name="p-home" class="show">
+         <div class="start">
+            <div class="logo">
+               <div class="image">
+                  <img src="image/icon/icon-foreground(2048).png" alt="Mushroom">
+               </div>
+               <div class="title">
+                  <span>Mushroom.js</span>
+                  <p>Generate theme colors for websites</p>
+               </div>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div class="options">
+               <div>
+                  <div class="label">Easy To Learn</div>
+                  <div class="symbol">school</div>
+               </div>
+               <div>
+                  <div class="label">Fast And Powerful</div>
+                  <div class="symbol">Bolt</div>
+               </div>
+               <div>
+                  <div class="label">Light And Compact</div>
+                  <div class="symbol">nest_eco_leaf</div>
+               </div>
+               <div>
+                  <div class="label">Flexible</div>
+                  <div class="symbol">brush</div>
+               </div>
+            </div>
+         </div>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+         <article>
+            <h1 class="tag1"> What is <span class="p"><b>Mushroom.js</b></span> ?</h1>
+            <p>
+               <b>Mushroom.js</b> is a script for generating color palettes for web applications, which is very <mark>fast</mark> and <mark>Light</mark>.
+            </p>
+            <h2 class="tag2"> Install <b>Mushroom.js</b>:</h2>
+            <p>
+               To install and set up it, just
+               <a href="script/Mushroom.min.js" download>download</a>
+               it and put the following code in your <b>HTML</b> document:
+            </p>
+            <pre lang="html"><code>&lt;script src="Mushroom.min.js">&lt;/script></code></pre>
+            <p> Now it's time to call the <mark class="mono">Mushroom()</mark> function: </p>
+            <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+            <p>
+               After running this code, you will see the following color palette in your <b>HTML</b> document:
+            </p>
+            <pre lang="css"><code>/**** Mushroom v4.02 ****/
+:root{
+   --primary: #b478ed;
+   --on-primary: #1a062d;
+   --primary-container: #260942;
+   --on-primary-container: #c290f0;
+   --secondary: #ed78eb;
+   --on-secondary: #2d062c;
+   --secondary-container: #420941;
+   --on-secondary-container: #f090ee;
+   --tertiary: #7a78ed;
+   --on-tertiary: #07062d;
+   --tertiary-container: #0a0942;
+   --on-tertiary-container: #9290f0;
+   --error: #ff6666;
+   --on-error: #330000;
+   --error-container: #4b0000;
+   --on-error-container: #ff8181;
+   --inverse-primary: #5c159d;
+   --on-inverse-primary: #ffffff;
+   --inverse-secondary: #9d159b;
+   --on-inverse-secondary: #ffffff;
+   --inverse-tertiary: #18159d;
+   --on-inverse-tertiary: #ffffff;
+   --inverse-error: #b30000;
+   --on-inverse-error: #ffffff;
+   --inverse-surface: #ccbed8;
+   --on-inverse-surface: #4e3a61;
+   --primary-fixed: #b478ed;
+   --on-primary-fixed: #1a062d;
+   --primary-fixed-dim: #823fc0;
+   --on-primary-fixed-dim: #ffffff;
+   --secondary-fixed: #ed78eb;
+   --on-secondary-fixed: #2d062c;
+   --secondary-fixed-dim: #c03fbe;
+   --on-secondary-fixed-dim: #ffffff;
+   --tertiary-fixed: #7a78ed;
+   --on-tertiary-fixed: #07062d;
+   --tertiary-fixed-dim: #413fc0;
+   --on-tertiary-fixed-dim: #ffffff;
+   --error-fixed: #ed7878;
+   --on-error-fixed: #2d0606;
+   --error-fixed-dim: #c03f3f;
+   --on-error-fixed-dim: #ffffff;
+   --surface: #19121f;
+   --on-surface: #a790bd;
+   --surface-container-low: #1e1625;
+   --on-surface-container-low: #ac96c1;
+   --surface-container: #231a2c;
+   --on-surface-container: #b19dc5;
+   --surface-container-high: #281e32;
+   --on-surface-container-high: #bbaacc;
+   --surface-variant: #402757;
+   --on-surface-variant: #c1a8d8;
+   --background: #0c090f;
+   --on-background: #e6e0ed;
+   --glass: #0c090f99;
+   --on-glass: #e6e0edcc;
+   --glass-container: #402f4f99;
+   --on-glass-container: #c1b0d0cc;
+   --glass-variant: #5c159d99;
+   --on-glass-variant: #e6d2f9cc;
+   --outline: #674c80;
+   --outline-variant: #342046;
+}</code></pre>
+            <h2 class="tag3">Learn More</h2>
+            <p>
+               To learn more about <b>Mushroom.js</b>, visit the learning section.
+            </p>
+            <button class="full" onclick="Page('doc')">
+               <div>Learn</div>
+               <span class="symbol">import_contacts</span>
+            </button>
+            <p>
+               You can also create your favorite color palette in the pen section.
+            </p>
+            <button class="full" onclick="Page('brush')">
+               <div>Brush</div>
+               <span class="symbol">brush</span>
+            </button>
+         </article>
+         <div class="hwr">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+               <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+            </svg>
+         </div>
+      </page>
+      <page name="p-doc">
+         <article>
+            <h1 class="c d1">L<span class="p">ea</span>rn</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div id="docs">
+               <h2 class="tag">installation</h2>
+               <p>To install, you must first download the Mushroom script.</p>
+               <div>
+                  <a href="script/Mushroom.js" download class="btn full"> Mushroom.js</a>
+                  <a href="script/Mushroom.min.js" download class="btn full"> Mushroom.min.js </a>
+               </div>
+               <p>Now you need to add it to your HTML document</p>
+               <pre lang="HTML"><code>&lt;script src="Mushroom.js">&lt;script></code></pre>
+               <p> And finally call the <mark class="mono">Mushroom()</mark> function </p>
+               <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+               <p>Now you can use the Mushroom color palette in CSS as a variable.</p>
+               <pre lang="css"><code>body {
+   background: var(--background);
+   color: var(--on-background);
+}
+button {
+   background: var(--primary);
+   color: var(--on-primary);
+}</code></pre>
+               <h2 class="tag"> Primary Settings </h2>
+               <p>
+                  You can write the primary settings of <mark>Mushroom</mark> inside an object and give that object to the <mark class="mono">Mushroom()</mark> function as an argument.
+               </p>
+               <pre lang="JavaScript"><code>var primarySettings = {
+   color: 'blue',
+   darkmode: false,
+}
+
+let M = Mushroom(primarySettings);</code></pre>
+               <p>list of <mark>Primary Settings</mark> :</p>
+               <ul>
+                  <li>addTo</li>
+                  <li>color</li>
+                  <li>colorScheme</li>
+                  <li>customColor</li>
+                  <li>darkmode</li>
+                  <li>hasPalette</li>
+                  <li>reversePalette</li>
+                  <li>parts</li>
+                  <li>prefix</li>
+               </ul>
+               <h3 class="tag2">addTo</h3>
+               <p>This item determines where the color palette is added. Its default value is ':root'.</p>
+               <pre lang="JavaScript"><code>let M1 = Mushroom({addTo: 'footer'});
+let M2 = Mushroom({addTo: '#goldCard'});
+let M3 = Mushroom({addTo: 'pre>*'});</code></pre>
+               <h3 class="tag2">color</h3>
+               <p>
+                  With this item you can set the color for your palette. You can only use the <mark>HEX</mark>, <mark>HSL</mark>, <mark>RGB</mark> color formats and <mark>140 standard web color names</mark>. The default value is 'Blue Violet'.
+               </p>
+               <pre lang="JavaScript"><code>let M1 = Mushroom({color: 'orange'});
+let M2 = Mushroom({color: '#28a428'});
+let M3 = Mushroom({color: 'hsl(340, 35%, 18%)'});
+let M4 = Mushroom({color: 'rgb(190, 218, 211)'});</code></pre>
+               <h3 class="tag2">colorScheme</h3>
+               <p>With this item, you can determine your color scheme from <mark>Monochromatic</mark>, <mark>Complementary</mark>, <mark>Analogous</mark>, <mark>Triadic</mark>, <mark>Compound</mark>, <mark>Square</mark>, <mark>Tetradic</mark>, <mark>Split-Complementary</mark>. The default value is 'Analogous'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({colorScheme: 'monochromatic'});</code></pre>
+               <h3 class="tag">customColor</h3>
+               <p>With this item, you can add and use a color with the desired name. The default value is '{}'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({customColor: {"warn": "orange"}});</code></pre>
+               <h3 class="tag2">darkmode</h3>
+               <p>With this item you can specify the dark mode. You can use <mark class="mono">true</mark>, <mark class="mono">false</mark> and <mark class="mono">auto</mark> values . The default value is 'auto'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({darkmode: 'auto'});</code></pre>
+               <h3 class="tag2"> hasPalette </h3>
+               <p>With this item, you can also use a sub-palette. Its default value is 'false'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({hasPalette: true});</code></pre>
+               <h3 class="tag2"> reversePalette </h3>
+               <p>When this item is on True, when you switch between light and dark mode, sub-palette colors are reversed. Its default value is 'false'.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({reversePalette: true});</code></pre>
+               <h3 class="tag2"> parts </h3>
+               <p>With this item, you can specify the number of members of the sub-pallet as well as its Lightness value. Its default value is <span class="mono">[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]</span></p>
+               <pre lang="JavaScript"><code>let M = Mushroom({parts: [10, 30, 50, 70, 90]});</code></pre>
+               <h3 class="tag2"> prefix </h3>
+               <p>To be sure, you can set a prefix for css variables with this item. Its default value is ' '</p>
+               <pre lang="JavaScript"><code>let M = Mushroom({parts: [10, 30, 50, 70, 90]});</code></pre>
+               <pre lang="css"><code>body{
+   background: var(--mjs-background);
+   color: var(--mgs-on-background);
+}</code></pre>
+               <h2 class="tag">Quick actions</h2>
+               <p>You can change Mushroom Settings with quick reactions without calling the function again.</p>
+               <pre lang="JavaScript"><code>let M = Mushroom();
+M.setColor('red');
+M.setDarkmode(true);</code></pre>
+               <p>list of Mushroom functions:</p>
+               <table>
+                  <tr>
+                     <th>Code</th>
+                     <th>Description</th>
+                  </tr>
+                  <tr>
+                     <td>addCustomColor(object)</td>
+                     <td>Add custom colors.</td>
+                  </tr>
+                  <tr>
+                     <td>clearCustomColor()</td>
+                     <td>Clear custom colors.</td>
+                  </tr>
+                  <tr>
+                     <td>random()</td>
+                     <td>Set a random color.</td>
+                  </tr>
+                  <tr>
+                     <td>setColor(string)</td>
+                     <td>Set a color.</td>
+                  </tr>
+                  <tr>
+                     <td>setColorScheme(string)</td>
+                     <td>Set a color scheme</td>
+                  </tr>
+                  <tr>
+                     <td>setDarkmode(boolean || 'auto')</td>
+                     <td>Set Darkmode.</td>
+                  </tr>
+                  <tr>
+                     <td>setDynamicColor(element)</td>
+                     <td>Create a theme of colors in a image elm</td>
+                  </tr>
+                  <tr>
+                     <td>setHue(number)</td>
+                     <td>Set hue.</td>
+                  </tr>
+                  <tr>
+                     <td>setLightness(number)</td>
+                     <td>Set lightness.</td>
+                  </tr>
+                  <tr>
+                     <td>setPalette(boolean)</td>
+                     <td>Set palette.</td>
+                  </tr>
+                  <tr>
+                     <td>setParts(array)</td>
+                     <td>Set parts of sup-palette.</td>
+                  </tr>
+                  <tr>
+                     <td>setReversePalette(boolean)</td>
+                     <td>Reverse palette colors.</td>
+                  </tr>
+                  <tr>
+                     <td>setSaturation(number)</td>
+                     <td>Set saturation.</td>
+                  </tr>
+                  <tr>
+                     <td>toggleMode()</td>
+                     <td>Quick switch between dark and light mode.</td>
+                  </tr>
+               </table>
+               <h3 class="tag">Return values from Mushroom function</h3>
+               <pre lang="JavaScript"><code>let M = Mushroom();
+console.log(M.darkmode); // 'auto' 
+console.log(M.hasPalette); // false</code></pre>
+               <table>
+                  <tr>
+                     <th>Code</th>
+                     <th>Output</th>
+                  </tr>
+                  <tr>
+                     <td>addTo</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>color</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>colorScheme</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>customColor</td>
+                     <td>object</td>
+                  </tr>
+                  <tr>
+                     <td>darkmode</td>
+                     <td>boolean</td>
+                  </tr>
+                  <tr>
+                     <td>growTimes</td>
+                     <td>number (ms)</td>
+                  </tr>
+                  <tr>
+                     <td>hasPalette</td>
+                     <td>boolean</td>
+                  </tr>
+                  <tr>
+                     <td>hue</td>
+                     <td>number</td>
+                  </tr>
+                  <tr>
+                     <td>lightness</td>
+                     <td>number</td>
+                  </tr>
+                  <tr>
+                     <td>palette</td>
+                     <td>object</td>
+                  </tr>
+                  <tr>
+                     <td>parts</td>
+                     <td>array</td>
+                  </tr>
+                  <tr>
+                     <td>prefix</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>reversePalette</td>
+                     <td>boolean</td>
+                  </tr>
+                  <tr>
+                     <td>saturation</td>
+                     <td>number</td>
+                  </tr>
+                  <tr>
+                     <td>themeColor (main palette)</td>
+                     <td>object</td>
+                  </tr>
+                  <tr>
+                     <td>version</td>
+                     <td>number</td>
+                  </tr>
+               </table>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+      <page name="p-code">
+         <article>
+            <h1 class="c d1">Co<span class="p">d</span>e</h1>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+            <div id="codes">
+               <h3 class="tag">HTML Code</h3>
+               <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
+               <h3 class="tag"> JavaScript Code </h3>
+               <pre lang="js" id="codeJs"></pre>
+               <h3 class="tag"> CSS Output </h3>
+               <pre lang="css" id="codeCss"></pre>
+            </div>
+            <div class="hwr">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
+                  <path fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" d="M1.25,5.00Q5.31,0.00,9.38,5.00Q13.44,10.00,17.50,5.00Q21.56,0.00,25.63,5.00Q29.69,10.00,33.75,5.00Q37.81,0.00,41.88,5.00Q45.94,10.00,50.00,5.00Q54.06,0.00,58.13,5.00Q62.19,10.00,66.25,5.00Q70.31,0.00,74.38,5.00Q78.44,10.00,82.50,5.00Q86.56,0.00,90.63,5.00Q94.69,10.00,98.75,5.00" />
+               </svg>
+            </div>
+         </article>
+      </page>
+   </main>
+   <tabbar>
+      <tab name="pb-code" onclick="Page('code');Code()">
+         <div class="symbol">code</div>
+         <div class="label">Code</div>
+      </tab>
+      <tab name="pb-doc" onclick="Page('doc')">
+         <div class="symbol">import_contacts</div>
+         <div class="label">Learn</div>
+      </tab>
+      <tab name="pb-home" onclick="Page('home')" class="on">
+         <div class="symbol">home</div>
+         <div class="label">Home</div>
+      </tab>
+      <tab name="pb-brush" onclick="Page('brush')">
+         <div class="symbol">brush</div>
+         <div class="label">Brush</div>
+      </tab>
+      <tab name="pb-palette" onclick="Page('palette');Palette()">
+         <div class="symbol">palette</div>
+         <div class="label">Palette</div>
+      </tab>
+   </tabbar>
+   <navbar>
+      <div class="faq symbol" onclick="Menu()">menu</div>
+      <div class="tabbar">
+         <tab name="pb-home" onclick="Page('home')" class="on">
+            <div class="symbol">home</div>
+            <div class="label">Home</div>
+         </tab>
+         <tab name="pb-brush" onclick="Page('brush')">
+            <div class="symbol">brush</div>
+            <div class="label">Brush</div>
+         </tab>
+         <tab name="pb-doc" onclick="Page('doc')">
+            <div class="symbol">import_contacts</div>
+            <div class="label">Learn</div>
+         </tab>
+         <tab name="pb-palette" onclick="Page('palette');Palette()">
+            <div class="symbol">palette</div>
+            <div class="label">Palette</div>
+         </tab>
+         <tab name="pb-code" onclick="Page('code');Code()">
+            <div class="symbol">code</div>
+            <div class="label">Code</div>
+         </tab>
+      </div>
+   </navbar>
+   <color-picker-backdrop>
+      <color-picker>
+         <div class="preview"></div>
+         <div class="range">
+            <input type="range" class="hue" min="0" max="360" value="360">
+            <input type="range" class="saturation" min="0" max="100" value="100">
+            <input type="range" class="lightness" min="0" max="100" value="50">
+            <input type="range" class="alpha" min="0" max="1" value="1" step="0.01">
+         </div>
+         <div class="btns">
+            <button class="text cancel"> Cancel </button>
+            <button class="text set"> Set </button>
+         </div>
+      </color-picker>
+   </color-picker-backdrop>
+   <script src="script/w3.highlights.js"></script>
+   <script src="script/main.js"></script>
+   <script>
+      window.addEventListener('load', () => {
+         var font1 = new FontFace('Symbol', 'url(style/fonts/Symbol.woff2)');
+         var font2 = new FontFace('RobotoFlex', 'url(style/fonts/RobotoFlex.ttf)');
+         var font3 = new FontFace('RobotoMono', 'url(style/fonts/RobotoMono.ttf)');
+         var font4 = new FontFace('fab', 'url(style/font-awesome/webfonts/fa-brands-400.woff2)');
+         var font5 = new FontFace('fas', 'urlstyle/font-awesome/webfonts/fa-solid-900.woff2');
+         Promise.all([font1.load(), font2.load(), font3.load(), font4.load(), font5.load()])
+            .then(() => {
+               setTimeout(() => {
+                  Hide(document.querySelector('splash-screen'))
+                  Hide(document.body, 'load')
+               }, 5000);
+            })
+            .catch((err) => console.error(err));
+      });
+   </script>
+</body>
+</html>
