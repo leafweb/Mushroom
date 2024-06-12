@@ -557,7 +557,7 @@ body.load tabbar {
    display: none
 }
 
-@media (min-width:500px) {
+@media (min-width: 481px) {
 
    header,
    tabbar {
@@ -631,7 +631,7 @@ body.load tabbar {
    display: none
 }
 
-@media (min-width:500px) {
+@media (min-width: 481px) {
    [name=p-home] .start .logo .title span {
       display: block;
       font-size: 100px;
@@ -1196,8 +1196,8 @@ q::before {
 }
 
 [name=p-palette] #main-palette>div {
-   flex: 1 0 120px;
-   max-width: 120px
+   flex: 1 0 130px;
+   max-width: 130px
 }
 
 [name=p-palette] #main-palette .color {
