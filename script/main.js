@@ -76,17 +76,14 @@ function Show(x, y = 'show') {
     x.classList.add(y);
   }
 }
-;
 function Hide(x, y = 'show') {
   if (x.classList.contains(y)) {
     x.classList.remove(y);
   }
 }
-;
 function Toggle(x, y = 'show') {
   x.classList.toggle(y);
 }
-;
 function Menu() {
   var menu = document.querySelector('menu');
   var backdrop = document.querySelector('backdrop');
