@@ -984,14 +984,13 @@ function Code() {
   codeCss.innerHTML += '<div class="copy symbol">content_copy</div>';
   CopyBtn();
 }
-let M = Mushroom();
+let M = Mushroom({darkmode: Mode()});
 let preM = Mushroom({
   addTo: 'pre,color-picker',
   hasPalette: true,
   reversePalette: true,
+  darkmode: Mode()
 });
-M.setDarkmode(Mode());
-preM.setDarkmode(Mode());
 Forms();
 Highlights();
 CopyBtn();
