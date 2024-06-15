@@ -20,7 +20,10 @@ function Darkmode(x) {
   }));
   document.querySelector('menu .darkmode').innerHTML = typeof M.darkmode == 'boolean' ? M.darkmode ? 'Dark' : 'Light' : 'Auto';
   Freeze(10);
-  Forms();
+  var f = document.querySelector('#forms .static.show');
+  if (f) {
+     Forms();
+  }
   Statusbar();
   setTimeout(() => {
     Code();
