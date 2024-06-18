@@ -847,7 +847,7 @@ function Mushroom(primarySettings) {
     return code;
   }
   var M = {
-    version: 4.02,
+    version: 4.03,
     growTimes: 0,
     code: '',
     themeColor: {},
@@ -873,7 +873,16 @@ function Mushroom(primarySettings) {
     },
     toggleMode: () => {
       var mode = M.darkmode;
-      var newMode = !mode ? true : false;
+      var newMode;
+      if (mode == 'auto') {
+         if (window.matchMedia) {
+          newMode = !(window.matchMedia('(prefers-color-scheme:dark)').matches);
+        } else {
+          newMode = true;
+        }
+      } else {
+         newMode = !mode ? true : false;
+      }
       M.darkmode = newMode;
       Grow();
     },
