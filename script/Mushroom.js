@@ -817,7 +817,7 @@ function Mushroom(primarySettings) {
     var values = Object.values(OBJ);
     var CODE = `${M.addTo !== null ? M.addTo : ':root'}{\n`;
     for (i in keys) {
-      CODE += `   --${M.prefix}${keys[i]}: ${values[i]};\n`;
+      CODE += `   --${M.prefix}-${keys[i]}: ${values[i]};\n`;
     }
     CODE += '}';
     return CODE;
@@ -847,7 +847,7 @@ function Mushroom(primarySettings) {
     return code;
   }
   var M = {
-    version: 4.03,
+    version: 4.04,
     growTimes: 0,
     code: '',
     themeColor: {},
