@@ -816,8 +816,9 @@ function Mushroom(primarySettings) {
     var keys = Object.keys(OBJ);
     var values = Object.values(OBJ);
     var CODE = `${M.addTo !== null ? M.addTo : ':root'}{\n`;
+    var prefix = (M.prefix == '')? '' : M.prefix + '-';
     for (i in keys) {
-      CODE += `   --${M.prefix}-${keys[i]}: ${values[i]};\n`;
+      CODE += `   --${prefix}${keys[i]}: ${values[i]};\n`;
     }
     CODE += '}';
     return CODE;
