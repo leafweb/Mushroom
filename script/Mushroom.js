@@ -452,7 +452,7 @@ function Mushroom(primarySettings) {
              [80 + l / 10, 30 - l / 10], 
              [78 + l / 10, 30 - l / 10], 
              [70 + l / 10, 30 - l / 10]],
-          background: [90 + l / 20, 10 - l / 10],
+          background: [90 + l / 10, 20 - l / 10],
           outline: [60, 80],
           inverse: [70, 10],
           inverseSurface: [15 + l / 10, 80 - l / 10]
