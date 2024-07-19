@@ -28,10 +28,10 @@
    <!-- style -->
    <link rel="stylesheet" href="style/font-awesome/css/all.css">
    <!-- <link rel="stylesheet/less" href="style/style.less"> -->
-   <link rel="stylesheet" href="style/style.css">
+   <link rel="stylesheet" href="style/style.min.css">
    <!-- script -->
    <!-- <script src="script/less.min.js"></script> -->
-   <script src="script/Mushroom.js"></script>
+   <script src="script/Mushroom.min.js"></script>
 </head>
 <body class="load">
    <splash-screen class="show">
@@ -42,7 +42,7 @@
    <header>
       <div class="logo"><img src="image/icon/icon-foreground(512).png" alt="Mushroom"></div>
       <div class="title">Mushroom.js</div>
-      <div class="symbol" onclick="Menu()">menu</div>
+      <div translate="no" class="symbol" onclick="Menu()">menu</div>
    </header>
    <div id="progress"></div>
    <backdrop></backdrop>
@@ -60,15 +60,15 @@
             <div class="container">
                <div onclick="Darkmode(false)">
                   <div class="label">Light</div>
-                  <div class="symbol">light_mode</div>
+                  <div translate="no" class="symbol">light_mode</div>
                </div>
                <div onclick="Darkmode(true)">
                   <div class="label">Dark</div>
-                  <div class="symbol">dark_mode</div>
+                  <div translate="no" class="symbol">dark_mode</div>
                </div>
                <div onclick="Darkmode('auto')">
                   <div class="label">Auto</div>
-                  <div class="symbol">brightness_auto</div>
+                  <div translate="no" class="symbol">brightness_auto</div>
                </div>
             </div>
          </accordion>
@@ -241,7 +241,7 @@
                         <h3 class="tag">Custom Color</h3>
                         <div class="custom-color">
                            <div class="row"></div>
-                           <button class="full symbol" onclick="AddRow()">add</button>
+                           <button translate="no" class="full symbol" onclick="AddRow()">add</button>
                         </div>
                      </form>
                   </div>
@@ -349,19 +349,19 @@
             <div class="options">
                <div>
                   <div class="label">Easy To Learn</div>
-                  <div class="symbol">school</div>
+                  <div translate="no" class="symbol">school</div>
                </div>
                <div>
                   <div class="label">Fast And Powerful</div>
-                  <div class="symbol">Bolt</div>
+                  <div translate="no" class="symbol">Bolt</div>
                </div>
                <div>
                   <div class="label">Light And Compact</div>
-                  <div class="symbol">nest_eco_leaf</div>
+                  <div translate="no" class="symbol">nest_eco_leaf</div>
                </div>
                <div>
                   <div class="label">Flexible</div>
-                  <div class="symbol">brush</div>
+                  <div translate="no" class="symbol">brush</div>
                </div>
             </div>
          </div>
@@ -381,40 +381,40 @@
                <a href="script/Mushroom.min.js" download>download</a>
                it and put the following code in your <b>HTML</b> document:
             </p>
-            <pre lang="html"><code>&lt;script src="Mushroom.min.js">&lt;/script></code></pre>
+            <pre translate="no" lang="html"><code>&lt;script src="Mushroom.min.js">&lt;/script></code></pre>
             <p> Now it's time to call the <mark class="mono">Mushroom()</mark> function: </p>
-            <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+            <pre translate="no" lang="JavaScript"><code>let M = Mushroom();</code></pre>
             <p>
                After running this code, you will see the following color palette in your <b>HTML</b> document:
             </p>
-            <pre lang="css"><code>/**** Mushroom v4.04 ****/
+            <pre translate="no" lang="css"><code>/**** Mushroom v4.05 ****/
 :root{
-   --primary: #b478ed;
-   --on-primary: #1a062d;
-   --primary-container: #260942;
-   --on-primary-container: #c290f0;
-   --secondary: #ed78eb;
-   --on-secondary: #2d062c;
-   --secondary-container: #420941;
-   --on-secondary-container: #f090ee;
-   --tertiary: #7a78ed;
-   --on-tertiary: #07062d;
-   --tertiary-container: #0a0942;
-   --on-tertiary-container: #9290f0;
-   --error: #ff6666;
-   --on-error: #330000;
-   --error-container: #4b0000;
-   --on-error-container: #ff8181;
-   --inverse-primary: #5c159d;
-   --on-inverse-primary: #ffffff;
-   --inverse-secondary: #9d159b;
-   --on-inverse-secondary: #ffffff;
-   --inverse-tertiary: #18159d;
-   --on-inverse-tertiary: #ffffff;
-   --inverse-error: #b30000;
-   --on-inverse-error: #ffffff;
-   --inverse-surface: #ccbed8;
-   --on-inverse-surface: #4e3a61;
+   --primary: #5c159d;
+   --on-primary: #ffffff;
+   --primary-container: #dabdf6;
+   --on-primary-container: #260942;
+   --secondary: #9d159b;
+   --on-secondary: #ffffff;
+   --secondary-container: #f6bdf5;
+   --on-secondary-container: #420941;
+   --tertiary: #18159d;
+   --on-tertiary: #ffffff;
+   --tertiary-container: #bebdf6;
+   --on-tertiary-container: #0a0942;
+   --error: #b30000;
+   --on-error: #ffffff;
+   --error-container: #ffb4b4;
+   --on-error-container: #4b0000;
+   --inverse-primary: #b478ed;
+   --on-inverse-primary: #1a062d;
+   --inverse-secondary: #ed78eb;
+   --on-inverse-secondary: #2d062c;
+   --inverse-tertiary: #7a78ed;
+   --on-inverse-tertiary: #07062d;
+   --inverse-error: #ff6666;
+   --on-inverse-error: #330000;
+   --inverse-surface: #342741;
+   --on-inverse-surface: #bfaecf;
    --primary-fixed: #b478ed;
    --on-primary-fixed: #1a062d;
    --primary-fixed-dim: #823fc0;
@@ -431,26 +431,26 @@
    --on-error-fixed: #2d0606;
    --error-fixed-dim: #c03f3f;
    --on-error-fixed-dim: #ffffff;
-   --surface: #19121f;
-   --on-surface: #a790bd;
-   --surface-container-low: #1e1625;
-   --on-surface-container-low: #ac96c1;
-   --surface-container: #231a2c;
-   --on-surface-container: #b19dc5;
-   --surface-container-high: #281e32;
-   --on-surface-container-high: #bbaacc;
-   --surface-variant: #402757;
-   --on-surface-variant: #c1a8d8;
-   --background: #0c090f;
-   --on-background: #e6e0ed;
-   --glass: #0c090f99;
-   --on-glass: #e6e0edcc;
-   --glass-container: #402f4f99;
-   --on-glass-container: #c1b0d0cc;
-   --glass-variant: #5c159d99;
-   --on-glass-variant: #e6d2f9cc;
-   --outline: #674c80;
-   --outline-variant: #342046;
+   --surface: #e6e0ed;
+   --on-surface: #402f4f;
+   --surface-container-low: #e1dae9;
+   --on-surface-container-low: #402f4f;
+   --surface-container: #dad0e3;
+   --on-surface-container: #402f4f;
+   --surface-container-high: #d5cadf;
+   --on-surface-container-high: #402f4f;
+   --surface-variant: #c1a8d8;
+   --on-surface-variant: #402757;
+   --background: #ece8f1;
+   --on-background: #0c090f;
+   --glass: #f3f0f699;
+   --on-glass: #0c090fcc;
+   --glass-container: #dad0e399;
+   --on-glass-container: #261c2fcc;
+   --glass-variant: #b478ed99;
+   --on-glass-variant: #1a062dcc;
+   --outline: #9a7fb3;
+   --outline-variant: #cdb9df;
 }</code></pre>
             <h2 class="tag3">Learn More</h2>
             <p>
@@ -458,14 +458,14 @@
             </p>
             <button class="full" onclick="Page('doc')">
                <div>Learn</div>
-               <span class="symbol">import_contacts</span>
+               <span translate="no" class="symbol">import_contacts</span>
             </button>
             <p>
                You can also create your favorite color palette in the pen section.
             </p>
             <button class="full" onclick="Page('brush')">
                <div>Brush</div>
-               <span class="symbol">brush</span>
+               <span translate="no" class="symbol">brush</span>
             </button>
          </article>
          <div class="hwr">
@@ -490,11 +490,11 @@
                   <a href="script/Mushroom.min.js" download class="btn full"> Mushroom.min.js </a>
                </div>
                <p>Now you need to add it to your HTML document</p>
-               <pre lang="HTML"><code>&lt;script src="Mushroom.js">&lt;script></code></pre>
+               <pre translate="no" lang="HTML"><code>&lt;script src="Mushroom.js">&lt;script></code></pre>
                <p> And finally call the <mark class="mono">Mushroom()</mark> function </p>
-               <pre lang="JavaScript"><code>let M = Mushroom();</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom();</code></pre>
                <p>Now you can use the Mushroom color palette in CSS as a variable.</p>
-               <pre lang="css"><code>body {
+               <pre translate="no" lang="css"><code>body {
    background: var(--background);
    color: var(--on-background);
 }
@@ -506,7 +506,7 @@ button {
                <p>
                   You can write the primary settings of <mark>Mushroom</mark> inside an object and give that object to the <mark class="mono">Mushroom()</mark> function as an argument.
                </p>
-               <pre lang="JavaScript"><code>var primarySettings = {
+               <pre translate="no" lang="JavaScript"><code>var primarySettings = {
    color: 'blue',
    darkmode: false,
 }
@@ -526,45 +526,45 @@ let M = Mushroom(primarySettings);</code></pre>
                </ul>
                <h3 class="tag2">addTo</h3>
                <p>This item determines where the color palette is added. Its default value is ':root'.</p>
-               <pre lang="JavaScript"><code>let M1 = Mushroom({addTo: 'footer'});
+               <pre translate="no" lang="JavaScript"><code>let M1 = Mushroom({addTo: 'footer'});
 let M2 = Mushroom({addTo: '#goldCard'});
 let M3 = Mushroom({addTo: 'pre>*'});</code></pre>
                <h3 class="tag2">color</h3>
                <p>
                   With this item you can set the color for your palette. You can only use the <mark>HEX</mark>, <mark>HSL</mark>, <mark>RGB</mark> color formats and <mark>140 standard web color names</mark>. The default value is 'Blue Violet'.
                </p>
-               <pre lang="JavaScript"><code>let M1 = Mushroom({color: 'orange'});
+               <pre translate="no" lang="JavaScript"><code>let M1 = Mushroom({color: 'orange'});
 let M2 = Mushroom({color: '#28a428'});
 let M3 = Mushroom({color: 'hsl(340, 35%, 18%)'});
 let M4 = Mushroom({color: 'rgb(190, 218, 211)'});</code></pre>
                <h3 class="tag2">colorScheme</h3>
                <p>With this item, you can determine your color scheme from <mark>Monochromatic</mark>, <mark>Complementary</mark>, <mark>Analogous</mark>, <mark>Triadic</mark>, <mark>Compound</mark>, <mark>Square</mark>, <mark>Tetradic</mark>, <mark>Split-Complementary</mark>. The default value is 'Analogous'.</p>
-               <pre lang="JavaScript"><code>let M = Mushroom({colorScheme: 'monochromatic'});</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({colorScheme: 'monochromatic'});</code></pre>
                <h3 class="tag">customColor</h3>
                <p>With this item, you can add and use a color with the desired name. The default value is '{}'.</p>
-               <pre lang="JavaScript"><code>let M = Mushroom({customColor: {"warn": "orange"}});</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({customColor: {"warn": "orange"}});</code></pre>
                <h3 class="tag2">darkmode</h3>
                <p>With this item you can specify the dark mode. You can use <mark class="mono">true</mark>, <mark class="mono">false</mark> and <mark class="mono">auto</mark> values . The default value is 'auto'.</p>
-               <pre lang="JavaScript"><code>let M = Mushroom({darkmode: 'auto'});</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({darkmode: 'auto'});</code></pre>
                <h3 class="tag2"> hasPalette </h3>
                <p>With this item, you can also use a sub-palette. Its default value is 'false'.</p>
-               <pre lang="JavaScript"><code>let M = Mushroom({hasPalette: true});</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({hasPalette: true});</code></pre>
                <h3 class="tag2"> reversePalette </h3>
                <p>When this item is on True, when you switch between light and dark mode, sub-palette colors are reversed. Its default value is 'false'.</p>
-               <pre lang="JavaScript"><code>let M = Mushroom({reversePalette: true});</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({reversePalette: true});</code></pre>
                <h3 class="tag2"> parts </h3>
                <p>With this item, you can specify the number of members of the sub-pallet as well as its Lightness value. Its default value is <span class="mono">[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]</span></p>
-               <pre lang="JavaScript"><code>let M = Mushroom({parts: [10, 30, 50, 70, 90]});</code></pre>
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({parts: [10, 30, 50, 70, 90]});</code></pre>
                <h3 class="tag2"> prefix </h3>
                <p>To be sure, you can set a prefix for css variables with this item. Its default value is ' '</p>
-               <pre lang="JavaScript"><code>let M = Mushroom({prefix: 'mjs'});</code></pre>
-               <pre lang="css"><code>body{
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom({prefix: 'mjs'});</code></pre>
+               <pre translate="no" lang="css"><code>body{
    background: var(--mjs-background);
    color: var(--mjs-on-background);
 }</code></pre>
                <h2 class="tag">Quick actions</h2>
                <p>You can change Mushroom Settings with quick reactions without calling the function again.</p>
-               <pre lang="JavaScript"><code>let M = Mushroom();
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom();
 M.setColor('red');
 M.setDarkmode(true);</code></pre>
                <p>list of Mushroom functions:</p>
@@ -631,7 +631,7 @@ M.setDarkmode(true);</code></pre>
                   </tr>
                </table>
                <h3 class="tag">Return values from Mushroom function</h3>
-               <pre lang="JavaScript"><code>let M = Mushroom();
+               <pre translate="no" lang="JavaScript"><code>let M = Mushroom();
 console.log(M.darkmode); // 'auto' 
 console.log(M.hasPalette); // false</code></pre>
                <table>
@@ -726,11 +726,11 @@ console.log(M.hasPalette); // false</code></pre>
             </div>
             <div id="codes">
                <h3 class="tag">HTML Code</h3>
-               <pre lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
+               <pre translate="no" lang="html"><code>&lt;script src="Mushroom.js">&lt;/script></code></pre>
                <h3 class="tag"> JavaScript Code </h3>
-               <pre lang="js" id="codeJs"></pre>
+               <pre translate="no" lang="js" id="codeJs"></pre>
                <h3 class="tag"> CSS Output </h3>
-               <pre lang="css" id="codeCss"></pre>
+               <pre translate="no" lang="css" id="codeCss"></pre>
             </div>
             <div class="hwr">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.0 10.0">
@@ -742,47 +742,47 @@ console.log(M.hasPalette); // false</code></pre>
    </main>
    <tabbar>
       <tab name="pb-code" onclick="Page('code');Code()">
-         <div class="symbol">code</div>
+         <div translate="no" class="symbol">code</div>
          <div class="label">Code</div>
       </tab>
       <tab name="pb-doc" onclick="Page('doc')">
-         <div class="symbol">import_contacts</div>
+         <div translate="no" class="symbol">import_contacts</div>
          <div class="label">Learn</div>
       </tab>
       <tab name="pb-home" onclick="Page('home')" class="on">
-         <div class="symbol">home</div>
+         <div translate="no" class="symbol">home</div>
          <div class="label">Home</div>
       </tab>
       <tab name="pb-brush" onclick="Page('brush')">
-         <div class="symbol">brush</div>
+         <div translate="no" class="symbol">brush</div>
          <div class="label">Brush</div>
       </tab>
       <tab name="pb-palette" onclick="Page('palette');Palette()">
-         <div class="symbol">palette</div>
+         <div translate="no" class="symbol">palette</div>
          <div class="label">Palette</div>
       </tab>
    </tabbar>
    <navbar>
-      <div class="faq symbol" onclick="Menu()">menu</div>
+      <div translate="no" class="faq symbol" onclick="Menu()">menu</div>
       <div class="tabbar">
          <tab name="pb-home" onclick="Page('home')" class="on">
-            <div class="symbol">home</div>
+            <div translate="no" class="symbol">home</div>
             <div class="label">Home</div>
          </tab>
          <tab name="pb-brush" onclick="Page('brush')">
-            <div class="symbol">brush</div>
+            <div translate="no" class="symbol">brush</div>
             <div class="label">Brush</div>
          </tab>
          <tab name="pb-doc" onclick="Page('doc')">
-            <div class="symbol">import_contacts</div>
+            <div translate="no" class="symbol">import_contacts</div>
             <div class="label">Learn</div>
          </tab>
          <tab name="pb-palette" onclick="Page('palette');Palette()">
-            <div class="symbol">palette</div>
+            <div translate="no" class="symbol">palette</div>
             <div class="label">Palette</div>
          </tab>
          <tab name="pb-code" onclick="Page('code');Code()">
-            <div class="symbol">code</div>
+            <div translate="no" class="symbol">code</div>
             <div class="label">Code</div>
          </tab>
       </div>

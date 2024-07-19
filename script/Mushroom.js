@@ -446,8 +446,13 @@ function Mushroom(primarySettings) {
         light: {
           accent: [[35, 100], [80 + l / 10, 20 - l / 10]],
           glass: [[90 + l / 10, 10 - l / 10], [80 + l / 10, 20 - l / 10], [70, 10]],
-          surface: [[85 + l / 10, 40 - l / 10], [83 + l / 10, 38 - l / 10], [80 + l / 10, 36 - l / 10], [78 + l / 10, 34 - l / 10], [70 + l / 10, 30 - l / 10]],
-          background: [90 + l / 10, 10 - l / 10],
+          surface: [
+             [85 + l / 10, 30 - l / 10], 
+             [83 + l / 10, 30 - l / 10], 
+             [80 + l / 10, 30 - l / 10], 
+             [78 + l / 10, 30 - l / 10], 
+             [70 + l / 10, 30 - l / 10]],
+          background: [90 + l / 20, 10 - l / 10],
           outline: [60, 80],
           inverse: [70, 10],
           inverseSurface: [15 + l / 10, 80 - l / 10]
@@ -455,8 +460,13 @@ function Mushroom(primarySettings) {
         dark: {
           accent: [[70, 10], [20 - l / 10, 70 + l / 10]],
           glass: [[10 - l / 10, 85 + l / 10], [30 - l / 10, 70 + l / 10], [35, 90]],
-          surface: [[15 - l / 10, 60 + l / 10], [17 - l / 10, 62 + l / 10], [19 - l / 10, 64 + l / 10], [21 - l / 10, 68 + l / 10], [30 - l / 10, 70 + l / 10]],
-          background: [10 - l / 10, 85 + l / 10],
+          surface: [
+             [15 - l / 10, 65 + l / 10], 
+             [17 - l / 10, 65 + l / 10], 
+             [19 - l / 10, 65 + l / 10], 
+             [21 - l / 10, 65 + l / 10], 
+             [30 - l / 10, 65 + l / 10]],
+          background: [10 - l / 10, 70 + l / 10],
           outline: [40, 20],
           inverse: [35, 100],
           inverseSurface: [85 - l / 10, 25 + l / 10]
@@ -848,7 +858,7 @@ function Mushroom(primarySettings) {
     return code;
   }
   var M = {
-    version: 4.04,
+    version: 4.05,
     growTimes: 0,
     code: '',
     themeColor: {},
