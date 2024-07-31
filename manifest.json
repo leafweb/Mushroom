@@ -41,7 +41,7 @@
          "sizes": "2048×2048"
       },
       {
-         "src": "image/icon.svg",
+         "src": "image/icon/icon.svg",
          "sizes": "any"
       }
    ]
