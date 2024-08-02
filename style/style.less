@@ -278,12 +278,17 @@ page {
    padding: 90px 20px 80px 20px;
    display: none;
    opacity: 0;
-   
+   flex-flow: column nowrap;
+   justify-content: flex-start;
+   align-items: center;
    &.show {
-      display: block;
+      display: flex;
       animation: show 0.4s both;
    }
-   
+   &>*{
+      width: 100%;
+      max-width: 840px;
+   }
 }
 tabbar {
    position: fixed;
