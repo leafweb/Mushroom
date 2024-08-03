@@ -42,6 +42,9 @@ function Freeze(x) {
   setTimeout(() => {
     all.forEach(elm => {
       elm.style.removeProperty('transition');
+      if (elm.getAttribute('style') == '') {
+         elm.removeAttribute('style');
+      }
     });
   }, x);
 }
@@ -61,11 +64,11 @@ function LoadMirage() {
   var data;
   if (storage == undefined) {
     data = false;
-    localStorage.setItem('mushroom', JSON.stringify({
-      mode: data
+    localStorage.setItem('mirage', JSON.stringify({
+      mirage: data
     }));
   } else {
-    data = eval(storage);
+    data = storage.mirage;
   }
   var check = document.querySelector('#mirage').checked = data;
   if (data) {
