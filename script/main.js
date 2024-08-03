@@ -56,19 +56,17 @@ function Mirage() {
   } else {
     body.style.removeProperty('animation');
   }
-  localStorage.setItem('mirage', check);
+  localStorage.setItem('mirage', JSON.stringify({mirage: check}));
 }
 function LoadMirage() {
   var body = document.body;
-  var storage = localStorage.getItem('mirage');
-  var data;
+  var storage = JSON.parse(localStorage.getItem('mirage'));
+  var data = storage.mirage;
   if (storage == undefined) {
     data = false;
     localStorage.setItem('mirage', JSON.stringify({
       mirage: data
     }));
-  } else {
-    data = storage.mirage;
   }
   var check = document.querySelector('#mirage').checked = data;
   if (data) {
